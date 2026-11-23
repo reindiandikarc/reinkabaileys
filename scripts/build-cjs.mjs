@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const outdir = join(root, 'lib', 'cjs')
+const outdir = join(root, 'src', 'cjs')
 
 await mkdir(outdir, { recursive: true })
 
@@ -17,8 +17,8 @@ const external = [
 ].filter(name => name !== 'whatsapp-rust-bridge')
 
 const entries = [
-  ['lib/Brand/index.js', 'lib/cjs/brand.cjs'],
-  ['lib/ported-exports.js', 'lib/cjs/ported.cjs']
+  ['src/Brand/index.js', 'src/cjs/brand.cjs'],
+  ['src/ported-exports.js', 'src/cjs/ported.cjs']
 ]
 
 for (const [entry, outfile] of entries) {

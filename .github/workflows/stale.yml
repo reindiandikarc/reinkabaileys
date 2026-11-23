@@ -1,0 +1,75 @@
+name: REIN BAILEYS stale cleanup
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: reinkabaileys-stale
+  cancel-in-progress: true
+
+env:
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  stale:
+    name: Mark and close inactive items
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process stale issues and pull requests
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          STALE_CUTOFF=$(date -u -d '30 days ago' +%s)
+          CLOSE_CUTOFF=$(date -u -d '44 days ago' +%s)
+
+          gh label create stale --color D4C5F9 --description 'No recent activity' --force >/dev/null
+
+          process_items() {
+            kind="$1"
+            if [ "$kind" = "issue" ]; then
+              items=$(gh issue list --repo "$GH_REPO" --state open --limit 100 --json number,updatedAt,labels)
+            else
+              items=$(gh pr list --repo "$GH_REPO" --state open --limit 100 --json number,updatedAt,labels)
+            fi
+
+            while IFS=$'\t' read -r number updated stale keep_open; do
+              if [ -z "$number" ]; then
+                continue
+              fi
+              if [ "$keep_open" = "true" ]; then
+                continue
+              fi
+
+              updated_epoch=$(date -u -d "$updated" +%s)
+
+              if [ "$stale" = "true" ] && [ "$updated_epoch" -lt "$CLOSE_CUTOFF" ]; then
+                if [ "$kind" = "issue" ]; then
+                  gh issue comment "$number" --repo "$GH_REPO" --body 'Closing this REIN BAILEYS issue after 14 days of inactivity since it was marked stale.'
+                  gh issue close "$number" --repo "$GH_REPO"
+                else
+                  gh pr comment "$number" --repo "$GH_REPO" --body 'Closing this REIN BAILEYS pull request after 14 days of inactivity since it was marked stale.'
+                  gh pr close "$number" --repo "$GH_REPO"
+                fi
+              elif [ "$stale" = "false" ] && [ "$updated_epoch" -lt "$STALE_CUTOFF" ]; then
+                if [ "$kind" = "issue" ]; then
+                  gh issue comment "$number" --repo "$GH_REPO" --body 'This REIN BAILEYS issue has been marked stale after 30 days of inactivity. Leave a comment or add the keep-open label to keep it active.'
+                  gh issue edit "$number" --repo "$GH_REPO" --add-label stale
+                else
+                  gh pr comment "$number" --repo "$GH_REPO" --body 'This REIN BAILEYS pull request has been marked stale after 30 days of inactivity. Leave a comment or add the keep-open label to keep it active.'
+                  gh pr edit "$number" --repo "$GH_REPO" --add-label stale
+                fi
+              fi
+            done < <(printf '%s' "$items" | jq -r '.[] | [.number, .updatedAt, ([.labels[].name] | index("stale") != null), ([.labels[].name] | index("keep-open") != null)] | @tsv')
+          }
+
+          process_items issue
+          process_items pr

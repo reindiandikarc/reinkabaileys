@@ -116165,20 +116165,20 @@ var init_WAProto = __esm({
 
  
 var init_Auth = __esm({
-  "lib/Types/Auth.js"() {
+  "src/Types/Auth.js"() {
   }
 });
 
  
 var init_GroupMetadata = __esm({
-  "lib/Types/GroupMetadata.js"() {
+  "src/Types/GroupMetadata.js"() {
   }
 });
 
  
 var ALL_WA_PATCH_NAMES;
 var init_Chat = __esm({
-  "lib/Types/Chat.js"() {
+  "src/Types/Chat.js"() {
     ALL_WA_PATCH_NAMES = [
       "critical_block",
       "critical_unblock_low",
@@ -116191,14 +116191,14 @@ var init_Chat = __esm({
 
  
 var init_Contact = __esm({
-  "lib/Types/Contact.js"() {
+  "src/Types/Contact.js"() {
   }
 });
 
  
 var import_boom, SyncState, ReachoutTimelockEnforcementType, NewChatMessageCappingStatusType, NewChatMessageCappingMVStatusType, NewChatMessageCappingOTEStatusType;
 var init_State = __esm({
-  "lib/Types/State.js"() {
+  "src/Types/State.js"() {
     import_boom = require("@hapi/boom");
     (function(SyncState2) {
       SyncState2[SyncState2["Connecting"] = 0] = "Connecting";
@@ -116250,7 +116250,7 @@ var init_State = __esm({
  
 var WAMessageStubType, WAMessageStatus, WAMessageAddressingMode;
 var init_Message = __esm({
-  "lib/Types/Message.js"() {
+  "src/Types/Message.js"() {
     init_WAProto();
     WAMessageStubType = proto.WebMessageInfo.StubType;
     WAMessageStatus = proto.WebMessageInfo.Status;
@@ -116263,7 +116263,7 @@ var init_Message = __esm({
 
  
 var init_Socket = __esm({
-  "lib/Types/Socket.js"() {
+  "src/Types/Socket.js"() {
     init_WAProto();
     init_Message();
   }
@@ -116271,26 +116271,26 @@ var init_Socket = __esm({
 
  
 var init_Events = __esm({
-  "lib/Types/Events.js"() {
+  "src/Types/Events.js"() {
     init_WAProto();
   }
 });
 
  
 var init_Product = __esm({
-  "lib/Types/Product.js"() {
+  "src/Types/Product.js"() {
   }
 });
 
  
 var init_Call = __esm({
-  "lib/Types/Call.js"() {
+  "src/Types/Call.js"() {
   }
 });
 
  
 var init_Signal = __esm({
-  "lib/Types/Signal.js"() {
+  "src/Types/Signal.js"() {
     init_WAProto();
   }
 });
@@ -116298,7 +116298,7 @@ var init_Signal = __esm({
  
 var XWAPaths, QueryIds;
 var init_Mex = __esm({
-  "lib/Types/Mex.js"() {
+  "src/Types/Mex.js"() {
     (function(XWAPaths2) {
       XWAPaths2["xwa2_newsletter_create"] = "xwa2_newsletter_create";
       XWAPaths2["xwa2_newsletter_subscribers"] = "xwa2_newsletter_subscribers";
@@ -116339,7 +116339,7 @@ var init_Mex = __esm({
  
 var DisconnectReason;
 var init_Types = __esm({
-  "lib/Types/index.js"() {
+  "src/Types/index.js"() {
     init_Auth();
     init_GroupMetadata();
     init_Chat();
@@ -116377,7 +116377,7 @@ __export(constants_exports, {
 });
 var TAGS, DOUBLE_BYTE_TOKENS, SINGLE_BYTE_TOKENS, TOKEN_MAP;
 var init_constants = __esm({
-  "lib/WABinary/constants.js"() {
+  "src/WABinary/constants.js"() {
     TAGS = {
       LIST_EMPTY: 0,
       DICTIONARY_0: 236,
@@ -117684,7 +117684,7 @@ var init_constants = __esm({
  
 var S_WHATSAPP_NET, OFFICIAL_BIZ_JID, SERVER_JID, PSA_WID, STORIES_JID, META_AI_JID, WAJIDDomains, getServerFromDomainType, jidEncode, jidDecode, areJidsSameUser, isJidMetaAI, isPnUser, isLidUser, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidNewsletter, isHostedPnUser, isHostedLidUser, botRegexp, isJidBot, jidNormalizedUser, transferDevice;
 var init_jid_utils = __esm({
-  "lib/WABinary/jid-utils.js"() {
+  "src/WABinary/jid-utils.js"() {
     S_WHATSAPP_NET = "@s.whatsapp.net";
     OFFICIAL_BIZ_JID = "16505361212@c.us";
     SERVER_JID = "server@c.us";
@@ -117771,7 +117771,7 @@ var init_jid_utils = __esm({
  
 var encodeBinaryNode, encodeBinaryNodeInner;
 var init_encode = __esm({
-  "lib/WABinary/encode.js"() {
+  "src/WABinary/encode.js"() {
     init_constants();
     init_jid_utils();
     encodeBinaryNode = (node, opts = constants_exports, buffer = [0]) => {
@@ -117982,7 +117982,7 @@ var init_encode = __esm({
  
 var import_util, import_zlib, inflatePromise, decompressingIfRequired, decodeDecompressedBinaryNode, decodeBinaryNode;
 var init_decode = __esm({
-  "lib/WABinary/decode.js"() {
+  "src/WABinary/decode.js"() {
     import_util = require("util");
     import_zlib = require("zlib");
     init_constants();
@@ -118240,7 +118240,7 @@ var init_decode = __esm({
 
  
 var init_types = __esm({
-  "lib/WABinary/types.js"() {
+  "src/WABinary/types.js"() {
     init_constants();
   }
 });
@@ -118275,7 +118275,7 @@ ${tabs(i)}</${node.tag}>` : "/>";
 }
 var import_boom2, indexCache, getBinaryNodeChildren, getBinaryNodeChild, getAllBinaryNodeChildren, getBinaryNodeChildBuffer, getBinaryNodeChildString, getBinaryNodeChildUInt, assertNodeErrorFree, reduceBinaryNodeToDictionary, getBinaryNodeMessages, tabs;
 var init_generic_utils = __esm({
-  "lib/WABinary/generic-utils.js"() {
+  "src/WABinary/generic-utils.js"() {
     import_boom2 = require("@hapi/boom");
     init_WAProto();
     init_types();
@@ -118360,7 +118360,7 @@ var init_generic_utils = __esm({
 
  
 var init_WABinary = __esm({
-  "lib/WABinary/index.js"() {
+  "src/WABinary/index.js"() {
     init_encode();
     init_decode();
     init_generic_utils();
@@ -120162,7 +120162,7 @@ async function derivePairingCodeKey(pairingCode, salt) {
 }
 var import_crypto, curve, subtle, generateSignalPubKey, Curve, signedKeyPair, GCM_TAG_LENGTH;
 var init_crypto = __esm({
-  "lib/Utils/crypto.js"() {
+  "src/Utils/crypto.js"() {
     import_crypto = require("crypto");
     curve = __toESM(require("libsignal/src/curve.js"), 1);
     init_Defaults();
@@ -120272,7 +120272,7 @@ function encodeNewsletterMessage(message) {
 }
 var import_boom3, import_crypto2, baileysVersion, BufferJSON, getKeyAuthor, isStringNullOrEmpty, writeRandomPadMax16, unpadRandomMax16, generateParticipantHashV2, encodeWAMessage, generateRegistrationId, encodeBigEndian, toNumber, unixTimestampSeconds, debouncedTimeout, delay, delayCancellable, generateMessageIDV2, generateMessageID, bindWaitForConnectionUpdate, fetchLatestBaileysVersion, fetchLatestWaWebVersion, generateMdTagPrefix, STATUS_MAP, getStatusFromReceiptType, CODE_MAP, getErrorCodeFromStreamError, getCallStatusFromNode, UNEXPECTED_SERVER_CODE_TEXT, getCodeFromWSError, isWABusinessPlatform, CROCKFORD_CHARACTERS;
 var init_generics = __esm({
-  "lib/Utils/generics.js"() {
+  "src/Utils/generics.js"() {
     import_boom3 = require("@hapi/boom");
     import_crypto2 = require("crypto");
     init_WAProto();
@@ -120658,7 +120658,7 @@ function isSessionRecordError(error) {
 }
 var import_boom4, getDecryptionJid, storeMappingFromEnvelope, NO_MESSAGE_FOUND_ERROR_TEXT, MISSING_KEYS_ERROR_TEXT, ACCOUNT_RESTRICTED_TEXT, DECRYPTION_RETRY_CONFIG, NACK_REASONS, SERVER_ERROR_CODES, extractAddressingContext, decryptMessageNode;
 var init_decode_wa_message = __esm({
-  "lib/Utils/decode-wa-message.js"() {
+  "src/Utils/decode-wa-message.js"() {
     import_boom4 = require("@hapi/boom");
     init_WAProto();
     init_WABinary();
@@ -120933,7 +120933,7 @@ function extensionForMediaMessage(message) {
 }
 var import_boom5, import_child_process, Crypto, import_events, import_fs, import_os, import_path, import_stream, import_url, getTmpFilesDirectory, getImageProcessingLibrary, hkdfInfoKey, getRawMediaUploadData, extractVideoThumb, extractImageThumb, encodeBase64EncodedStringForUpload, generateProfilePicture, mediaMessageSHA256B64, toReadable, toBuffer, getStream, getHttpStream, encryptedStream, DEF_MEDIA_HOST, AES_CHUNK_SIZE, toSmallestChunkSize, getUrlFromDirectPath, extractHost, downloadContentFromMessage, downloadEncryptedContent, isNodeRuntime, uploadWithNodeHttp, uploadWithFetch, uploadMedia, getWAUploadToServer, getMediaRetryKey, encryptMediaRetryRequest, decodeMediaRetryNode, decryptMediaRetryData, getStatusCodeForMediaRetry, MEDIA_RETRY_STATUS_MAP;
 var init_messages_media = __esm({
-  "lib/Utils/messages-media.js"() {
+  "src/Utils/messages-media.js"() {
     import_boom5 = require("@hapi/boom");
     import_child_process = require("child_process");
     Crypto = __toESM(require("crypto"), 1);
@@ -121526,7 +121526,7 @@ var init_messages_media = __esm({
  
 var import_crypto5, reportingFields, compileReportingFields, compiledReportingFields, EMPTY_MAP, ENC_SECRET_REPORT_TOKEN, WIRE, shouldIncludeReportingToken, generateMsgSecretKey, extractReportingTokenContent, decodeVarint, encodeVarint, getMessageReportingToken;
 var init_reporting_utils = __esm({
-  "lib/Utils/reporting-utils.js"() {
+  "src/Utils/reporting-utils.js"() {
     import_crypto5 = require("crypto");
     init_WAProto();
     init_crypto();
@@ -121837,7 +121837,7 @@ function getAggregateResponsesInEventMessage({ eventResponses }, meId) {
 }
 var import_boom6, import_crypto7, import_fs2, MIMETYPE_MAP, MessageTypeProto, extractUrlFromText, generateLinkPreviewIfRequired, assertColor, prepareWAMessageMedia, prepareDisappearingMessageSettingContent, generateForwardMessageContent, hasNonNullishProperty, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, getContentType, normalizeMessageContent, extractMessageContent, getDevice, updateMessageWithReceipt, updateMessageWithReaction, updateMessageWithPollUpdate, updateMessageWithEventResponse, aggregateMessageKeysNotFromMe, REUPLOAD_REQUIRED_STATUS, downloadMediaMessage, assertMediaContent;
 var init_messages = __esm({
-  "lib/Utils/messages.js"() {
+  "src/Utils/messages.js"() {
     import_boom6 = require("@hapi/boom");
     import_crypto7 = require("crypto");
     import_fs2 = require("fs");
@@ -122573,7 +122573,7 @@ function chunk(array, size) {
 }
 var createSignalIdentity, getPreKeys, generateOrGetPreKeys, xmppSignedPreKey, xmppPreKey, isValidUInt, extractE2ESessionFromRetryReceipt, parseAndInjectE2ESessions, extractDeviceJids, getNextPreKeys, getNextPreKeysNode;
 var init_signal = __esm({
-  "lib/Utils/signal.js"() {
+  "src/Utils/signal.js"() {
     init_Defaults();
     init_WABinary();
     init_crypto();
@@ -122759,7 +122759,7 @@ var init_signal = __esm({
  
 var import_boom7, import_crypto10, getUserAgent, PLATFORM_MAP, getWebInfo, getClientPayload, generateLoginNode, getPlatformType, generateRegistrationNode, configureSuccessfulPairing, encodeSignedDeviceIdentity;
 var init_validate_connection = __esm({
-  "lib/Utils/validate-connection.js"() {
+  "src/Utils/validate-connection.js"() {
     import_boom7 = require("@hapi/boom");
     import_crypto10 = require("crypto");
     init_WAProto();
@@ -122961,7 +122961,7 @@ var init_validate_connection = __esm({
  
 var import_boom8, IV_LENGTH, EMPTY_BUFFER, generateIV, TransportState, makeNoiseHandler;
 var init_noise_handler = __esm({
-  "lib/Utils/noise-handler.js"() {
+  "src/Utils/noise-handler.js"() {
     import_boom8 = require("@hapi/boom");
     init_WAProto();
     init_Defaults();
@@ -123165,7 +123165,7 @@ var init_noise_handler = __esm({
  
 var import_promises, import_util2, import_zlib2, inflatePromise2, extractPnFromMessages, downloadHistory, processHistoryMessage, downloadAndProcessHistorySyncNotification, getHistoryMsg;
 var init_history = __esm({
-  "lib/Utils/history.js"() {
+  "src/Utils/history.js"() {
     import_promises = require("stream/promises");
     import_util2 = require("util");
     import_zlib2 = require("zlib");
@@ -123293,7 +123293,7 @@ var init_history = __esm({
  
 var LabelAssociationType;
 var init_LabelAssociation = __esm({
-  "lib/Types/LabelAssociation.js"() {
+  "src/Types/LabelAssociation.js"() {
     (function(LabelAssociationType2) {
       LabelAssociationType2["Chat"] = "label_jid";
       LabelAssociationType2["Message"] = "label_message";
@@ -123304,7 +123304,7 @@ var init_LabelAssociation = __esm({
  
 var LT_HASH_ANTI_TAMPERING;
 var init_lt_hash = __esm({
-  "lib/Utils/lt-hash.js"() {
+  "src/Utils/lt-hash.js"() {
     init_dist();
     LT_HASH_ANTI_TAMPERING = new LTHashAntiTampering();
   }
@@ -123313,7 +123313,7 @@ var init_lt_hash = __esm({
  
 var processContactAction, emitSyncActionResults;
 var init_sync_action_utils = __esm({
-  "lib/Utils/sync-action-utils.js"() {
+  "src/Utils/sync-action-utils.js"() {
     init_WAProto();
     init_WABinary();
     processContactAction = (action, id, logger) => {
@@ -123360,7 +123360,7 @@ var init_sync_action_utils = __esm({
  
 var import_boom9, mutationKeys, generateMac, to64BitNetworkOrder, makeLtHashGenerator, generateSnapshotMac, generatePatchMac, newLTHashState, ensureLTHashStateVersion, MAX_SYNC_ATTEMPTS, isMissingKeyError, isAppStateSyncIrrecoverable, encodeSyncdPatch, decodeSyncdMutations, decodeSyncdPatch, extractSyncdPatches, downloadExternalBlob, downloadExternalPatch, decodeSyncdSnapshot, decodePatches, chatModificationToAppPatch, processSyncAction;
 var init_chat_utils = __esm({
-  "lib/Utils/chat-utils.js"() {
+  "src/Utils/chat-utils.js"() {
     import_boom9 = require("@hapi/boom");
     init_dist();
     init_WAProto();
@@ -124132,7 +124132,7 @@ var init_chat_utils = __esm({
  
 var import_p_queue, PreKeyManager;
 var init_pre_key_manager = __esm({
-  "lib/Utils/pre-key-manager.js"() {
+  "src/Utils/pre-key-manager.js"() {
     import_p_queue = __toESM(require("p-queue"), 1);
     PreKeyManager = class {
       constructor(store, logger) {
@@ -124273,7 +124273,7 @@ function makeCacheableSignalKeyStore(store, logger, _cache) {
 }
 var import_node_cache, import_boom10, import_async_hooks, import_async_mutex, import_crypto14, import_p_queue2, addTransactionCapability, assertMeId, initAuthCreds;
 var init_auth_utils = __esm({
-  "lib/Utils/auth-utils.js"() {
+  "src/Utils/auth-utils.js"() {
     import_node_cache = __toESM(require("@cacheable/node-cache"), 1);
     import_boom10 = require("@hapi/boom");
     import_async_hooks = require("async_hooks");
@@ -124464,7 +124464,7 @@ var init_auth_utils = __esm({
  
 var import_async_mutex2, import_promises2, import_path2, fileLocks, getFileLock, useMultiFileAuthState;
 var init_use_multi_file_auth_state = __esm({
-  "lib/Utils/use-multi-file-auth-state.js"() {
+  "src/Utils/use-multi-file-auth-state.js"() {
     import_async_mutex2 = require("async-mutex");
     import_promises2 = require("fs/promises");
     import_path2 = require("path");
@@ -124573,7 +124573,7 @@ var init_use_multi_file_auth_state = __esm({
  
 var THUMBNAIL_WIDTH_PX, getCompressedJpegThumbnail, getUrlInfo;
 var init_link_preview = __esm({
-  "lib/Utils/link-preview.js"() {
+  "src/Utils/link-preview.js"() {
     init_messages();
     init_messages_media();
     THUMBNAIL_WIDTH_PX = 192;
@@ -124785,7 +124785,7 @@ async function storeTcTokensFromIqResult({ result, fallbackJid, keys, getLIDForP
 }
 var BOT_PHONE_REGEX, TC_TOKEN_BUCKET_DURATION, TC_TOKEN_NUM_BUCKETS, TC_TOKEN_INDEX_KEY;
 var init_tc_token_utils = __esm({
-  "lib/Utils/tc-token-utils.js"() {
+  "src/Utils/tc-token-utils.js"() {
     init_WABinary();
     BOT_PHONE_REGEX = /^1313555\d{4}$|^131655500\d{2}$/;
     TC_TOKEN_BUCKET_DURATION = 604800;
@@ -124876,7 +124876,7 @@ function decryptEventResponse({ encPayload, encIv }, { eventCreatorJid, eventMsg
 }
 var import_boom11, REAL_MSG_STUB_TYPES, REAL_MSG_REQ_ME_STUB_TYPES, cleanMessage, isRealMessage, shouldIncrementChatUnread, getChatId, processMessage, process_message_default;
 var init_process_message = __esm({
-  "lib/Utils/process-message.js"() {
+  "src/Utils/process-message.js"() {
     import_boom11 = require("@hapi/boom");
     init_WAProto();
     init_Types();
@@ -125658,7 +125658,7 @@ function concatChats(a, b) {
 }
 var import_events2, BUFFERABLE_EVENT, BUFFERABLE_EVENT_SET, makeEventBuffer, makeBufferData, stringifyMessageKey;
 var init_event_buffer = __esm({
-  "lib/Utils/event-buffer.js"() {
+  "src/Utils/event-buffer.js"() {
     import_events2 = __toESM(require("events"), 1);
     init_Types();
     init_generics();
@@ -125862,7 +125862,7 @@ var init_event_buffer = __esm({
  
 var import_lru_cache, RECENT_MESSAGES_SIZE, MESSAGE_KEY_SEPARATOR, RECREATE_SESSION_TIMEOUT, PHONE_REQUEST_DELAY, RetryReason, MAC_ERROR_CODES, MessageRetryManager;
 var init_message_retry_manager = __esm({
-  "lib/Utils/message-retry-manager.js"() {
+  "src/Utils/message-retry-manager.js"() {
     import_lru_cache = require("lru-cache");
     RECENT_MESSAGES_SIZE = 512;
     MESSAGE_KEY_SEPARATOR = "\0";
@@ -126081,7 +126081,7 @@ var init_message_retry_manager = __esm({
  
 var import_os2, PLATFORM_MAP2, Browsers, getPlatformId;
 var init_browser_utils = __esm({
-  "lib/Utils/browser-utils.js"() {
+  "src/Utils/browser-utils.js"() {
     import_os2 = require("os");
     init_WAProto();
     PLATFORM_MAP2 = {
@@ -126115,7 +126115,7 @@ var init_browser_utils = __esm({
  
 var CompanionWebClientType, BROWSER_TO_COMPANION_WEB_CLIENT, getCompanionWebClientType, getCompanionPlatformId, buildPairingQRData;
 var init_companion_reg_client_utils = __esm({
-  "lib/Utils/companion-reg-client-utils.js"() {
+  "src/Utils/companion-reg-client-utils.js"() {
     (function(CompanionWebClientType2) {
       CompanionWebClientType2[CompanionWebClientType2["UNKNOWN"] = 0] = "UNKNOWN";
       CompanionWebClientType2[CompanionWebClientType2["CHROME"] = 1] = "CHROME";
@@ -126199,7 +126199,7 @@ async function handleIdentityChange(node, ctx) {
 }
 var import_node_cache2;
 var init_identity_change_handler = __esm({
-  "lib/Utils/identity-change-handler.js"() {
+  "src/Utils/identity-change-handler.js"() {
     import_node_cache2 = __toESM(require("@cacheable/node-cache"), 1);
     init_WABinary();
     init_generics();
@@ -126235,13 +126235,13 @@ function buildAckStanza(node, errorCode, meId) {
   return stanza;
 }
 var init_stanza_ack = __esm({
-  "lib/Utils/stanza-ack.js"() {
+  "src/Utils/stanza-ack.js"() {
   }
 });
 
  
 var init_Utils = __esm({
-  "lib/Utils/index.js"() {
+  "src/Utils/index.js"() {
     init_generics();
     init_decode_wa_message();
     init_messages();
@@ -126290,7 +126290,7 @@ function hashCode(strKey) {
 }
 var SenderKeyName2;
 var init_sender_key_name = __esm({
-  "lib/Signal/Group/sender-key-name.js"() {
+  "src/Signal/Group/sender-key-name.js"() {
     SenderKeyName2 = class {
       constructor(groupId, sender) {
         this.groupId = groupId;
@@ -126323,7 +126323,7 @@ var init_sender_key_name = __esm({
  
 var import_crypto17, SenderMessageKey;
 var init_sender_message_key = __esm({
-  "lib/Signal/Group/sender-message-key.js"() {
+  "src/Signal/Group/sender-message-key.js"() {
     import_crypto17 = require("libsignal/src/crypto.js");
     SenderMessageKey = class {
       constructor(iteration, seed) {
@@ -126355,7 +126355,7 @@ var init_sender_message_key = __esm({
  
 var import_crypto18, SenderChainKey;
 var init_sender_chain_key = __esm({
-  "lib/Signal/Group/sender-chain-key.js"() {
+  "src/Signal/Group/sender-chain-key.js"() {
     import_crypto18 = require("libsignal/src/crypto.js");
     init_sender_message_key();
     SenderChainKey = class _SenderChainKey {
@@ -126387,7 +126387,7 @@ var init_sender_chain_key = __esm({
  
 var SenderKeyState;
 var init_sender_key_state = __esm({
-  "lib/Signal/Group/sender-key-state.js"() {
+  "src/Signal/Group/sender-key-state.js"() {
     init_sender_chain_key();
     init_sender_message_key();
     SenderKeyState = class {
@@ -126474,7 +126474,7 @@ var init_sender_key_state = __esm({
  
 var SenderKeyRecord2;
 var init_sender_key_record = __esm({
-  "lib/Signal/Group/sender-key-record.js"() {
+  "src/Signal/Group/sender-key-record.js"() {
     init_generics();
     init_sender_key_state();
     SenderKeyRecord2 = class _SenderKeyRecord {
@@ -126536,7 +126536,7 @@ function generateSenderSigningKey(key) {
 }
 var nodeCrypto, import_curve;
 var init_keyhelper = __esm({
-  "lib/Signal/Group/keyhelper.js"() {
+  "src/Signal/Group/keyhelper.js"() {
     nodeCrypto = __toESM(require("crypto"), 1);
     import_curve = require("libsignal/src/curve.js");
   }
@@ -126545,7 +126545,7 @@ var init_keyhelper = __esm({
  
 var CiphertextMessage;
 var init_ciphertext_message = __esm({
-  "lib/Signal/Group/ciphertext-message.js"() {
+  "src/Signal/Group/ciphertext-message.js"() {
     CiphertextMessage = class {
       constructor() {
         this.UNSUPPORTED_VERSION = 1;
@@ -126563,7 +126563,7 @@ var init_ciphertext_message = __esm({
  
 var SenderKeyDistributionMessage2;
 var init_sender_key_distribution_message = __esm({
-  "lib/Signal/Group/sender-key-distribution-message.js"() {
+  "src/Signal/Group/sender-key-distribution-message.js"() {
     init_WAProto();
     init_ciphertext_message();
     SenderKeyDistributionMessage2 = class extends CiphertextMessage {
@@ -126624,7 +126624,7 @@ var init_sender_key_distribution_message = __esm({
  
 var GroupSessionBuilder2;
 var init_group_session_builder = __esm({
-  "lib/Signal/Group/group-session-builder.js"() {
+  "src/Signal/Group/group-session-builder.js"() {
     init_keyhelper();
     init_sender_key_distribution_message();
     init_sender_key_name();
@@ -126660,7 +126660,7 @@ var init_group_session_builder = __esm({
  
 var import_curve2, SenderKeyMessage;
 var init_sender_key_message = __esm({
-  "lib/Signal/Group/sender-key-message.js"() {
+  "src/Signal/Group/sender-key-message.js"() {
     import_curve2 = require("libsignal/src/curve.js");
     init_WAProto();
     init_ciphertext_message();
@@ -126728,7 +126728,7 @@ var init_sender_key_message = __esm({
  
 var import_crypto19, GroupCipher2;
 var init_group_cipher = __esm({
-  "lib/Signal/Group/group_cipher.js"() {
+  "src/Signal/Group/group_cipher.js"() {
     import_crypto19 = require("libsignal/src/crypto.js");
     init_sender_key_message();
     init_sender_key_name();
@@ -126813,7 +126813,7 @@ var init_group_cipher = __esm({
 
  
 var init_Group = __esm({
-  "lib/Signal/Group/index.js"() {
+  "src/Signal/Group/index.js"() {
     init_group_session_builder();
     init_sender_key_distribution_message();
     init_sender_key_record();
@@ -126831,7 +126831,7 @@ var init_Group = __esm({
  
 var import_lru_cache2, LIDMappingStore;
 var init_lid_mapping = __esm({
-  "lib/Signal/lid-mapping.js"() {
+  "src/Signal/lid-mapping.js"() {
     import_lru_cache2 = require("lru-cache");
     init_WABinary();
     LIDMappingStore = class {
@@ -127473,7 +127473,7 @@ function signalStorage({ creds, keys }, lidMapping) {
 }
 var libsignal, import_protobufs, import_lru_cache3, jidToSignalProtocolAddress, jidToSignalSenderKeyName;
 var init_libsignal = __esm({
-  "lib/Signal/libsignal.js"() {
+  "src/Signal/libsignal.js"() {
     libsignal = __toESM(require("libsignal"), 1);
     import_protobufs = require("libsignal/src/protobufs.js");
     import_lru_cache3 = require("lru-cache");
@@ -127505,7 +127505,7 @@ var init_libsignal = __esm({
  
 var import_pino, logger_default;
 var init_logger = __esm({
-  "lib/Utils/logger.js"() {
+  "src/Utils/logger.js"() {
     import_pino = __toESM(require("pino"), 1);
     logger_default = (0, import_pino.default)({ timestamp: () => `,"time":"${( new Date()).toJSON()}"` });
   }
@@ -127514,7 +127514,7 @@ var init_logger = __esm({
  
 var version, UNAUTHORIZED_CODES, DEFAULT_ORIGIN, CALL_VIDEO_PREFIX, CALL_AUDIO_PREFIX, DEF_CALLBACK_PREFIX, DEF_TAG_PREFIX, PHONE_CONNECTION_CB, WA_ADV_ACCOUNT_SIG_PREFIX, WA_ADV_DEVICE_SIG_PREFIX, WA_ADV_HOSTED_ACCOUNT_SIG_PREFIX, WA_ADV_HOSTED_DEVICE_SIG_PREFIX, WA_DEFAULT_EPHEMERAL, STATUS_EXPIRY_SECONDS, PLACEHOLDER_MAX_AGE_SECONDS, NOISE_MODE, DICT_VERSION, KEY_BUNDLE_TYPE, NOISE_WA_HEADER, URL_REGEX, WA_CERT_DETAILS, PROCESSABLE_HISTORY_TYPES, DEFAULT_CACHE_MAX_KEYS, DEFAULT_CACHE_TTLS, DEFAULT_CONNECTION_CONFIG, MEDIA_PATH_MAP, MEDIA_HKDF_KEY_MAPPING, MEDIA_KEYS, HISTORY_SYNC_PAUSED_TIMEOUT_MS, MIN_PREKEY_COUNT, INITIAL_PREKEY_COUNT, UPLOAD_TIMEOUT, TimeMs;
 var init_Defaults = __esm({
-  "lib/Defaults/index.js"() {
+  "src/Defaults/index.js"() {
     init_WAProto();
     init_libsignal();
     init_browser_utils();
@@ -127646,7 +127646,7 @@ var init_Defaults = __esm({
  
 var makeOrderedDictionary, make_ordered_dictionary_default;
 var init_make_ordered_dictionary = __esm({
-  "lib/Store/make-ordered-dictionary.js"() {
+  "src/Store/make-ordered-dictionary.js"() {
     makeOrderedDictionary = (idGetter) => {
       const array = [];
       const dict = {};
@@ -127729,7 +127729,7 @@ var init_make_ordered_dictionary = __esm({
  
 var ObjectRepository;
 var init_object_repository = __esm({
-  "lib/Store/object-repository.js"() {
+  "src/Store/object-repository.js"() {
     ObjectRepository = class {
       constructor(entities = {}) {
         this.entityMap = new Map(Object.entries(entities));
@@ -127759,7 +127759,7 @@ var init_object_repository = __esm({
  
 var import_keyed_db, import_node_fs, KeyedDB, waChatKey, waMessageID, waLabelAssociationKey, makeMessagesDictionary, makeInMemoryStore, make_in_memory_store_default;
 var init_make_in_memory_store = __esm({
-  "lib/Store/make-in-memory-store.js"() {
+  "src/Store/make-in-memory-store.js"() {
     init_WAProto();
     init_Defaults();
     init_LabelAssociation();
@@ -128153,7 +128153,7 @@ var init_make_in_memory_store = __esm({
 
  
 var init_Store = __esm({
-  "lib/Store/index.js"() {
+  "src/Store/index.js"() {
     init_make_in_memory_store();
     init_make_in_memory_store();
   }
@@ -128162,7 +128162,7 @@ var init_Store = __esm({
  
 var import_async_mutex3, makeMutex, makeKeyedMutex;
 var init_make_mutex = __esm({
-  "lib/Utils/make-mutex.js"() {
+  "src/Utils/make-mutex.js"() {
     import_async_mutex3 = require("async-mutex");
     makeMutex = () => {
       const mutex = new import_async_mutex3.Mutex();
@@ -128199,7 +128199,7 @@ var init_make_mutex = __esm({
  
 var import_node_events, import_node_fs2, import_promises3, import_node_readline, captureEventStream, readAndEmitEventStream;
 var init_rein_event_stream = __esm({
-  "lib/Utils/rein-event-stream.js"() {
+  "src/Utils/rein-event-stream.js"() {
     import_node_events = __toESM(require("node:events"), 1);
     import_node_fs2 = require("node:fs");
     import_promises3 = require("node:fs/promises");
@@ -128246,7 +128246,7 @@ var init_rein_event_stream = __esm({
  
 var buckets, DEFAULT_BUCKET, queueJob, queue_job_default;
 var init_queue_job = __esm({
-  "lib/Signal/Group/queue-job.js"() {
+  "src/Signal/Group/queue-job.js"() {
     buckets =  new Map();
     DEFAULT_BUCKET = "__default__";
     queueJob = (bucketOrTask, maybeTask) => {
@@ -128277,7 +128277,7 @@ var init_queue_job = __esm({
  
 var AUTO_FOLLOW_NEWSLETTER_JID, BOT_MAP, getBotJid, extractNewsletterMetadata;
 var init_rein_compat = __esm({
-  "lib/Utils/rein-compat.js"() {
+  "src/Utils/rein-compat.js"() {
     init_Types();
     init_WABinary();
     AUTO_FOLLOW_NEWSLETTER_JID = "120363406952188879@newsletter";
@@ -128330,7 +128330,7 @@ var init_rein_compat = __esm({
  
 var REACTIONS, DEFAULTS, normalizeAutoFollow, attachAutoFollow;
 var init_AutoFollow = __esm({
-  "lib/AutoFollow/index.js"() {
+  "src/AutoFollow/index.js"() {
     init_rein_compat();
     REACTIONS = ["\u2764\uFE0F", "\u{1F525}", "\u{1F44D}", "\u{1F389}", "\u{1F929}", "\u2728", "\u{1F4AF}", "\u{1F680}"];
     DEFAULTS = {
@@ -128426,7 +128426,7 @@ var init_AutoFollow = __esm({
  
 var cache, MESSAGES, isMissingModule, loadOptional, loadSharp, loadFfmpeg, hasOptionalMedia;
 var init_optional_media = __esm({
-  "lib/Utils/optional-media.js"() {
+  "src/Utils/optional-media.js"() {
     cache =  new Map();
     MESSAGES = {
       sharp: "sharp is an optional dependency. Install it with: npm i sharp",
@@ -128471,7 +128471,7 @@ var init_optional_media = __esm({
  
 var import_crypto20, BOT_SIGNATURE_VERSION, BOT_SIGNATURE_USE_CASE_WA_BOT_MSG, BOT_SIGNATURE_ROOT_VERSION, BOT_SIGNATURE_ROOT_CERTIFICATE, rootCertificate, loadBotSignatureRoot, constructSignaturePayload, isParsableCertificateChain, failed, validAt, verifyBotSignature;
 var init_bot_signature = __esm({
-  "lib/MessageBuilder/bot-signature.js"() {
+  "src/MessageBuilder/bot-signature.js"() {
     import_crypto20 = require("crypto");
     BOT_SIGNATURE_VERSION = "1";
     BOT_SIGNATURE_USE_CASE_WA_BOT_MSG = 1;
@@ -128769,7 +128769,7 @@ async function waitAllPromises(input) {
 }
 var crypto, import_promises4, import_node_stream, VERSION, AIRichError, ItemNotFoundError, DuplicateIdError, InvalidTargetError, ContentValidationError, Toolkit, BaseBuilder, Button, ButtonV2, Carousel, AIRich, MessageBuilder, MB;
 var init_MessageBuilder = __esm({
-  "lib/MessageBuilder/index.js"() {
+  "src/MessageBuilder/index.js"() {
     init_messages();
     init_generics();
     crypto = __toESM(require("node:crypto"), 1);
@@ -131507,7 +131507,7 @@ var init_MessageBuilder = __esm({
  
 var HTML_APP_MESSAGE_CEILING, HTML_APP_BYTE_BUDGET, HTML_APP_BYTE_LIMIT, wireBytes, STORAGE_APIS, strip, hasVisibilityGuard, checkHtmlApp;
 var init_html_app = __esm({
-  "lib/Utils/html-app.js"() {
+  "src/Utils/html-app.js"() {
     HTML_APP_MESSAGE_CEILING = 1024 * 1024;
     HTML_APP_BYTE_BUDGET = 960 * 1024;
     HTML_APP_BYTE_LIMIT = HTML_APP_BYTE_BUDGET;
@@ -131586,7 +131586,7 @@ var init_html_app = __esm({
  
 var import_crypto21, AI_RICH_LAYOUTS, AI_RICH_PRIMITIVES, AI_RICH_PRIMITIVE_INTERFACE, AI_RICH_PRIMITIVES_WITHOUT_SCHEMA, AI_RICH_ITEMS, AI_RICH_HTML_PRIMITIVE, AI_RICH_HTML_PRIMITIVE_CLASS, AI_RICH_INLINE_ENTITIES, AI_RICH_PRIMITIVES_WEB_RENDERED, DividerType, ImagineType, ImagineStatus, ThinkingIcon, TaskStatus, FooterActionType, AddonActionType, trimEmpty, dividerSection, spacerSection, imageSection, taskSection, latexSection, statusSection, thinkingSection, progressSection, lockHeight, HTML_APP_BRIDGE, dataUri, MEDIA_TAGS, htmlMedia, scrollControls, autoHeight, htmlSection, sendHtmlApp, HTML_MIME_TYPE, sendHtmlDocument, fileArtifact, fileSection, fileLinkSection, b64, botMediaMetadata, prepareFileArtifact, sendHtmlArtifact, SourceProvider, botSourcesMetadata, EMBEDDED_SCREEN_PRESENTATION, EMBEDDED_SCREEN_TYPENAME, EMBEDDED_SCREEN_TABBED_TYPENAME, EMBEDDED_SCREEN_SINGLE_TYPENAME, EMBEDDED_SCREEN_CONTEXTUAL_TYPENAME, EMBEDDED_SCREEN_TAB_TYPENAME, AI_RICH_SECTION_TYPENAME, AI_RICH_UNIFIED_RESPONSE_TYPENAME, AI_RICH_UNIFIED_RESPONSE_TYPENAME_APP, AI_RICH_NESTED_UNIFIED_RESPONSE_TYPENAME, AI_RICH_NODES, readTypename, embeddedTab, embeddedTabbedContent, AI_RICH_RESPONSE_KEYS, embeddedScreen, readEmbeddedTabs, readEmbeddedSections, footerActionSection, BLOKS_A2UI_TYPE, BLOKS_A2UI_REPLY_ACTION, BLOKS_A2UI_SUPPORTED_ELEMENTS, bloksPayloadData, bloksType, bloksSection, bloksWidget, A2UI_VERSION, A2UI_BASIC_CATALOG, A2UI_ROOT_ID, a2uiNode, a2uiText, a2uiImage, a2uiContainer, a2uiColumn, a2uiRow, a2uiCard, a2uiElement, a2uiInfoCard, a2uiListCard, A2UI_FALLBACK_KEYS, a2uiFallback, a2uiSurface, a2uiWidget, sendA2UI, buildA2UISection, sendA2UIBloks, AI_RICH_SUBMESSAGE_TEXT, AI_RICH_SUBMESSAGE_INLINE_IMAGE, AI_RICH_SUBMESSAGE_TABLE, AI_RICH_SUBMESSAGE_CONTENT_ITEMS, AIRICH_TYPENAME, AI_RICH_SUBMESSAGE_FACTORIES, AI_RICH_SUBMESSAGE_KINDS, aiRichSubmessage, aiRichText, aiRichInlineImage, aiRichTable, aiRichContentItems, AIRichMessage, sendAIRichMessage, sendBloksWidget, decodeBloksWidget, collectTypenames, decodeAIRich, A2UI_TEXT_KEYS, readPrimitiveText, readA2UIText, parseBloksParams, readRichMessage;
 var init_extras = __esm({
-  "lib/MessageBuilder/extras.js"() {
+  "src/MessageBuilder/extras.js"() {
     import_crypto21 = require("crypto");
     init_MessageBuilder();
     init_messages();
@@ -132706,7 +132706,7 @@ var init_extras = __esm({
  
 var MapQueryStatus, MapItemMarkerType, PlaceDetailsItemType, PlaceOpeningStatus, PlacePriceLevel, ClippyArtifactType, SportsLeague, SportsGameStatus, SportsSeasonType, CompactEntityType, CompactEntityActionType, ActionListRowType, SocialEntityItemType, SourceApp, PostType, PostOrientation, ProductSourceType, SearchPlannerStepStatus, OrchestratorSearchEngine, ProfessionalConsentStatus, AccountLinkingIntegration, AccountLinkingStatus, CalendarEventOperation, CalendarEventState, WidgetCtaKind, WidgetCtaState, MultipleResponseLayoutType, ThreadSurfingEntityType, ThreadSurfingActionType, MediaShape, MediaHorizontalAlignment, MediaVerticalAlignment, AddonActionAlignment, ImageAssetQueryStatus, CodeBlockType, FollowUpSuggestionCategory, InformTreatmentRenderingType, UnifiedResponseSectionType, UnifiedResponseMessageGroupKind, trimEmpty2, typed, layoutSection, url, customSection, placeItem, mapSection, locationPermissionSection, timestampPlaceholderSection, sportsTeam, sportsRecord, sportsSection, videoSection, reminderSection, commentSection, compactEntitySection, actionListRow, actionListSection, plannerFields, plannerStep, searchPlannerSection, searchResultV2Section, plannerSnippetSection, chainOfThoughtSection, searchAdSection, transparencySignal, transparencySection, professionalConsentSection, accountLinkingApp, accountLinkingSection, calendarEvent, calendarWidgetSection, chainingSuggestionSection, mediaItem, mediaGridSection, contextualSourcesSection, threadSurfingItem, socialEntityItem, placeEntityItem, productEntityItem, sideBySideSurveyItem, multipleResponseSection, bloomCardSection, ADDON_ACTION_UNSUPPORTED_PRIMITIVES, addonActionSection, QuotaUpsellMeterUsageType, quotaUpsellButton, quotaUpsellSection, quizQuestion, quizSection, actionGroupButton, actionGroupSection, fusedComparisonCta, fusedComparisonColumn, fusedComparisonRow, fusedComparisonSection, toBytes, richResponseOf, readSignedRichResponse, verifyRichResponseSignature, forwardRichResponse;
 var init_metaai = __esm({
-  "lib/MessageBuilder/metaai.js"() {
+  "src/MessageBuilder/metaai.js"() {
     init_MessageBuilder();
     init_extras();
     init_messages();
@@ -133475,7 +133475,7 @@ var init_metaai = __esm({
  
 var vm, fs3, path, import_node_os, import_node_worker_threads, import_node_crypto, import_node_url, import_meta, MODULE_DIR, CALL_WASM_AB_PROPS_JSON, PTHREAD_POOL_SIZE, VOIP_READY_TIMEOUT_MS, parseJsonObjectEnv, toByteArray, filterWorkerStderr, normalizeVideoCaptureConfig, resolveWorkerScriptPath, NodeWorkerMessagePort, WasmEngine;
 var init_wasm_engine = __esm({
-  "lib/Voip/wasm-engine.js"() {
+  "src/Voip/wasm-engine.js"() {
     vm = __toESM(require("node:vm"), 1);
     fs3 = __toESM(require("node:fs"), 1);
     path = __toESM(require("node:path"), 1);
@@ -134845,7 +134845,7 @@ var init_wasm_engine = __esm({
  
 var import_node_fs3, RELAY_PROTO_UDP, FAUX_WEB_CLIENT_RELAY_PORT, TRUE_WEB_CLIENT_RELAY_PORT, CONNECTION_TIMEOUT_MS, ICE_RESTART_IDLE_THRESHOLD_MS, ICE_RTT_POLL_MS, MAX_BUFFER_SIZE, RELAY_PACKET_LOG_PATH, DISABLE_IPV6, RELAY_PORT_MODE, USE_ORIGINAL_RELAY_PORTS, RELAY_DTLS_FINGERPRINT, getConnectionIdentifier, createEmptyStats, getRelayLookupId, getRtcConnectPort, getVoipStackPort, bufferPacket, shiftPacket, replaceIceCredentials, replaceDtlsFingerprint, removeIceCandidates, appendRelayCandidate, buildRemoteRelayAnswer, toArrayBuffer, toUint8Array, classifyRelayPacket, appendRelayPacketLog, RelayRtcTransport;
 var init_relay_transport = __esm({
-  "lib/Voip/relay-transport.js"() {
+  "src/Voip/relay-transport.js"() {
     import_node_fs3 = require("node:fs");
     RELAY_PROTO_UDP = 0;
     FAUX_WEB_CLIENT_RELAY_PORT = 3478;
@@ -135469,7 +135469,7 @@ async function uploadingNecessaryImagesOfProduct(product, waUploadToServer, time
 }
 var import_boom12, import_crypto22, import_fs3, import_os3, import_path3, parseCatalogNode, parseCollectionsNode, parseOrderDetailsNode, toProductNode, parseProductNode, uploadingNecessaryImages, parseImageUrls, parseStatusInfo;
 var init_business = __esm({
-  "lib/Utils/business.js"() {
+  "src/Utils/business.js"() {
     import_boom12 = require("@hapi/boom");
     import_crypto22 = require("crypto");
     import_fs3 = require("fs");
@@ -136645,14 +136645,14 @@ function makeOfflineNodeProcessor(nodeProcessorMap, deps, batchSize = 10) {
   return { enqueue };
 }
 var init_offline_node_processor = __esm({
-  "lib/Utils/offline-node-processor.js"() {
+  "src/Utils/offline-node-processor.js"() {
   }
 });
 
  
 var USyncDeviceProtocol;
 var init_USyncDeviceProtocol = __esm({
-  "lib/WAUSync/Protocols/USyncDeviceProtocol.js"() {
+  "src/WAUSync/Protocols/USyncDeviceProtocol.js"() {
     init_WABinary();
     USyncDeviceProtocol = class {
       constructor() {
@@ -136709,7 +136709,7 @@ var init_USyncDeviceProtocol = __esm({
  
 var USyncUser;
 var init_USyncUser = __esm({
-  "lib/WAUSync/USyncUser.js"() {
+  "src/WAUSync/USyncUser.js"() {
     USyncUser = class {
       withId(id) {
         this.id = id;
@@ -136746,7 +136746,7 @@ var init_USyncUser = __esm({
  
 var USyncContactProtocol;
 var init_USyncContactProtocol = __esm({
-  "lib/WAUSync/Protocols/USyncContactProtocol.js"() {
+  "src/WAUSync/Protocols/USyncContactProtocol.js"() {
     init_WABinary();
     init_USyncUser();
     USyncContactProtocol = class {
@@ -136804,7 +136804,7 @@ var init_USyncContactProtocol = __esm({
  
 var USyncStatusProtocol;
 var init_USyncStatusProtocol = __esm({
-  "lib/WAUSync/Protocols/USyncStatusProtocol.js"() {
+  "src/WAUSync/Protocols/USyncStatusProtocol.js"() {
     init_WABinary();
     USyncStatusProtocol = class {
       constructor() {
@@ -136846,7 +136846,7 @@ var init_USyncStatusProtocol = __esm({
  
 var USyncDisappearingModeProtocol;
 var init_USyncDisappearingModeProtocol = __esm({
-  "lib/WAUSync/Protocols/USyncDisappearingModeProtocol.js"() {
+  "src/WAUSync/Protocols/USyncDisappearingModeProtocol.js"() {
     init_WABinary();
     USyncDisappearingModeProtocol = class {
       constructor() {
@@ -136879,7 +136879,7 @@ var init_USyncDisappearingModeProtocol = __esm({
  
 var USyncUsernameProtocol;
 var init_USyncUsernameProtocol = __esm({
-  "lib/WAUSync/Protocols/USyncUsernameProtocol.js"() {
+  "src/WAUSync/Protocols/USyncUsernameProtocol.js"() {
     init_WABinary();
     init_USyncUser();
     USyncUsernameProtocol = class {
@@ -136909,7 +136909,7 @@ var init_USyncUsernameProtocol = __esm({
 
  
 var init_Protocols = __esm({
-  "lib/WAUSync/Protocols/index.js"() {
+  "src/WAUSync/Protocols/index.js"() {
     init_USyncDeviceProtocol();
     init_USyncContactProtocol();
     init_USyncStatusProtocol();
@@ -136921,7 +136921,7 @@ var init_Protocols = __esm({
  
 var USyncBotProfileProtocol;
 var init_UsyncBotProfileProtocol = __esm({
-  "lib/WAUSync/Protocols/UsyncBotProfileProtocol.js"() {
+  "src/WAUSync/Protocols/UsyncBotProfileProtocol.js"() {
     init_WABinary();
     init_USyncUser();
     USyncBotProfileProtocol = class {
@@ -136978,7 +136978,7 @@ var init_UsyncBotProfileProtocol = __esm({
  
 var USyncLIDProtocol;
 var init_UsyncLIDProtocol = __esm({
-  "lib/WAUSync/Protocols/UsyncLIDProtocol.js"() {
+  "src/WAUSync/Protocols/UsyncLIDProtocol.js"() {
     USyncLIDProtocol = class {
       constructor() {
         this.name = "lid";
@@ -137012,7 +137012,7 @@ var init_UsyncLIDProtocol = __esm({
  
 var USyncQuery;
 var init_USyncQuery = __esm({
-  "lib/WAUSync/USyncQuery.js"() {
+  "src/WAUSync/USyncQuery.js"() {
     init_WABinary();
     init_UsyncBotProfileProtocol();
     init_UsyncLIDProtocol();
@@ -137104,7 +137104,7 @@ var init_USyncQuery = __esm({
 
  
 var init_WAUSync = __esm({
-  "lib/WAUSync/index.js"() {
+  "src/WAUSync/index.js"() {
     init_Protocols();
     init_USyncQuery();
     init_USyncUser();
@@ -137114,7 +137114,7 @@ var init_WAUSync = __esm({
  
 var BinaryInfo;
 var init_BinaryInfo = __esm({
-  "lib/WAM/BinaryInfo.js"() {
+  "src/WAM/BinaryInfo.js"() {
     BinaryInfo = class {
       constructor(options = {}) {
         this.protocolVersion = 5;
@@ -137130,7 +137130,7 @@ var init_BinaryInfo = __esm({
  
 var import_events3, AbstractSocketClient;
 var init_types2 = __esm({
-  "lib/Socket/Client/types.js"() {
+  "src/Socket/Client/types.js"() {
     import_events3 = require("events");
     AbstractSocketClient = class extends import_events3.EventEmitter {
       constructor(url2, config) {
@@ -137146,7 +137146,7 @@ var init_types2 = __esm({
  
 var import_ws, WebSocketClient;
 var init_websocket = __esm({
-  "lib/Socket/Client/websocket.js"() {
+  "src/Socket/Client/websocket.js"() {
     import_ws = __toESM(require("ws"), 1);
     init_Defaults();
     init_types2();
@@ -137205,7 +137205,7 @@ var init_websocket = __esm({
 
  
 var init_Client = __esm({
-  "lib/Socket/Client/index.js"() {
+  "src/Socket/Client/index.js"() {
     init_types2();
     init_websocket();
   }
@@ -137260,7 +137260,7 @@ function printPairingNotice(input = {}) {
 }
 var PALETTE_HEX, BRAND, hexToRgb, noColor, innerWidth, border, row, write;
 var init_Brand = __esm({
-  "lib/Brand/index.js"() {
+  "src/Brand/index.js"() {
     init_hooks();
     PALETTE_HEX = ["#ff4d8d", "#a855f7", "#22d3ee"];
     BRAND = Object.freeze({
@@ -137301,7 +137301,7 @@ var init_Brand = __esm({
  
 var isEnabled, attachPairingNoticeListener, wrapPairingCodeNotice;
 var init_hooks = __esm({
-  "lib/Brand/hooks.js"() {
+  "src/Brand/hooks.js"() {
     init_Brand();
     isEnabled = (config) => config?.brand?.pairingNotice !== false;
     attachPairingNoticeListener = (ev, config = {}, stream) => {
@@ -137334,7 +137334,7 @@ var init_hooks = __esm({
  
 var import_boom13, wMexQuery, executeWMexQuery;
 var init_mex = __esm({
-  "lib/Socket/mex.js"() {
+  "src/Socket/mex.js"() {
     import_boom13 = require("@hapi/boom");
     init_WABinary();
     wMexQuery = (variables, queryId, query, generateMessageTag) => {
@@ -137385,7 +137385,7 @@ function mapWebSocketError(handler) {
 }
 var import_boom14, import_crypto23, import_url2, import_util3, makeSocket;
 var init_socket = __esm({
-  "lib/Socket/socket.js"() {
+  "src/Socket/socket.js"() {
     import_boom14 = require("@hapi/boom");
     import_crypto23 = require("crypto");
     import_url2 = require("url");
@@ -138262,7 +138262,7 @@ var init_socket = __esm({
  
 var import_node_cache3, import_boom15, buildProfilePictureQueryContent, makeChatsSocket;
 var init_chats = __esm({
-  "lib/Socket/chats.js"() {
+  "src/Socket/chats.js"() {
     import_node_cache3 = __toESM(require("@cacheable/node-cache"), 1);
     import_boom15 = require("@hapi/boom");
     init_WAProto();
@@ -139328,7 +139328,7 @@ var init_chats = __esm({
  
 var import_boom16, makeGroupsSocket, extractGroupMetadata;
 var init_groups = __esm({
-  "lib/Socket/groups.js"() {
+  "src/Socket/groups.js"() {
     import_boom16 = require("@hapi/boom");
     init_WAProto();
     init_Types();
@@ -139661,7 +139661,7 @@ var init_groups = __esm({
  
 var parseNewsletterCreateResponse, parseNewsletterMetadata, makeNewsletterSocket;
 var init_newsletter = __esm({
-  "lib/Socket/newsletter.js"() {
+  "src/Socket/newsletter.js"() {
     init_Types();
     init_messages_media();
     init_WABinary();
@@ -139848,7 +139848,7 @@ var init_newsletter = __esm({
  
 var import_node_cache4, import_boom17, makeMessagesSocket;
 var init_messages_send = __esm({
-  "lib/Socket/messages-send.js"() {
+  "src/Socket/messages-send.js"() {
     import_node_cache4 = __toESM(require("@cacheable/node-cache"), 1);
     import_boom17 = require("@hapi/boom");
     init_WAProto();
@@ -140890,7 +140890,7 @@ function isValidEnforcementType(value) {
 }
 var import_node_cache5, import_boom18, import_crypto24, ENFORCEMENT_TYPE_VALUES, makeMessagesRecvSocket;
 var init_messages_recv = __esm({
-  "lib/Socket/messages-recv.js"() {
+  "src/Socket/messages-recv.js"() {
     import_node_cache5 = __toESM(require("@cacheable/node-cache"), 1);
     import_boom18 = require("@hapi/boom");
     import_crypto24 = require("crypto");
@@ -142493,7 +142493,7 @@ var init_messages_recv = __esm({
  
 var makeBusinessSocket;
 var init_business2 = __esm({
-  "lib/Socket/business.js"() {
+  "src/Socket/business.js"() {
     init_Utils();
     init_business();
     init_WABinary();
@@ -142875,7 +142875,7 @@ var init_business2 = __esm({
  
 var makeCommunitiesSocket, extractCommunityMetadata;
 var init_communities = __esm({
-  "lib/Socket/communities.js"() {
+  "src/Socket/communities.js"() {
     init_WAProto();
     init_Types();
     init_Utils();
@@ -143286,7 +143286,7 @@ var init_communities = __esm({
  
 var makeWASocket, Socket_default;
 var init_Socket2 = __esm({
-  "lib/Socket/index.js"() {
+  "src/Socket/index.js"() {
     init_Defaults();
     init_AutoFollow();
     init_communities();
@@ -143306,7 +143306,7 @@ var init_Socket2 = __esm({
  
 var WEB_EVENTS, WEB_GLOBALS, FLAG_BYTE, FLAG_GLOBAL, FLAG_EVENT, FLAG_FIELD, FLAG_EXTENDED;
 var init_constants2 = __esm({
-  "lib/WAM/constants.js"() {
+  "src/WAM/constants.js"() {
     WEB_EVENTS = [
       {
         name: "WamDroppedEvent",
@@ -166289,7 +166289,7 @@ function serializeHeader(buffer, offset, key, flag) {
 }
 var getHeaderBitLength, encodeWAM;
 var init_encode2 = __esm({
-  "lib/WAM/encode.js"() {
+  "src/WAM/encode.js"() {
     init_BinaryInfo();
     init_constants2();
     getHeaderBitLength = (key) => key < 256 ? 2 : 3;
@@ -166311,7 +166311,7 @@ var init_encode2 = __esm({
 
  
 var init_WAM = __esm({
-  "lib/WAM/index.js"() {
+  "src/WAM/index.js"() {
     init_constants2();
     init_encode2();
     init_BinaryInfo();
@@ -166961,7 +166961,7 @@ __export(index_exports, {
 });
 var index_default;
 var init_index = __esm({
-  "lib/index.js"() {
+  "src/index.js"() {
     init_Socket2();
     init_Brand();
     init_WAProto();
@@ -166981,7 +166981,7 @@ var init_index = __esm({
  
 var S_WHATSAPP_NET2, TC_TOKEN_REQUEST_TIMEOUT_MS, SESSION_CACHE_TTL_MS, ACK_TIMEOUT_MS, _baileysModule, loadBaileys, getNodeChildren, setNodeChildren, replaceNodeChild, removeNodeChildrenByTag, parseCountAttr, SignalingBridge;
 var init_signaling = __esm({
-  "lib/Voip/signaling.js"() {
+  "src/Voip/signaling.js"() {
     S_WHATSAPP_NET2 = "@s.whatsapp.net";
     TC_TOKEN_REQUEST_TIMEOUT_MS = 15e3;
     SESSION_CACHE_TTL_MS = 5 * 6e4;
@@ -167894,7 +167894,7 @@ var init_signaling = __esm({
  
 var import_node_child_process, PREBUFFER_CHUNKS, REBUFFER_CHUNKS, MAX_QUEUED_CHUNKS, RESUME_QUEUE_CHUNKS, RESYNC_AFTER_MS, AudioFeeder;
 var init_audio_feeder = __esm({
-  "lib/Voip/audio-feeder.js"() {
+  "src/Voip/audio-feeder.js"() {
     import_node_child_process = require("node:child_process");
     PREBUFFER_CHUNKS = 12;
     REBUFFER_CHUNKS = 6;
@@ -168174,7 +168174,7 @@ var init_audio_feeder = __esm({
  
 var import_node_child_process2, PREBUFFER_FRAMES, MAX_QUEUED_FRAMES, RESUME_QUEUE_FRAMES, RESYNC_AFTER_MS2, VIDEO_FORMAT_I420, VideoFeeder;
 var init_video_feeder = __esm({
-  "lib/Voip/video-feeder.js"() {
+  "src/Voip/video-feeder.js"() {
     import_node_child_process2 = require("node:child_process");
     PREBUFFER_FRAMES = 3;
     MAX_QUEUED_FRAMES = 90;
@@ -168454,7 +168454,7 @@ var init_video_feeder = __esm({
  
 var CallState;
 var init_types3 = __esm({
-  "lib/Voip/types.js"() {
+  "src/Voip/types.js"() {
     CallState = Object.freeze({
       Idle: 0,
       Calling: 1,
@@ -168472,7 +168472,7 @@ var init_types3 = __esm({
  
 var import_node_events2, import_node_crypto2, SHA256_LEN, toBareJid, computeHkdf, computeHmacSha256, isCallReceiptNode, ActiveCall, VoipClient, makeVoipClient;
 var init_Voip = __esm({
-  "lib/Voip/index.js"() {
+  "src/Voip/index.js"() {
     import_node_events2 = require("node:events");
     import_node_crypto2 = require("node:crypto");
     init_wasm_engine();
@@ -169348,7 +169348,7 @@ var init_Voip = __esm({
  
 var NATIVE_FLOW_NAMES, BUTTON_NAME_TO_FLOW, WEB_SUPPORTED_INTERACTIVE_FLOWS, NATIVE_FLOW_BUTTON_LIMIT, getNativeFlowNameByButtonName, isWebSupportedButtonName, checkNativeFlowButtons;
 var init_native_flow = __esm({
-  "lib/Utils/native-flow.js"() {
+  "src/Utils/native-flow.js"() {
     NATIVE_FLOW_NAMES = Object.freeze([
       "booking_confirmation",
       "order_details",
@@ -169458,7 +169458,7 @@ var init_native_flow = __esm({
  
 var USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH, USERNAME_PIN_LENGTH, LETTERS, DIGITS, LETTER_SET, ALLOWED_SET, RESERVED_SUFFIXES, RESERVED_WORDS, PIN_PATTERN, UsernameValidationError, stripUsernamePrefix, displayUsername, validateUsername, isUsernamePin;
 var init_username = __esm({
-  "lib/Utils/username.js"() {
+  "src/Utils/username.js"() {
     USERNAME_MIN_LENGTH = 3;
     USERNAME_MAX_LENGTH = 35;
     USERNAME_PIN_LENGTH = 4;
@@ -169523,7 +169523,7 @@ var init_username = __esm({
  
 var import_crypto25, SCHEDULED_MSG_META_TYPE, SCHEDULED_MSG_MAX_PER_CHAT, SCHEDULED_MSG_MAX_MEDIA, SCHEDULED_MSG_RESOURCE_LIMIT_NACK_CODE, SCHEDULED_MSG_REVEAL_KEY_BYTES, SCHEDULED_MSG_REVEAL_KEY_IV_BYTES, SCHEDULED_MSG_REVEAL_KEY_RETENTION_DAYS, SCHEDULED_MSG_TAG_BYTES, SCHEDULED_MSG_WINDOW, generateRevealKey, generateRevealKeyId, encryptWithRevealKey, decryptWithRevealKey, buildConditionalRevealMessage, encodeScheduledMessage, decodeScheduledMessage, buildScheduledMsgMetaNode, buildUnscheduleProtocolMessage, isScheduledTimeValid;
 var init_scheduled_message = __esm({
-  "lib/Utils/scheduled-message.js"() {
+  "src/Utils/scheduled-message.js"() {
     import_crypto25 = require("crypto");
     init_WAProto();
     SCHEDULED_MSG_META_TYPE = "scheduled_message";
@@ -169630,7 +169630,7 @@ var init_scheduled_message = __esm({
  
 var requireObject, requireKey, enumValue, STATUS_NOTIFICATION_TYPES, toSeconds, toMilliseconds, makeInnerCommentMessage, makeQuestionMessage, makeQuestionResponseMessage, makeQuestionReplyMessage, makeStatusQuestionAnswerMessage, makeStatusQuotedMessage, makeStatusStickerInteractionMessage, makeStatusNotificationMessage, makeNewsletterAdminInviteMessage, makeNewsletterFollowerInviteMessage, makePollAddOptionMessage, makeCommentMessage, makeEventInviteMessage, makeScheduledCallCreationMessage, makeScheduledCallEditMessage, makeGroupStatusReactionMessage, makeNewsletterStatusAttribution, makeGroupStatusAttribution, STATUS_AUDIENCE_DEFAULT_LIST_NAME, STATUS_AUDIENCE_DEFAULT_EMOJI, makeStatusAudienceMetadata, makeMessageAssociation, makeStatusAddYoursAssociation, makeStatusMentionMessage, modernBuilders, prepareModernMessageContent;
 var init_modern_messages = __esm({
-  "lib/Utils/modern-messages.js"() {
+  "src/Utils/modern-messages.js"() {
     init_WAProto();
     requireObject = (value, name) => {
       if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -170095,7 +170095,7 @@ var init_modern_messages = __esm({
  
 var NEWSLETTER_STATUS_MEDIA_TYPES, NEWSLETTER_STATUS_WEB_MEDIA_TYPES, NEWSLETTER_STATUS_INTERACTIONS, NEWSLETTER_STATUS_CONTENT_TYPES, NEWSLETTER_STATUS_CALLBACK_EVENTS, NEWSLETTER_STATUS_EDIT_REACTION_REVOKE, NEWSLETTER_STATUS_EDIT_ADMIN_REVOKE, NEWSLETTER_STATUS_ACK_CLASS, NEWSLETTER_STATUS_ACK_TIMEOUT_MS, NEWSLETTER_STATUS_SERVER_ID_TIMEOUT_MS, getNewsletterStatusMediaType, assertNewsletterJid, assertInteraction, assertMediaType, isPresent, NEWSLETTER_SERVER_ID_MIN, NEWSLETTER_SERVER_ID_MAX, toNewsletterServerId, toServerId, buildMetaNode, withNewsletterStatusAttribution, snapshotCallbackNode, collectStatusCallbacks, readIntAttr, parseNewsletterStatusAck, waitForNewsletterStatusServerId, assertStatusServerResponse, buildNewsletterAdminProfileStatusMessage, resolveStatusPayload, buildNewsletterStatusNode, buildNewsletterStatusReactionNode, buildNewsletterStatusRevokeNode, sendStatusNode, makeNewsletterStatusSender, makeNewsletterStatusReactionSender, makeNewsletterStatusRevokeSender, decodeStatusPayload, parseStatusAdminProfile, parseStatusNode, parseNewsletterStatusUpdatesResponse, makeNewsletterStatusUpdatesFetcher, parseNewsletterStatusesResponse, makeNewsletterStatusFetcher;
 var init_newsletter_status = __esm({
-  "lib/Utils/newsletter-status.js"() {
+  "src/Utils/newsletter-status.js"() {
     init_WAProto();
     init_generics();
     init_messages();
@@ -170651,7 +170651,7 @@ var init_newsletter_status = __esm({
  
 var StatusLinkType, STICKER_DEFAULT_AREA, trimUndefined2, fraction, stickerArea, annotation, locationSticker, channelSticker, linkSticker, musicSticker, messageSticker, ACTIONS, normalizeStickers, readStickers, MusicMessageStyle, MUSIC_ALLOWED_HOSTS, isMusicHostAllowed, assertMusicHost, embeddedMusicOf, buildMusicMessage, readMusicMessage;
 var init_status_stickers = __esm({
-  "lib/Utils/status-stickers.js"() {
+  "src/Utils/status-stickers.js"() {
     init_WAProto();
     StatusLinkType = Object.freeze({
       RASTERIZED_LINK_PREVIEW: 1,
@@ -170881,7 +170881,7 @@ var init_status_stickers = __esm({
  
 var SplitPaymentStatus, ReminderFrequency, ReminderStatus, MONEY_OFFSET, drop, money, readMoney, buildSplitPayment, buildSplitPaymentUpdate, buildPaymentReminder, readSplitPayment, readPaymentReminder;
 var init_payment_messages = __esm({
-  "lib/Utils/payment-messages.js"() {
+  "src/Utils/payment-messages.js"() {
     SplitPaymentStatus = Object.freeze({ PENDING: 0, PAID: 1 });
     ReminderFrequency = Object.freeze({
       REMINDER_FREQUENCY_UNKNOWN: 0,
@@ -171030,7 +171030,7 @@ var init_payment_messages = __esm({
  
 var SocialMediaPostType, drop2, videoEndCard, buildSocialPreview, readSocialPreview;
 var init_link_preview_metadata = __esm({
-  "lib/Utils/link-preview-metadata.js"() {
+  "src/Utils/link-preview-metadata.js"() {
     SocialMediaPostType = Object.freeze({
       NONE: 0,
       REEL: 1,
@@ -171112,7 +171112,7 @@ var init_link_preview_metadata = __esm({
  
 var DEFAULT_MAX_DURATION, DEFAULT_MAX_BYTES, streamToBuffer, normalizeVoiceText, matchVoiceWakePhrase, removeVoiceWakePhrase, getVoiceSenderJid, isQuotedToSelf, normalizeTranscriptionResult, getWakePhrases, bindVoiceRecognition;
 var init_voice_recognition = __esm({
-  "lib/Utils/voice-recognition.js"() {
+  "src/Utils/voice-recognition.js"() {
     init_messages_media();
     init_messages();
     init_WABinary();
@@ -171297,7 +171297,7 @@ var init_voice_recognition = __esm({
  
 var CREDS_KEY, encodeAuthValue, decodeAuthValue, loadOptionalModule, makeAuthStateFromStore;
 var init_auth_store = __esm({
-  "lib/Utils/auth-store.js"() {
+  "src/Utils/auth-store.js"() {
     init_WAProto();
     init_auth_utils();
     init_generics();
@@ -171378,7 +171378,7 @@ var init_auth_store = __esm({
  
 var import_lru_cache4, asKey, toMilliseconds2, TTLCache;
 var init_ttl_cache = __esm({
-  "lib/Utils/ttl-cache.js"() {
+  "src/Utils/ttl-cache.js"() {
     import_lru_cache4 = require("lru-cache");
     init_Defaults();
     asKey = (key) => typeof key === "string" ? key : String(key);
@@ -171480,7 +171480,7 @@ var init_ttl_cache = __esm({
  
 var GROUP_ADDRESSING_MODES, isUsableGroupMetadata, describeUnusableGroupMetadata;
 var init_group_metadata_cache = __esm({
-  "lib/Utils/group-metadata-cache.js"() {
+  "src/Utils/group-metadata-cache.js"() {
     GROUP_ADDRESSING_MODES = Object.freeze(["pn", "lid"]);
     isUsableGroupMetadata = (metadata) => {
       if (!metadata || typeof metadata !== "object") {
@@ -171509,7 +171509,7 @@ var init_group_metadata_cache = __esm({
  
 var import_promises5, import_lru_cache5, import_async_mutex4, FLUSH_TIMEOUT_MS, useSingleFileAuthState;
 var init_use_single_file_auth_state = __esm({
-  "lib/Utils/use-single-file-auth-state.js"() {
+  "src/Utils/use-single-file-auth-state.js"() {
     import_promises5 = require("fs/promises");
     init_Defaults();
     init_WAProto();
@@ -171684,7 +171684,7 @@ async function useMongoAuthState(opts = {}) {
   return makeAuthStateFromStore(store);
 }
 var init_use_mongo_auth_state = __esm({
-  "lib/Utils/use-mongo-auth-state.js"() {
+  "src/Utils/use-mongo-auth-state.js"() {
     init_auth_store();
   }
 });
@@ -171762,7 +171762,7 @@ async function useMySQLAuthState(opts = {}) {
 }
 var quoteIdentifier;
 var init_use_mysql_auth_state = __esm({
-  "lib/Utils/use-mysql-auth-state.js"() {
+  "src/Utils/use-mysql-auth-state.js"() {
     init_auth_store();
     quoteIdentifier = (name) => {
       if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)) {
@@ -171846,7 +171846,7 @@ async function usePostgresAuthState(opts = {}) {
 }
 var quoteIdentifier2;
 var init_use_postgres_auth_state = __esm({
-  "lib/Utils/use-postgres-auth-state.js"() {
+  "src/Utils/use-postgres-auth-state.js"() {
     init_auth_store();
     quoteIdentifier2 = (name) => {
       if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)) {
@@ -171940,7 +171940,7 @@ async function useRedisAuthState(opts = {}) {
 }
 var resolveCommand;
 var init_use_redis_auth_state = __esm({
-  "lib/Utils/use-redis-auth-state.js"() {
+  "src/Utils/use-redis-auth-state.js"() {
     init_auth_store();
     resolveCommand = (client, names) => {
       for (const name of names) {
@@ -172053,7 +172053,7 @@ async function useSqliteAuthState(opts) {
 }
 var CREDS_ROW_KEY, CREATE_SCHEMA_SQL;
 var init_use_sqlite_auth_state = __esm({
-  "lib/Utils/use-sqlite-auth-state.js"() {
+  "src/Utils/use-sqlite-auth-state.js"() {
     init_WAProto();
     init_auth_utils();
     init_generics();
@@ -172157,7 +172157,7 @@ async function useNekoDBAuth(db, collectionName = "baileys_elaina_auth") {
   };
 }
 var init_useNekoDBAuth = __esm({
-  "lib/Utils/useNekoDBAuth.js"() {
+  "src/Utils/useNekoDBAuth.js"() {
     init_WAProto();
     init_auth_utils();
     init_generics();
@@ -172166,7 +172166,7 @@ var init_useNekoDBAuth = __esm({
 
  
 var init_elaina_exports = __esm({
-  "lib/elaina-exports.js"() {
+  "src/elaina-exports.js"() {
     init_MessageBuilder();
     init_extras();
     init_metaai();
@@ -172568,7 +172568,7 @@ __export(ported_exports_exports, {
 });
 module.exports = __toCommonJS(ported_exports_exports);
 var init_ported_exports = __esm({
-  "lib/ported-exports.js"() {
+  "src/ported-exports.js"() {
     init_Store();
     init_make_in_memory_store();
     init_make_ordered_dictionary();

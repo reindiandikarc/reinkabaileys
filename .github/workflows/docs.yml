@@ -1,0 +1,48 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docs/**'
+      - 'script/**'
+      - 'src/**/*.d.ts'
+      - 'WAProto/index.js'
+      - 'package.json'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reinkabaileys-docs
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build documentation site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build API reference and site
+        run: node script/apiref.js && node script/builddocs.js
+
+      - name: Upload generated site
+        uses: actions/upload-artifact@v4
+        with:
+          name: reinkabaileys-site
+          path: site/
+          if-no-files-found: error

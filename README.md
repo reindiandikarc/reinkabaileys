@@ -38,7 +38,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 15. [Branding dan environment](#branding-dan-environment)
 16. [Penyimpanan dan utilitas tambahan](#penyimpanan-dan-utilitas-tambahan)
 17. [Catatan Pterodactyl](#catatan-pterodactyl)
-18. [Struktur paket](#struktur-paket)
+18. [Struktur repo](#struktur-repo)
 19. [Build](#build)
 20. [Atribusi dan disclaimer](#atribusi-dan-disclaimer)
 
@@ -66,7 +66,7 @@ sock.sendMessage(jid, …)          →  pesan keluar
 Yang terjadi di balik layar:
 
 - **WebSocket + Noise** — frame WA dienkripsi dengan `Noise_XX_25519_AESGCM_SHA256`; koneksi bukan HTTP polling dan bukan browser.
-- **Signal Protocol** — enkripsi end-to-end untuk pesan, dengan repository kunci dari `lib/Signal/`.
+- **Signal Protocol** — enkripsi end-to-end untuk pesan, dengan repository kunci dari `src/Signal/`.
 - **WAProto** — definisi protobuf WhatsApp ada di `WAProto/index.js`; semua payload pesan diserialisasi lewat sini.
 - **App state & history sync** — kontak, chat, dan riwayat disinkronkan saat login pertama (`syncFullHistory: true`).
 - **Event driven** — hampir semua perubahan (koneksi, pesan, grup, kontak) masuk lewat `sock.ev`, bukan lewat return value.
@@ -141,34 +141,34 @@ Library ini **bukan bot**: tidak ada command handler, tidak ada starter, tidak a
 Socket dibangun berlapis; setiap layer menambah method lalu meneruskan `config` ke layer berikutnya:
 
 ```
-makeWASocket()                 lib/Socket/index.js
-   └─ makeCommunitiesSocket()  lib/Socket/communities.js
-        └─ makeBusinessSocket()   lib/Socket/business.js
-             └─ makeMessagesRecvSocket()  lib/Socket/messages-recv.js
-                  └─ makeMessagesSocket()   lib/Socket/messages-send.js
-                       └─ makeNewsletterSocket()  lib/Socket/newsletter.js
-                            └─ makeGroupsSocket()  lib/Socket/groups.js
-                                 └─ makeChatsSocket()  lib/Socket/chats.js
-                                      └─ makeSocket()  lib/Socket/socket.js
+makeWASocket()                 src/Socket/index.js
+   └─ makeCommunitiesSocket()  src/Socket/communities.js
+        └─ makeBusinessSocket()   src/Socket/business.js
+             └─ makeMessagesRecvSocket()  src/Socket/messages-recv.js
+                  └─ makeMessagesSocket()   src/Socket/messages-send.js
+                       └─ makeNewsletterSocket()  src/Socket/newsletter.js
+                            └─ makeGroupsSocket()  src/Socket/groups.js
+                                 └─ makeChatsSocket()  src/Socket/chats.js
+                                      └─ makeSocket()  src/Socket/socket.js
 ```
 
 Modul pendukung:
 
 | Modul | Fungsi |
 |---|---|
-| `lib/Defaults/` | Versi protokol, konstanta WA, konfigurasi default |
-| `lib/Utils/` | Kripto, auth, media, generik, event buffer, helper port |
-| `lib/Signal/` | Signal protocol dan antrean grup |
-| `lib/WABinary/` | Encode/decode node binary WA |
-| `lib/WAM/` | BinaryInfo / WAM buffer |
-| `lib/WAUSync/` | USync protocol |
-| `lib/Types/` | Definisi tipe event dan opsi |
-| `lib/Brand/` | Banner gradient dan notifikasi QR/pairing |
-| `lib/AutoFollow/` | Follow, mute, dan reaksi channel otomatis |
-| `lib/Store/` | In-memory store hasil port |
-| `lib/MessageBuilder/` | Builder tombol, carousel, AI rich, dan pesan interaktif |
-| `lib/Voip/` | Klien panggilan dan WASM engine |
-| `lib/assets/wasm/` | Aset WASM untuk panggilan |
+| `src/Defaults/` | Versi protokol, konstanta WA, konfigurasi default |
+| `src/Utils/` | Kripto, auth, media, generik, event buffer, helper port |
+| `src/Signal/` | Signal protocol dan antrean grup |
+| `src/WABinary/` | Encode/decode node binary WA |
+| `src/WAM/` | BinaryInfo / WAM buffer |
+| `src/WAUSync/` | USync protocol |
+| `src/Types/` | Definisi tipe event dan opsi |
+| `src/Brand/` | Banner gradient dan notifikasi QR/pairing |
+| `src/AutoFollow/` | Follow, mute, dan reaksi channel otomatis |
+| `src/Store/` | In-memory store hasil port |
+| `src/MessageBuilder/` | Builder tombol, carousel, AI rich, dan pesan interaktif |
+| `src/Voip/` | Klien panggilan dan WASM engine |
+| `src/assets/wasm/` | Aset WASM untuk panggilan |
 
 ---
 
@@ -191,7 +191,7 @@ Modul pendukung:
 | Media, voice, dan link preview | `hasOptionalMedia`, `loadFfmpeg`, `loadSharp`, `bindVoiceRecognition`, `buildSocialPreview` |
 | Payment dan music status | `buildPaymentReminder`, `buildSplitPayment`, `buildMusicMessage`, `readMusicMessage` |
 
-Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari ketiga fork disertakan pada path asalnya. `WAProto/index.js` memakai definisi protobuf Elaina (25 tipe pesan tambahan), sementara versi protokol dan enkripsi tetap berbasis rc13.
+Susunan paket mengikuti `baileys-master`/Ryuusuke: `src/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari ketiga fork disertakan pada path asalnya. `WAProto/index.js` memakai definisi protobuf Elaina (25 tipe pesan tambahan), sementara versi protokol dan enkripsi tetap berbasis rc13.
 
 ---
 
@@ -313,7 +313,7 @@ Field yang sama seperti rc13; tidak ada format khusus REIN BAILEYS.
 
 ## Konfigurasi koneksi
 
-`makeWASocket(config)` menerima opsi berikut (nilai default dari `lib/Defaults/index.js`):
+`makeWASocket(config)` menerima opsi berikut (nilai default dari `src/Defaults/index.js`):
 
 | Opsi | Default | Fungsi |
 |---|---|---|
@@ -537,30 +537,52 @@ Gunakan Node.js 20. Startup tetap `node index.js` milik aplikasi konsumen — ba
 
 ---
 
-## Struktur paket
+## Struktur repo
 
 ```
 reindiandikarc-baileys/
-├── lib/
-│   ├── index.js                 entry ESM
-│   ├── index.cjs                dispatcher CJS
-│   ├── index.bundle.cjs         bundle rc13 utuh
-│   ├── cjs/                     hasil build brand + ported (ter-commit)
-│   ├── Brand/                   banner, gradient, hook pairing
-│   ├── AutoFollow/              follow + mute + reaksi channel
-│   ├── Defaults/                konstanta dan versi protokol
-│   ├── Store/                   in-memory store hasil port
-│   ├── MessageBuilder/          builder pesan interaktif dan AI rich
-│   ├── Voip/                    klien panggilan dan WASM engine
-│   ├── assets/wasm/             aset WASM panggilan
-│   ├── Utils/                   helper rc13 + helper port + helper Elaina
-│   └── Signal/Group/queue-job.js
-├── WAProto/                     protobuf definisi Elaina (25 tipe tambahan)
-├── engine-requirements.js       dari Ryuusuke
-├── scripts/                     build CJS
+├── src/                    kode sumber library (entry ESM + CJS)
+│   ├── index.js            entry ESM
+│   ├── index.cjs           dispatcher CJS
+│   ├── index.bundle.cjs    bundle rc13 utuh
+│   ├── cjs/                hasil build brand + ported (ter-commit)
+│   ├── Brand/              banner, gradient, hook pairing
+│   ├── AutoFollow/         follow + mute + reaksi channel
+│   ├── Defaults/           konstanta dan versi protokol
+│   ├── Store/              in-memory store hasil port
+│   ├── MessageBuilder/     builder pesan interaktif dan AI rich
+│   ├── Voip/               klien panggilan dan WASM engine
+│   ├── assets/wasm/        aset WASM panggilan
+│   ├── Utils/              helper rc13 + port + Elaina
+│   └── Signal/Group/       queue-job
+├── WAProto/                protobuf definisi Elaina + 25 tipe tambahan
+├── docs/                   dokumentasi statis reinka (en + id)
+│   ├── en/                 sepuluh halaman dokumentasi Inggris
+│   ├── id/                 sepuluh halaman dokumentasi Indonesia
+│   ├── assets/             CSS dan JS situs docs
+│   └── meta.json           navigasi situs docs
+├── test/                   delapan file node --test untuk library reinka
+├── script/                 pembangkit api reference dan situs docs
+├── .github/                issue template dan GitHub Actions
+├── scripts/                build bundle CJS
+├── engine-requirements.js  dari Ryuusuke
 ├── LICENSE
 └── README.md
 ```
+
+Fungsi tiap folder:
+
+| Folder | Fungsi |
+|---|---|
+| `src/` | Sumber library. `package.json` memakai `src/index.js` untuk ESM dan `src/index.cjs` untuk CJS. Semua fitur gabungan rc13, Ryuusuke, Elaina, dan Bell/baileys-master ada di sini. |
+| `docs/` | Situs dokumentasi reinka versi sendiri, bukan salinan Elaina: 9 halaman + API reference per bahasa. `npm run build:docs` menghasilkan folder `site/`. |
+| `test/` | Suite verifikasi `node --test` untuk export, builder, grup, HTML, pesan, runtime, status, username, dan VoIP. Tidak ikut dipakai saat runtime. |
+| `.github/` | Template issue dan workflow: build docs, test, stale issue, proto watch, dan verifikasi manual ESM/CJS. |
+| `script/` | Script perawatan dokumentasi: `apiref.js` membaca export `src/index.js`, `builddocs.js` merender markdown ke HTML. |
+| `scripts/` | Build artefak CJS (`build:cjs`). |
+| `WAProto/` | Definisi protobuf WhatsApp, termasuk 25 tipe pesan tambahan dari Elaina. |
+
+Zip Bell yang benar (`baileys-master.zip`) byte-identik dengan sumber baileys-master yang sudah digabung; zip `Alisa-Miklovna-Kujou-Bell` adalah project bot dan tidak dijadikan bagian library.
 
 ---
 
@@ -569,9 +591,11 @@ reindiandikarc-baileys/
 ```bash
 npm install
 npm run build:cjs
+npm run build:docs
+npm test
 ```
 
-Artefak CJS sudah ter-commit di `lib/cjs/`, jadi konsumen CJS tidak perlu menjalankan build.
+Artefak CJS sudah ter-commit di `src/cjs/`, jadi konsumen CJS tidak perlu menjalankan build.
 
 ---
 

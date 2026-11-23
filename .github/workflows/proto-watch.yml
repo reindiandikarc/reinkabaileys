@@ -1,0 +1,39 @@
+name: Proto Watch
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    name: Report API reference exports
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build API reference
+        run: node script/apiref.js
+
+      - name: Report export count
+        shell: bash
+        run: |
+          count=$(grep -Ec '^export[[:space:]]' src/index.js || true)
+          {
+            echo '### REIN BAILEYS API reference'
+            echo ''
+            echo "- Command: \`node script/apiref.js\`"
+            echo "- Export declarations in \`src/index.js\`: ${count}"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "Export declarations in src/index.js: ${count}"

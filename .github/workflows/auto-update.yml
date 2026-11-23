@@ -1,0 +1,37 @@
+name: Auto Update
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reinkabaileys-auto-update
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Rebuild CJS and verify ESM and CommonJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild CommonJS bundle
+        run: npm run build:cjs
+
+      - name: Verify CommonJS entry point
+        run: node -e "require('./src/index.cjs')"
+
+      - name: Verify ESM entry point
+        run: node --input-type=module -e "import('./src/index.js')"

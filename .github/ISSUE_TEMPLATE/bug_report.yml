@@ -1,0 +1,97 @@
+name: Bug Report
+title: "[BUG] "
+description: Report a bug in reindiandikarc-baileys (REIN BAILEYS)
+labels: ["bug"]
+body:
+  - type: input
+    id: package-version
+    attributes:
+      label: REIN BAILEYS Version
+      description: Enter the installed version of reindiandikarc-baileys.
+      placeholder: 7.0.0-rc13.1
+    validations:
+      required: true
+
+  - type: input
+    id: nodejs-version
+    attributes:
+      label: Node.js Version
+      description: REIN BAILEYS requires Node.js 20 or newer.
+      placeholder: 20.19.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module-format
+    attributes:
+      label: Module Format
+      description: Which module format are you using?
+      options:
+        - ESM (import)
+        - CommonJS (require)
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating System
+      description: Enter your operating system and architecture.
+      placeholder: Ubuntu 24.04 (Linux 6.8.0, x64)
+    validations:
+      required: true
+
+  - type: input
+    id: whatsapp-version
+    attributes:
+      label: WhatsApp Version
+      description: Enter the WhatsApp version used to reproduce the bug.
+      placeholder: WhatsApp Business 2.26.7.73 (Android 15)
+    validations:
+      required: true
+
+  - type: textarea
+    id: socket-configuration
+    attributes:
+      label: Socket Configuration
+      description: Describe the makeWASocket configuration used.
+      placeholder: makeWASocket({ ... })
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps needed to reproduce the issue.
+      placeholder: 1. Connect ... 2. Send ... 3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Describe the issue and attach logs or screenshots if needed.
+      placeholder: Describe the issue and include logs if possible.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I am using Node.js 20 or newer.
+          required: true
+        - label: I am using the latest REIN BAILEYS release or commit.
+          required: true
+        - label: I have tested the issue with both ESM and CommonJS where applicable.
+          required: false
+        - label: I have checked the documentation and found no answer.
+          required: true
+        - label: I have searched existing issues to ensure this is not a duplicate.
+          required: true
+        - label: I have provided sufficient information.
+          required: true

@@ -1,0 +1,123 @@
+{
+  "site": {
+    "name": "REIN BAILEYS",
+    "package": "reindiandikarc-baileys",
+    "repository": "https://github.com/reindiandikarc/reinkabaileys",
+    "version": "7.0.0-rc13.1",
+    "domain": ""
+  },
+  "languages": ["en", "id"],
+  "strings": {
+    "en": {
+      "skip": "Skip to content",
+      "heroTag": "rc13 protocol · ESM + CJS · Node.js 20+",
+      "heroLead": "Pure-JavaScript WhatsApp Multi-Device API. WebSocket, Noise and Signal, with the forks already merged.",
+      "heroStart": "Get started",
+      "heroApi": "API reference",
+      "onThisPage": "On this page",
+      "footer": "REIN BAILEYS documentation. Source on {repo}.",
+      "copy": "Copy",
+      "copied": "Copied",
+      "menu": "Menu",
+      "theme": "Toggle theme",
+      "generated": "Generated from the package exports"
+    },
+    "id": {
+      "skip": "Lompat ke konten",
+      "heroTag": "protokol rc13 · ESM + CJS · Node.js 20+",
+      "heroLead": "API WhatsApp Multi-Device murni JavaScript. WebSocket, Noise, dan Signal, dengan semua fork yang sudah digabung.",
+      "heroStart": "Mulai cepat",
+      "heroApi": "Referensi API",
+      "onThisPage": "Di halaman ini",
+      "footer": "Dokumentasi REIN BAILEYS. Sumbernya di {repo}.",
+      "copy": "Salin",
+      "copied": "Tersalin",
+      "menu": "Menu",
+      "theme": "Ganti tema",
+      "generated": "Dibangkitkan dari ekspor paket"
+    }
+  },
+  "pages": [
+    {
+      "id": "index",
+      "title": { "en": "Overview", "id": "Ringkasan" },
+      "description": {
+        "en": "What REIN BAILEYS is, which forks it merges, and where to begin.",
+        "id": "Apa itu REIN BAILEYS, fork apa saja yang digabung, dan dari mana harus mulai."
+      }
+    },
+    {
+      "id": "getting-started",
+      "title": { "en": "Getting started", "id": "Mulai cepat" },
+      "description": {
+        "en": "Install the package, open a socket in ESM or CJS, and keep the connection alive.",
+        "id": "Pasang paket, buka socket dengan ESM atau CJS, dan jaga koneksi tetap hidup."
+      }
+    },
+    {
+      "id": "messages",
+      "title": { "en": "Messages", "id": "Pesan" },
+      "description": {
+        "en": "Receive events, address JIDs, send text, media, reactions and polls.",
+        "id": "Terima event, alamati JID, kirim teks, media, reaksi, dan polling."
+      }
+    },
+    {
+      "id": "groups",
+      "title": { "en": "Groups", "id": "Grup" },
+      "description": {
+        "en": "Group and community management, participants, invites and metadata caching.",
+        "id": "Pengelolaan grup dan komunitas, peserta, undangan, dan cache metadata."
+      }
+    },
+    {
+      "id": "newsletter",
+      "title": { "en": "Newsletter", "id": "Newsletter" },
+      "description": {
+        "en": "Channels, newsletter methods, and the built-in auto-follow behaviour.",
+        "id": "Channel, method newsletter, dan perilaku auto-follow bawaan."
+      }
+    },
+    {
+      "id": "pairing",
+      "title": { "en": "Pairing code", "id": "Kode pairing" },
+      "description": {
+        "en": "Link a companion device with a phone number instead of scanning a QR code.",
+        "id": "Pasangkan perangkat pendamping dengan nomor telepon tanpa memindai QR."
+      }
+    },
+    {
+      "id": "sessions",
+      "title": { "en": "Sessions", "id": "Sesi" },
+      "description": {
+        "en": "Multi-file credentials, custom auth states, database adapters and event replay.",
+        "id": "Kredensial multi-berkas, auth state kustom, adapter database, dan replay event."
+      }
+    },
+    {
+      "id": "builder",
+      "title": { "en": "MessageBuilder", "id": "MessageBuilder" },
+      "description": {
+        "en": "Buttons, carousels, AIRich, native flow, A2UI and the advanced message helpers.",
+        "id": "Tombol, carousel, AIRich, native flow, A2UI, dan helper pesan lanjutan."
+      }
+    },
+    {
+      "id": "examples",
+      "title": { "en": "Examples", "id": "Contoh" },
+      "description": {
+        "en": "Runnable bots assembled from the socket, store, queue and builder APIs.",
+        "id": "Bot yang bisa dijalankan, dirakit dari API socket, store, antrean, dan builder."
+      }
+    },
+    {
+      "id": "api-reference",
+      "generated": true,
+      "title": { "en": "API reference", "id": "Referensi API" },
+      "description": {
+        "en": "Every exported name from src/index.js, grouped by category.",
+        "id": "Semua nama yang diekspor dari src/index.js, dikelompokkan per kategori."
+      }
+    }
+  ]
+}
