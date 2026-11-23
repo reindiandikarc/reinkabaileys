@@ -20,6 +20,9 @@
       "copied": "Copied",
       "menu": "Menu",
       "theme": "Toggle theme",
+      "previous": "Previous",
+      "next": "Next",
+      "contents": "Contents",
       "generated": "Generated from the package exports"
     },
     "id": {
@@ -34,6 +37,9 @@
       "copied": "Tersalin",
       "menu": "Menu",
       "theme": "Ganti tema",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya",
+      "contents": "Daftar isi",
       "generated": "Dibangkitkan dari ekspor paket"
     }
   },

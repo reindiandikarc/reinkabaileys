@@ -16,7 +16,7 @@ This is one package with the work of four forks already combined:
 - **WhiskeySockets/Baileys rc13** — the protocol base: WebSocket transport, Noise, Signal, WAProto, app state and history sync.
 - **Ryuusuke/levvleys** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid` and `extractNewsletterMetadata`.
 - **Elaina Baileys** — `MessageBuilder` / `MB`, native flow and A2UI helpers, `makeVoipClient`, database auth states, and WAProto definitions with 25 extra message types.
-- **Bell/baileys-master** — the `lib/` layout and the layered socket architecture.
+- **Bell/baileys-master** — the `src/` layout and the layered socket architecture.
 
 Nothing needs a second install: the builder, VoIP client and store ship in the same package.
 

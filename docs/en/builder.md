@@ -75,7 +75,7 @@ Other advanced message builders:
 
 ## VoIP
 
-`makeVoipClient(sock, config)` creates the call client; `VoipClient`, `ActiveCall`, `CallState`, `VideoFeeder`, `AudioFeeder`, `TTLCache` and `isUsableGroupMetadata` come with it. The WASM assets are bundled under `lib/assets/wasm/`.
+`makeVoipClient(sock, config)` creates the call client; `VoipClient`, `ActiveCall`, `CallState`, `VideoFeeder`, `AudioFeeder`, `TTLCache` and `isUsableGroupMetadata` come with it. The WASM assets are bundled under `src/assets/wasm/`.
 
 ```js
 import { makeVoipClient } from 'reindiandikarc-baileys'

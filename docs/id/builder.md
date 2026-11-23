@@ -75,7 +75,7 @@ Builder lanjutan lainnya:
 
 ## VoIP
 
-`makeVoipClient(sock, config)` membuat klien panggilan. Bersamanya ada `VoipClient`, `ActiveCall`, `CallState`, `VideoFeeder`, `AudioFeeder`, `TTLCache`, dan `isUsableGroupMetadata`. Aset WASM sudah ikut di `lib/assets/wasm/`.
+`makeVoipClient(sock, config)` membuat klien panggilan. Bersamanya ada `VoipClient`, `ActiveCall`, `CallState`, `VideoFeeder`, `AudioFeeder`, `TTLCache`, dan `isUsableGroupMetadata`. Aset WASM sudah ikut di `src/assets/wasm/`.
 
 ```js
 import { makeVoipClient } from 'reindiandikarc-baileys'

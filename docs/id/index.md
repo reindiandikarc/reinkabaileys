@@ -16,7 +16,7 @@ Satu paket ini merangkum hasil kerja empat fork:
 - **WhiskeySockets/Baileys rc13** — pondasi protokol: WebSocket, Noise, Signal, WAProto, app state, dan sinkronisasi riwayat.
 - **Ryuusuke/levvleys** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, dan `extractNewsletterMetadata`.
 - **Elaina Baileys** — `MessageBuilder` / `MB`, helper native flow dan A2UI, `makeVoipClient`, auth state database, serta definisi WAProto dengan 25 tipe pesan tambahan.
-- **Bell/baileys-master** — tata letak `lib/` dan arsitektur socket berlapis.
+- **Bell/baileys-master** — tata letak `src/` dan arsitektur socket berlapis.
 
 Tidak perlu memasang paket tambahan: builder, klien VoIP, dan store sudah ikut di dalamnya.
 

@@ -88,7 +88,7 @@ The CJS artifacts are committed in the package, so consumers do not need to run 
 
 ## Connection options
 
-`makeWASocket(config)` uses the defaults from `lib/Defaults/index.js`. The options you will reach for first:
+`makeWASocket(config)` uses the defaults from `src/Defaults/index.js`. The options you will reach for first:
 
 - `auth` — the auth state; required to log in.
 - `browser` — companion device identity, for example `Browsers.ubuntu('Chrome')`.

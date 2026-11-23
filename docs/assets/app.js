@@ -1,26 +1,38 @@
 (function () {
   var root = document.documentElement
-  var stored = localStorage.getItem('rein-docs-theme')
-  var system = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  root.setAttribute('data-theme', stored || system)
+  var themeKey = 'rein-docs-theme'
+
+  function setTheme(value) {
+    root.setAttribute('data-theme', value)
+    try { localStorage.setItem(themeKey, value) } catch (error) {}
+  }
 
   var toggle = document.querySelector('[data-theme-toggle]')
   if (toggle) {
     toggle.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-      root.setAttribute('data-theme', next)
-      localStorage.setItem('rein-docs-theme', next)
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
     })
   }
 
   var menu = document.querySelector('[data-menu]')
   var sidebar = document.querySelector('[data-sidebar]')
   if (menu && sidebar) {
+    function closeMenu() {
+      sidebar.classList.remove('open')
+      menu.setAttribute('aria-expanded', 'false')
+    }
     menu.addEventListener('click', function () {
-      sidebar.classList.toggle('open')
+      var open = sidebar.classList.toggle('open')
+      menu.setAttribute('aria-expanded', open ? 'true' : 'false')
+    })
+    sidebar.addEventListener('click', function (event) {
+      if (event.target.closest('a')) closeMenu()
     })
     document.addEventListener('click', function (event) {
-      if (!sidebar.contains(event.target) && !menu.contains(event.target)) sidebar.classList.remove('open')
+      if (!sidebar.contains(event.target) && !menu.contains(event.target)) closeMenu()
+    })
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMenu()
     })
   }
 
@@ -31,16 +43,35 @@
       var code = block.querySelector('code')
       if (!code) return
       var previous = button.textContent
-      navigator.clipboard.writeText(code.textContent).then(function () {
-        button.textContent = button.getAttribute('data-copied') || 'Copied'
-        setTimeout(function () { button.textContent = previous }, 1200)
-      }).catch(function () {
-        button.textContent = previous
-      })
+      var copied = button.getAttribute('data-copied') || 'Copied'
+      function confirm() {
+        button.textContent = copied
+        button.setAttribute('data-state', 'copied')
+        setTimeout(function () {
+          button.textContent = previous
+          button.removeAttribute('data-state')
+        }, 1200)
+      }
+      function fallback() {
+        var area = document.createElement('textarea')
+        area.value = code.textContent
+        area.setAttribute('readonly', '')
+        area.style.position = 'fixed'
+        area.style.opacity = '0'
+        document.body.appendChild(area)
+        area.select()
+        try { document.execCommand('copy'); confirm() } catch (error) {}
+        document.body.removeChild(area)
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code.textContent).then(confirm).catch(fallback)
+      } else {
+        fallback()
+      }
     })
   })
 
-  var links = Array.from(document.querySelectorAll('.toc a'))
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'))
   if (links.length && 'IntersectionObserver' in window) {
     var map = new Map()
     links.forEach(function (link) {

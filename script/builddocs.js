@@ -132,27 +132,42 @@ const layout = ({ language, page, body, headings }) => {
   const strings = meta.strings[language]
   const other = language === 'en' ? 'id' : 'en'
   const nav = meta.pages.map(entry => {
-    const active = entry.id === page.id ? ' class="active"' : ''
+    const active = entry.id === page.id ? ' class="active" aria-current="page"' : ''
     const badge = entry.generated ? ' <span class="nav-badge">gen</span>' : ''
     return `<a href="./${entry.id}.html"${active}>${escapeHtml(entry.title[language])}${badge}</a>`
   }).join('')
+
+  const position = meta.pages.findIndex(entry => entry.id === page.id)
+  const previous = position > 0 ? meta.pages[position - 1] : null
+  const next = position >= 0 && position < meta.pages.length - 1 ? meta.pages[position + 1] : null
+  const pager = (previous || next)
+    ? `<nav class="pager" aria-label="${escapeHtml(strings.previous)} / ${escapeHtml(strings.next)}">
+  ${previous ? `<a class="prev" href="./${previous.id}.html"><span class="dir">${escapeHtml(strings.previous)}</span><span class="title">${escapeHtml(previous.title[language])}</span></a>` : '<span></span>'}
+  ${next ? `<a class="next" href="./${next.id}.html"><span class="dir">${escapeHtml(strings.next)}</span><span class="title">${escapeHtml(next.title[language])}</span></a>` : ''}
+</nav>`
+    : ''
+
+  const arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+  const sun = '<svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+  const moon = '<svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
+  const menuIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
+  const themeInit = `<script>(function(){try{var t=localStorage.getItem('rein-docs-theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()</script>`
 
   const isHome = page.id === 'index'
   let article = body
   if (isHome) article = article.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '')
   const toc = headings.length && !isHome
-    ? `<nav class="toc" aria-label="${escapeHtml(strings.onThisPage)}"><span class="toc-title">${escapeHtml(strings.onThisPage)}</span>${headings.filter(heading => heading.level === 2).map(heading => `<a href="#${heading.id}">${heading.text}</a>`).join('')}</nav>`
+    ? `<aside class="toc" aria-label="${escapeHtml(strings.onThisPage)}"><span class="toc-title">${escapeHtml(strings.onThisPage)}</span>${headings.filter(heading => heading.level === 2).map(heading => `<a href="#${heading.id}">${heading.text}</a>`).join('')}</aside>`
     : ''
 
   const hero = isHome
     ? `<section class="hero">
-  <div class="hero-banner" aria-hidden="true">╭──────────────────────────────────╮<br>│  ✦  R E I N   B A I L E Y S     │<br>╰──────────────────────────────────╯</div>
   <p class="eyebrow">v${escapeHtml(meta.site.version)} · ${escapeHtml(strings.heroTag)}</p>
   <h1>${escapeHtml(meta.site.name)}</h1>
   <p class="lead">${escapeHtml(strings.heroLead)}</p>
   <div class="hero-actions">
-    <a class="btn btn-primary" href="./getting-started.html">${escapeHtml(strings.heroStart)}</a>
-    <a class="btn btn-quiet" href="./api-reference.html">${escapeHtml(strings.heroApi)}</a>
+    <a class="btn btn-primary" href="./getting-started.html">${escapeHtml(strings.heroStart)}${arrow}</a>
+    <a class="btn btn-secondary" href="./api-reference.html">${escapeHtml(strings.heroApi)}</a>
   </div>
 </section>`
     : ''
@@ -167,32 +182,41 @@ const layout = ({ language, page, body, headings }) => {
 <meta property="og:title" content="${escapeHtml(page.title[language])} — ${escapeHtml(meta.site.name)}">
 <meta property="og:description" content="${escapeHtml(page.description[language])}">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1020'/%3E%3Ctext x='50%25' y='.72em' text-anchor='middle' font-size='38' fill='%23ff4d8d'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c81d57'/%3E%3Ctext x='50%25' y='.72em' text-anchor='middle' font-size='38' fill='%23ffffff'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+${themeInit}
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <a class="skip" href="#content">${escapeHtml(strings.skip)}</a>
 <header class="topbar">
-  <button class="menu-toggle" type="button" data-menu aria-label="${escapeHtml(strings.menu)}">☰</button>
-  <a class="brand" href="./index.html"><span class="brand-mark">✦</span><span>${escapeHtml(meta.site.name)}</span></a>
-  <span class="version">v${escapeHtml(meta.site.version)}</span>
-  <div class="topbar-actions">
-    <a class="lang" href="../${other}/${page.id}.html">${other === 'en' ? 'EN' : 'ID'}</a>
-    <button class="theme" type="button" data-theme-toggle aria-label="${escapeHtml(strings.theme)}">◐</button>
-    <a class="ghlink" href="${escapeHtml(meta.site.repository)}" rel="noreferrer">GitHub</a>
+  <div class="topbar-inner">
+    <button class="menu-toggle" type="button" data-menu aria-label="${escapeHtml(strings.menu)}" aria-expanded="false" aria-controls="sidebar">${menuIcon}</button>
+    <a class="brand" href="./index.html"><span class="mark" aria-hidden="true">✦</span><span>${escapeHtml(meta.site.name)}</span></a>
+    <span class="version">v${escapeHtml(meta.site.version)}</span>
+    <div class="topbar-actions">
+      <a class="lang" href="../${other}/${page.id}.html" hreflang="${other}">${other === 'en' ? 'EN' : 'ID'}</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="${escapeHtml(strings.theme)}">${sun}${moon}</button>
+      <a class="ghlink" href="${escapeHtml(meta.site.repository)}" rel="noreferrer">GitHub</a>
+    </div>
   </div>
 </header>
 <div class="shell">
-  <aside class="sidebar" data-sidebar>
+  <aside class="sidebar" id="sidebar" data-sidebar>
+    <span class="side-label">${escapeHtml(strings.contents)}</span>
     <nav class="side-nav" aria-label="${escapeHtml(meta.site.name)}">${nav}</nav>
     <div class="sidebar-foot"><code>${escapeHtml(meta.site.package)}</code></div>
   </aside>
-  <main id="content">
+  <div class="content-wrap${toc ? ' has-toc' : ''}">
     ${toc}
-    ${hero}
-    <article class="prose">${article}</article>
-    <footer class="page-foot"><p>${strings.footer.replace('{repo}', `<a href="${escapeHtml(meta.site.repository)}" rel="noreferrer">GitHub</a>`)}</p></footer>
-  </main>
+    <main id="content">
+      ${hero}
+      <article class="prose">${article}</article>
+      ${pager}
+      <footer class="page-foot"><p>${strings.footer.replace('{repo}', `<a href="${escapeHtml(meta.site.repository)}" rel="noreferrer">GitHub</a>`)}</p></footer>
+    </main>
+  </div>
 </div>
 <script src="../assets/app.js"></script>
 </body>

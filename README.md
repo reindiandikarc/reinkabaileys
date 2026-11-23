@@ -599,6 +599,28 @@ Artefak CJS sudah ter-commit di `src/cjs/`, jadi konsumen CJS tidak perlu menjal
 
 ---
 
+## Dependensi native
+
+Semua driver native dan media tercantum di `dependencies`, bukan di `peerDependencies` atau `optionalDependencies`: `@roamhq/wrtc`, `better-sqlite3`, `fluent-ffmpeg`, `ioredis`, `mongodb`, `mysql2`, `pg`, `sharp`, `jimp`, `audio-decode`, `fflate`, `file-type`, `form-data`, dan `link-preview-js`. Cukup `npm install` — VoIP, auth database, voice note, dan preview link ikut terpasang. Modul tetap dimuat saat fiturnya dipakai, bukan saat import pertama.
+
+---
+
+## GitHub Actions (file YAML)
+
+File `.github/workflows/*.yml` adalah konfigurasi otomasi GitHub. YAML adalah format teks berbasis indentasi untuk konfigurasi, bukan bahasa pemrograman. Metodenya: GitHub membaca bagian `on:` untuk menentukan pemicu, lalu menjalankan perintah di `jobs.<nama>.steps` pada Node.js 20.
+
+| File | Pemicu | Fungsi |
+|---|---|---|
+| `test.yml` | push dan pull request ke `master` | `npm ci`, lalu `node --test test/*.test.js` |
+| `docs.yml` | push ke `master` atau manual | `npm ci`, `npm run build:docs`, unggah `site/` sebagai artifact |
+| `auto-update.yml` | manual (`workflow_dispatch`) | `npm run build:cjs`, verifikasi import ESM dan CJS |
+| `proto-watch.yml` | manual | hitung jumlah ekspor `src/index.js` |
+| `stale.yml` | harian dan manual | menutup issue yang sudah lama tidak aktif |
+
+Tidak ada workflow yang meng-commit, men-tag, merilis, atau mengubah profil akun.
+
+---
+
 ## Lisensi dan kontributor
 
 Lisensi paket: MIT — satu file [`LICENSE`](LICENSE).

@@ -88,7 +88,7 @@ Artefak CJS sudah ikut ter-commit di paket, jadi konsumen tidak perlu menjalanka
 
 ## Opsi koneksi
 
-`makeWASocket(config)` memakai nilai bawaan dari `lib/Defaults/index.js`. Opsi yang paling sering dipakai:
+`makeWASocket(config)` memakai nilai bawaan dari `src/Defaults/index.js`. Opsi yang paling sering dipakai:
 
 - `auth` — auth state; wajib untuk login.
 - `browser` — identitas perangkat pendamping, misalnya `Browsers.ubuntu('Chrome')`.

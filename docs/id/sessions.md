@@ -51,7 +51,7 @@ Ekspor dari Elaina mencakup penyimpanan yang umum dipakai:
 - `useNekoDBAuth`
 - `useSingleFileAuthState`
 
-Semuanya mengembalikan pasangan `{ state, saveCreds }` seperti `useMultiFileAuthState`; driver yang dibutuhkan dimuat hanya saat dipakai.
+Semuanya mengembalikan pasangan `{ state, saveCreds }` seperti `useMultiFileAuthState`. Semua driver database sudah menjadi dependensi wajib dan dimuat hanya saat auth state itu dipakai.
 
 ```js
 import { useSqliteAuthState } from 'reindiandikarc-baileys'

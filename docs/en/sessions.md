@@ -51,7 +51,7 @@ The Elaina-derived exports cover the common stores:
 - `useNekoDBAuth`
 - `useSingleFileAuthState`
 
-They return the `{ state, saveCreds }` pair used by `useMultiFileAuthState`; the underlying drivers are optional and loaded only when needed.
+They return the `{ state, saveCreds }` pair used by `useMultiFileAuthState`. Every database driver ships as a required dependency and is loaded only when that auth state is used.
 
 ```js
 import { useSqliteAuthState } from 'reindiandikarc-baileys'
