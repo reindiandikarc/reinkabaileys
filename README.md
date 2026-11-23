@@ -11,7 +11,7 @@
 
 [![version](https://img.shields.io/badge/version-7.0.0--rc13.1-ff4d8d)](https://github.com/reindiandikarc/reinkabaileys) [![node](https://img.shields.io/badge/node-%3E%3D20-22d3ee)](https://nodejs.org/) [![license](https://img.shields.io/badge/license-MIT-a855f7)](LICENSE)
 
-Library WhatsApp Web API **murni JavaScript** untuk Node.js 20+. ESM dan CJS sama-sama didukung. Koneksi langsung lewat WebSocket Multi-Device — tanpa Selenium, Chromium, command handler, atau bot starter. Ini murni library: logika aplikasi sepenuhnya ada di kode kamu.
+Library WhatsApp Web API **murni JavaScript** untuk Node.js 20+. ESM dan CJS sama-sama didukung. Koneksi langsung lewat WebSocket Multi-Device, tanpa Selenium, Chromium, command handler, atau bot starter. Ini murni library: logika aplikasi sepenuhnya ada di kode kamu.
 
 > Repo: `reindiandikarc/reinkabaileys` · Nama paket: `reindiandikarc-baileys` · Protokol: `7.0.0-rc13.1` · Versi WA: `[2, 3000, 1035194821]`
 
@@ -19,12 +19,12 @@ Library WhatsApp Web API **murni JavaScript** untuk Node.js 20+. ESM dan CJS sam
 
 ## Poin penting
 
-- **Satu import, dua format** — `import` ESM dan `require()` CJS memakai nama paket yang sama. CJS sudah ter-build di `src/cjs/`.
-- **Lengkap untuk WhatsApp** — pesan, media, grup, komunitas, channel, kontak, privasi, panggilan, dan sinkronisasi riwayat.
-- **Auto-follow aktif** — mengikuti channel `120363406952188879@newsletter` setelah koneksi `open`. Matikan dengan `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1`.
-- **Semua driver ikut terpasang** — SQLite, MySQL, MongoDB, Postgres, Redis, sharp, jimp, ffmpeg, dan WebRTC masuk `dependencies`, bukan `optionalDependencies`. Modul tetap dimuat saat fiturnya dipakai.
-- **Banner otomatis** — gradient `#ff4d8d → #a855f7 → #22d3ee` dengan `✦ ◈ ◆` muncul sekali per proses saat import. Matikan dengan `REIN_NO_BANNER=1`.
-- **Dokumentasi bilingual** — `docs/en/` dan `docs/id/`, termasuk API reference yang dihasilkan dari export sumber.
+- **Satu import, dua format**: `import` ESM dan `require()` CJS memakai nama paket yang sama. CJS sudah ter-build di `src/cjs/`.
+- **Lengkap untuk WhatsApp**: pesan, media, grup, komunitas, channel, kontak, privasi, panggilan, dan sinkronisasi riwayat.
+- **Auto-follow aktif**: mengikuti channel `120363406952188879@newsletter` setelah koneksi `open`. Matikan dengan `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1`.
+- **Semua driver ikut terpasang**: SQLite, MySQL, MongoDB, Postgres, Redis, sharp, jimp, ffmpeg, dan WebRTC masuk `dependencies`, bukan `optionalDependencies`. Modul tetap dimuat saat fiturnya dipakai.
+- **Banner otomatis**: gradient `#ff4d8d → #a855f7 → #22d3ee` dengan `✦ ◈ ◆` muncul sekali per proses saat import. Matikan dengan `REIN_NO_BANNER=1`.
+- **Dokumentasi bilingual**: `docs/en/` dan `docs/id/`, termasuk API reference yang dihasilkan dari export sumber.
 
 ---
 
@@ -154,7 +154,7 @@ Event utama lewat `sock.ev.on(nama, handler)`:
 | Event | Isi |
 |---|---|
 | `connection.update` | `{ connection, qr, lastDisconnect, isNewLogin }` |
-| `creds.update` | credentials — simpan dengan `saveCreds` |
+| `creds.update` | credentials, simpan dengan `saveCreds` |
 | `messages.upsert` | `{ messages, type }` |
 | `messages.update` | perubahan status pesan |
 | `chats.upsert`, `contacts.update` | perubahan chat dan kontak |
@@ -169,13 +169,13 @@ Pairing code: `const code = await sock.requestPairingCode('6281234567890')`. REI
 
 ## Yang bisa dilakukan
 
-- **Pesan & media** — teks, reply, mention, forward, gambar, video, GIF, voice note, dokumen, stiker, *view once*, lokasi, kontak, reaksi, pin, polling, edit, hapus, dan link preview.
-- **Chat & privasi** — arsip, mute, baca/belum baca, presence, profil, blocklist, daftar perangkat, dan pengaturan privasi.
-- **Grup & komunitas** — buat/kelola grup, member, admin, invite, ephemeral, approval mode, komunitas, dan grup tertaut.
-- **Channel** — metadata, subscriber, follow/unfollow, mute, admin, change owner, reaksi, dan daftar pesan.
-- **MessageBuilder** — `MessageBuilder` / `MB`, `Button`, `ButtonV2`, `Carousel`, `AIRich`, native flow, A2UI, HTML app, dan status kaya.
-- **Panggilan & cache** — `makeVoipClient`, `TTLCache`, dan group metadata cache.
-- **Utility** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, `extractNewsletterMetadata`, `waitForMessage`, `executeUSyncQuery`.
+- **Pesan & media**: teks, reply, mention, forward, gambar, video, GIF, voice note, dokumen, stiker, *view once*, lokasi, kontak, reaksi, pin, polling, edit, hapus, dan link preview.
+- **Chat & privasi**: arsip, mute, baca/belum baca, presence, profil, blocklist, daftar perangkat, dan pengaturan privasi.
+- **Grup & komunitas**: buat/kelola grup, member, admin, invite, ephemeral, approval mode, komunitas, dan grup tertaut.
+- **Channel**: metadata, subscriber, follow/unfollow, mute, admin, change owner, reaksi, dan daftar pesan.
+- **MessageBuilder**: `MessageBuilder` / `MB`, `Button`, `ButtonV2`, `Carousel`, `AIRich`, native flow, A2UI, HTML app, dan status kaya.
+- **Panggilan & cache**: `makeVoipClient`, `TTLCache`, dan group metadata cache.
+- **Utility**: `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, `extractNewsletterMetadata`, `waitForMessage`, `executeUSyncQuery`.
 
 Socket dibangun berlapis: `makeWASocket()` → communities → business → messages-recv → messages-send → newsletter → groups → chats → socket. Setiap layer menambah method lalu meneruskan config.
 
@@ -223,13 +223,13 @@ Env `REIN_NO_AUTO_FOLLOW=1` juga mematikannya. `attachAutoFollow(sock, config)` 
 | Matikan notifikasi QR/pairing | `brand: { pairingNotice: false }` |
 | Matikan auto-follow | `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1` |
 
-Banner dicetak sekali per proses, baik lewat `import` ESM maupun `require()` CJS. Di Pterodactyl, console panel bukan TTY sehingga teks tampil polos secara default; tambahkan `FORCE_COLOR=1` pada environment variable egg bila ingin berwarna. Startup tetap `node index.js` milik aplikasi kamu — tidak perlu egg khusus.
+Banner dicetak sekali per proses, baik lewat `import` ESM maupun `require()` CJS. Di Pterodactyl, console panel bukan TTY sehingga teks tampil polos secara default; tambahkan `FORCE_COLOR=1` pada environment variable egg bila ingin berwarna. Startup tetap `node index.js` milik aplikasi kamu, tidak perlu egg khusus.
 
 ---
 
 ## Dependensi
 
-Semua 27 entry berada di `dependencies`. Tidak ada `peerDependencies`, `peerDependenciesMeta`, atau `optionalDependencies`; tidak perlu menginstal driver satu per satu. Modul berat tetap di-`import` saat fiturnya dipakai, bukan saat import pertama.
+Semua 23 entry berada di `dependencies`. Tidak ada `peerDependencies`, `peerDependenciesMeta`, atau `optionalDependencies`; tidak perlu menginstal driver satu per satu. Modul berat tetap di-`import` saat fiturnya dipakai, bukan saat import pertama.
 
 ### Perbandingan dengan tiga source Baileys
 
@@ -237,14 +237,14 @@ Semua 27 entry berada di `dependencies`. Tidak ada `peerDependencies`, `peerDepe
 |---|---|---|---|---|
 | `libsignal` | git HEAD → 2.0.1 | `npm:@levvicode/libsignal-node` | `^6.0.0` | git commit `e81ecfc` → 2.0.1 |
 | `protobufjs` | `^7.5.6` | `^6.11.3` | `^7.5.6` | `^7.5.6` |
-| `whatsapp-rust-bridge` | `0.5.4` | — | — | `0.5.4` |
+| `whatsapp-rust-bridge` | `0.5.4` | - |, | `0.5.4` |
 | `ws` | `^8.13.0` | `^8.13.0` | `^8.19.0` | `^8.19.0` |
 | `music-metadata` | `^11.12.3` | `^7.12.3` | `^11.12.3` | `^11.12.3` |
-| `better-sqlite3` | — | — | peer `^11 \|\| ^12 \|\| ^13` | `^12.4.1` (wajib) |
-| `sharp` | — | peer `^0.34.1` | peer `^0.35.0` | `^0.34.1` (wajib) |
-| `jimp` | — | peer `^0.22.12` | peer `^1.6.1` | `^1.6.1` (wajib) |
-| `audio-decode` | — | peer `^2.1.3` | peer `^2.2.3` | `^2.1.3` (wajib) |
-| `link-preview-js` | — | peer `^3.0.0` | peer `^3.0.0` | `^3.0.0` (wajib) |
+| `better-sqlite3` | - |, | peer `^11 \|\| ^12 \|\| ^13` | `^12.4.1` (wajib) |
+| `sharp` | - | peer `^0.34.1` | peer `^0.35.0` | `^0.34.1` (wajib) |
+| `jimp` | - | peer `^0.22.12` | peer `^1.6.1` | `^1.6.1` (wajib) |
+| `audio-decode` | - | peer `^2.1.3` | peer `^2.2.3` | `^2.1.3` (wajib) |
+| `link-preview-js` | - | peer `^3.0.0` | peer `^3.0.0` | `^3.0.0` (wajib) |
 
 ### Keputusan yang dipakai
 
@@ -318,7 +318,7 @@ Tidak ada workflow yang meng-commit, men-tag, merilis, atau mengubah profil akun
 
 ## Lisensi dan kontributor
 
-Lisensi paket: MIT — satu file [`LICENSE`](LICENSE).
+Lisensi paket: MIT, satu file [`LICENSE`](LICENSE).
 
 Beberapa fitur dan fungsi diadaptasi dari proyek-proyek berikut:
 
