@@ -113,7 +113,7 @@ const sock = makeWASocket({
 })
 ```
 
-The protocol version is `[2, 3000, 1035194821]` and the WebSocket endpoint is `wss://web.whatsapp.com/ws/chat`. Both come from rc13 defaults; you do not normally change them.
+The protocol version is `[2, 3000, 1035194821]` and the WebSocket endpoint is `wss://web.whatsapp.com/ws/chat`. Both are package defaults; you do not normally change them.
 
 ## Events you will use immediately
 

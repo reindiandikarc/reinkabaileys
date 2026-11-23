@@ -71,7 +71,7 @@ await sock.sendMessage(jid, { location: { degreesLatitude: -6.2, degreesLongitud
 await sock.sendMessage(jid, { react: { text: '🔥', key: msg.key } })
 ```
 
-Other helpers from the merged forks cover polls, view-once media, stickers, contacts, scheduled messages and status mentions:
+Other helpers cover polls, view-once media, stickers, contacts, scheduled messages and status mentions:
 
 ```js
 await sock.sendMessage(jid, {

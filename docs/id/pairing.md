@@ -1,6 +1,6 @@
 # Kode pairing
 
-Kode pairing menyambungkan perangkat pendamping hanya dengan nomor telepon, tanpa memindai QR. Method-nya adalah `sock.requestPairingCode()`, bawaan dari socket rc13.
+Kode pairing menyambungkan perangkat pendamping hanya dengan nomor telepon, tanpa memindai QR. Method-nya adalah `sock.requestPairingCode()`, bawaan dari socket paket ini.
 
 ## Minta kode
 
@@ -18,7 +18,7 @@ if (!state.creds.registered) {
 }
 ```
 
-Gunakan nomor internasional tanpa tanda `+`, spasi, atau tanda hubung. Nilai yang dikembalikan sama persis seperti rc13. Di WhatsApp, buka **Perangkat Tertaut**, pilih **Taut dengan nomor telepon**, lalu masukkan kodenya.
+Gunakan nomor internasional tanpa tanda `+`, spasi, atau tanda hubung. Nilai yang dikembalikan mengikuti format protokol paket ini. Di WhatsApp, buka **Perangkat Tertaut**, pilih **Taut dengan nomor telepon**, lalu masukkan kodenya.
 
 ## QR atau pairing
 

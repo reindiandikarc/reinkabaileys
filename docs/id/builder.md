@@ -1,6 +1,6 @@
 # MessageBuilder
 
-`MessageBuilder` — juga diekspor sebagai `MB` — berasal dari Elaina Baileys. Pustaka ini menyusun pesan interaktif yang tidak bisa dibuat hanya dengan payload `sendMessage` biasa: tombol native flow, list, carousel, dan respons AI kaya.
+`MessageBuilder` — juga diekspor sebagai `MB` — menyusun pesan interaktif yang tidak bisa dibuat hanya dengan payload `sendMessage` biasa: tombol native flow, list, carousel, dan respons AI kaya.
 
 ## Tombol
 

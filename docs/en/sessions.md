@@ -1,6 +1,6 @@
 # Sessions
 
-A session is the pair of credentials and keys that lets a socket reconnect without pairing again. REIN BAILEYS keeps the rc13 auth shape, so any adapter that follows it works.
+A session is the pair of credentials and keys that lets a socket reconnect without pairing again. REIN BAILEYS uses a fixed auth shape, so any adapter that follows it works.
 
 ## Multi-file auth state
 
@@ -19,7 +19,7 @@ sock.ev.on('creds.update', saveCreds)
 
 ## Custom auth state shape
 
-For a database, provide the same object rc13 expects:
+For a database, provide the same object the package expects:
 
 ```js
 const auth = {
@@ -41,7 +41,7 @@ const auth = {
 
 ## Database auth states
 
-The Elaina-derived exports cover the common stores:
+The package exports these ready-made stores:
 
 - `useSqliteAuthState`
 - `useMySQLAuthState`

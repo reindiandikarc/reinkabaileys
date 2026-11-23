@@ -71,7 +71,7 @@ await sock.sendMessage(jid, { location: { degreesLatitude: -6.2, degreesLongitud
 await sock.sendMessage(jid, { react: { text: '🔥', key: msg.key } })
 ```
 
-Helper dari hasil gabungan fork mencakup polling, media sekali lihat, stiker, kartu kontak, pesan terjadwal, dan status mention:
+Helper lain mencakup polling, media sekali lihat, stiker, kartu kontak, pesan terjadwal, dan status mention:
 
 ```js
 await sock.sendMessage(jid, {

@@ -1,6 +1,6 @@
 # Sesi
 
-Sesi adalah pasangan kredensial dan kunci yang membuat socket bisa tersambung ulang tanpa pairing lagi. REIN BAILEYS memakai bentuk auth state rc13, sehingga adapter yang mengikuti bentuk itu tetap kompatibel.
+Sesi adalah pasangan kredensial dan kunci yang membuat socket bisa tersambung ulang tanpa pairing lagi. REIN BAILEYS memakai bentuk auth state tetap, sehingga adapter yang mengikuti bentuk itu kompatibel.
 
 ## Auth state multi-berkas
 
@@ -19,7 +19,7 @@ sock.ev.on('creds.update', saveCreds)
 
 ## Bentuk auth state kustom
 
-Untuk database, siapkan objek seperti yang dipakai rc13:
+Untuk database, siapkan objek seperti yang dipakai paket ini:
 
 ```js
 const auth = {
@@ -41,7 +41,7 @@ const auth = {
 
 ## Auth state database
 
-Ekspor dari Elaina mencakup penyimpanan yang umum dipakai:
+Paket ini menyediakan auth state untuk penyimpanan yang umum dipakai:
 
 - `useSqliteAuthState`
 - `useMySQLAuthState`

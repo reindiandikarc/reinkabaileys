@@ -9,14 +9,14 @@ REIN BAILEYS adalah API WhatsApp Web Multi-Device berbasis JavaScript murni untu
 
 Saat paket diimpor, banner gradasi REIN BAILEYS muncul sekali per proses. Pakai `REIN_NO_BANNER=1` untuk menyembunyikannya, atau `NO_COLOR=1` kalau ingin teks polos.
 
-## Yang sudah digabung
+## Isi paket
 
-Satu paket ini merangkum hasil kerja empat fork:
+Semua bagian sudah termasuk dalam satu paket:
 
-- **WhiskeySockets/Baileys rc13** — pondasi protokol: WebSocket, Noise, Signal, WAProto, app state, dan sinkronisasi riwayat.
-- **Ryuusuke/levvleys** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, dan `extractNewsletterMetadata`.
-- **Elaina Baileys** — `MessageBuilder` / `MB`, helper native flow dan A2UI, `makeVoipClient`, auth state database, serta definisi WAProto dengan 25 tipe pesan tambahan.
-- **Bell/baileys-master** — tata letak `src/` dan arsitektur socket berlapis.
+- **Transport dan kripto** — WebSocket, handshake Noise, Signal, WAProto, app state, dan sinkronisasi riwayat.
+- **Store dan event** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, dan `extractNewsletterMetadata`.
+- **Pesan kaya** — `MessageBuilder` / `MB`, native flow, A2UI, AIRich, pesan terjadwal, dan helper status.
+- **Panggilan dan sesi** — `makeVoipClient`, auth state database, loader media, dan preview link.
 
 Tidak perlu memasang paket tambahan: builder, klien VoIP, dan store sudah ikut di dalamnya.
 
@@ -80,4 +80,4 @@ REIN BAILEYS adalah lapisan transport dan API, bukan framework bot. Tidak ada ro
 
 ## Lisensi dan atribusi
 
-Paket ini berlisensi MIT dan tidak berafiliasi dengan WhatsApp maupun Meta. Atribusi untuk WhiskeySockets, Ryuusuke, Termai, Elaina Dev, dan reindiandikarc tercantum di README repositori.
+Paket ini berlisensi MIT dan tidak berafiliasi dengan WhatsApp maupun Meta. Atribusi untuk fitur yang diadaptasi tercantum di README repositori pada bagian Lisensi dan kontributor.

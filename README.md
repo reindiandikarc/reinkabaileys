@@ -4,14 +4,14 @@
 ╭──────────────────────────────────────────────────────────╮
 │  ✦  R E I N   B A I L E Y S                              │
 ├══════════════════════════════════════════════════════════┤
-│  ◈  Fork rc13 · ESM + CJS · Multi-Device                 │
+│  ◈  Protokol rc13 · ESM + CJS · Multi-Device             │
 │  ◈  v7.0.0-rc13.1 · Pure JavaScript WhatsApp API         │
 ╰──────────────────────────────────────────────────────────╯
 ```
 
 [![version](https://img.shields.io/badge/version-7.0.0--rc13.1-ff4d8d)](https://github.com/reindiandikarc/reinkabaileys) [![node](https://img.shields.io/badge/node-%3E%3D20-22d3ee)](https://nodejs.org/) [![license](https://img.shields.io/badge/license-MIT-a855f7)](LICENSE)
 
-Library WhatsApp Web API **murni JavaScript** (ESM + CJS), hasil gabungan tiga fork Baileys dalam satu paket. Berjalan lewat WebSocket langsung — tanpa Selenium, tanpa Chromium, tanpa command handler. Auto-follow channel sudah aktif dan bisa dimatikan.
+Library WhatsApp Web API **murni JavaScript** (ESM + CJS) untuk Node.js. Berjalan lewat WebSocket langsung — tanpa Selenium, tanpa Chromium, tanpa command handler. Auto-follow channel sudah aktif dan bisa dimatikan.
 
 Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a855f7 → #22d3ee`) dengan penghias `✦ ◈ ◆` otomatis muncul di terminal maupun console Pterodactyl.
 
@@ -24,7 +24,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 1. [Apa itu Baileys dan cara kerjanya](#apa-itu-baileys-dan-cara-kerjanya)
 2. [Fitur lengkap](#fitur-lengkap)
 3. [Arsitektur paket](#arsitektur-paket)
-4. [Hasil gabungan fork](#hasil-gabungan-fork)
+4. [Fitur lanjutan](#fitur-lanjutan)
 5. [Persyaratan](#persyaratan)
 6. [Instalasi](#instalasi)
 7. [Quick start](#quick-start)
@@ -40,7 +40,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 17. [Catatan Pterodactyl](#catatan-pterodactyl)
 18. [Struktur repo](#struktur-repo)
 19. [Build](#build)
-20. [Atribusi dan disclaimer](#atribusi-dan-disclaimer)
+20. [Lisensi dan kontributor](#lisensi-dan-kontributor)
 
 ---
 
@@ -119,7 +119,7 @@ Library ini **bukan bot**: tidak ada command handler, tidak ada starter, tidak a
 - Buat dan hapus channel, admin count, change owner, demote.
 - Reaksi channel dan auto-follow dengan JID yang sudah ditentukan.
 
-### Builder pesan, status, dan fitur lanjutan (Elaina)
+### Builder pesan, status, dan fitur lanjutan
 
 - `MessageBuilder` / `MB` untuk menyusun tombol, carousel, AI rich message, dan pesan interaktif lain dalam satu rantai.
 - Native flow, A2UI, HTML app, template status/sticker status, newsletter status, scheduled message, dan username lookup.
@@ -132,7 +132,7 @@ Library ini **bukan bot**: tidak ada command handler, tidak ada starter, tidak a
 - `sock.ev` untuk pesan, koneksi, grup, kontak, chat, presence, panggilan, dan blokir.
 - `executeUSyncQuery`, `onWhatsApp`, `fetchAccountReachoutTimelock`, `fetchNewChatMessageCap`.
 - `waitForConnectionUpdate`, `waitForMessage`, `getBotListV2`.
-- `makeInMemoryStore`, `captureEventStream`, `queueJob` hasil port.
+- `makeInMemoryStore`, `captureEventStream`, `queueJob`.
 
 ---
 
@@ -157,7 +157,7 @@ Modul pendukung:
 | Modul | Fungsi |
 |---|---|
 | `src/Defaults/` | Versi protokol, konstanta WA, konfigurasi default |
-| `src/Utils/` | Kripto, auth, media, generik, event buffer, helper port |
+| `src/Utils/` | Kripto, auth, media, generik, event buffer, dan helper |
 | `src/Signal/` | Signal protocol dan antrean grup |
 | `src/WABinary/` | Encode/decode node binary WA |
 | `src/WAM/` | BinaryInfo / WAM buffer |
@@ -165,14 +165,14 @@ Modul pendukung:
 | `src/Types/` | Definisi tipe event dan opsi |
 | `src/Brand/` | Banner gradient dan notifikasi QR/pairing |
 | `src/AutoFollow/` | Follow, mute, dan reaksi channel otomatis |
-| `src/Store/` | In-memory store hasil port |
+| `src/Store/` | In-memory store |
 | `src/MessageBuilder/` | Builder tombol, carousel, AI rich, dan pesan interaktif |
 | `src/Voip/` | Klien panggilan dan WASM engine |
 | `src/assets/wasm/` | Aset WASM untuk panggilan |
 
 ---
 
-## Hasil gabungan fork
+## Fitur lanjutan
 
 | Kemampuan | Export |
 |---|---|
@@ -191,7 +191,7 @@ Modul pendukung:
 | Media, voice, dan link preview | `hasOptionalMedia`, `loadFfmpeg`, `loadSharp`, `bindVoiceRecognition`, `buildSocialPreview` |
 | Payment dan music status | `buildPaymentReminder`, `buildSplitPayment`, `buildMusicMessage`, `readMusicMessage` |
 
-Susunan paket mengikuti `baileys-master`/Ryuusuke: `src/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari ketiga fork disertakan pada path asalnya. `WAProto/index.js` memakai definisi protobuf Elaina (25 tipe pesan tambahan), sementara versi protokol dan enkripsi tetap berbasis rc13.
+Struktur paket memakai `src/`, `WAProto/`, dan file konfigurasi di root. Definisi protobuf di `WAProto/index.js` mencakup 25 tipe pesan tambahan.
 
 ---
 
@@ -307,7 +307,7 @@ const auth = {
 }
 ```
 
-Field yang sama seperti rc13; tidak ada format khusus REIN BAILEYS.
+Bentuk field mengikuti protokol paket ini; tidak ada format khusus REIN BAILEYS.
 
 ---
 
@@ -450,7 +450,7 @@ await sock.sendMessage(jid, {
 const code = await sock.requestPairingCode('6281234567890')
 ```
 
-Nilai kembalian persis sama seperti rc13. REIN BAILEYS otomatis mencetak `PAIRING CODE <kode>` ke console. Notifikasi QR hanya dicetak sekali per nilai QR agar tidak membanjiri log.
+Nilai kembalian mengikuti format protokol paket ini. REIN BAILEYS otomatis mencetak `PAIRING CODE <kode>` ke console. Notifikasi QR hanya dicetak sekali per nilai QR agar tidak membanjiri log.
 
 ---
 
@@ -544,18 +544,18 @@ reindiandikarc-baileys/
 ├── src/                    kode sumber library (entry ESM + CJS)
 │   ├── index.js            entry ESM
 │   ├── index.cjs           dispatcher CJS
-│   ├── index.bundle.cjs    bundle rc13 utuh
+│   ├── index.bundle.cjs    bundle lengkap
 │   ├── cjs/                hasil build brand + ported (ter-commit)
 │   ├── Brand/              banner, gradient, hook pairing
 │   ├── AutoFollow/         follow + mute + reaksi channel
 │   ├── Defaults/           konstanta dan versi protokol
-│   ├── Store/              in-memory store hasil port
+│   ├── Store/              in-memory store
 │   ├── MessageBuilder/     builder pesan interaktif dan AI rich
 │   ├── Voip/               klien panggilan dan WASM engine
 │   ├── assets/wasm/        aset WASM panggilan
-│   ├── Utils/              helper rc13 + port + Elaina
+│   ├── Utils/              helper inti dan tambahan
 │   └── Signal/Group/       queue-job
-├── WAProto/                protobuf definisi Elaina + 25 tipe tambahan
+├── WAProto/                protobuf WhatsApp + 25 tipe pesan tambahan
 ├── docs/                   dokumentasi statis reinka (en + id)
 │   ├── en/                 sepuluh halaman dokumentasi Inggris
 │   ├── id/                 sepuluh halaman dokumentasi Indonesia
@@ -565,7 +565,7 @@ reindiandikarc-baileys/
 ├── script/                 pembangkit api reference dan situs docs
 ├── .github/                issue template dan GitHub Actions
 ├── scripts/                build bundle CJS
-├── engine-requirements.js  dari Ryuusuke
+├── engine-requirements.js  pemeriksa versi Node
 ├── LICENSE
 └── README.md
 ```
@@ -574,15 +574,13 @@ Fungsi tiap folder:
 
 | Folder | Fungsi |
 |---|---|
-| `src/` | Sumber library. `package.json` memakai `src/index.js` untuk ESM dan `src/index.cjs` untuk CJS. Semua fitur gabungan rc13, Ryuusuke, Elaina, dan Bell/baileys-master ada di sini. |
-| `docs/` | Situs dokumentasi reinka versi sendiri, bukan salinan Elaina: 9 halaman + API reference per bahasa. `npm run build:docs` menghasilkan folder `site/`. |
+| `src/` | Sumber library. `package.json` memakai `src/index.js` untuk ESM dan `src/index.cjs` untuk CJS. Seluruh fitur library ada di sini. |
+| `docs/` | Situs dokumentasi reinka: 9 halaman + API reference per bahasa. `npm run build:docs` menghasilkan folder `site/`. |
 | `test/` | Suite verifikasi `node --test` untuk export, builder, grup, HTML, pesan, runtime, status, username, dan VoIP. Tidak ikut dipakai saat runtime. |
 | `.github/` | Template issue dan workflow: build docs, test, stale issue, proto watch, dan verifikasi manual ESM/CJS. |
 | `script/` | Script perawatan dokumentasi: `apiref.js` membaca export `src/index.js`, `builddocs.js` merender markdown ke HTML. |
 | `scripts/` | Build artefak CJS (`build:cjs`). |
-| `WAProto/` | Definisi protobuf WhatsApp, termasuk 25 tipe pesan tambahan dari Elaina. |
-
-Zip Bell yang benar (`baileys-master.zip`) byte-identik dengan sumber baileys-master yang sudah digabung; zip `Alisa-Miklovna-Kujou-Bell` adalah project bot dan tidak dijadikan bagian library.
+| `WAProto/` | Definisi protobuf WhatsApp, termasuk 25 tipe pesan tambahan. |
 
 ---
 
@@ -625,12 +623,15 @@ Tidak ada workflow yang meng-commit, men-tag, merilis, atau mengubah profil akun
 
 Lisensi paket: MIT — satu file [`LICENSE`](LICENSE).
 
-| Pihak | Peran |
+Beberapa fitur dan fungsi diadaptasi dari proyek-proyek berikut:
+
+| Proyek | Fitur / fungsi |
 |---|---|
-| WhiskeySockets/Baileys | Basis kode rc13 |
-| Ryuusuke | Port store, event stream, dan helper |
-| Termai | Kontributor |
-| Elaina Dev | MessageBuilder, VoIP, protobuf, dan fitur lanjutan |
-| reindiandikarc | Penggabungan, branding, dan rilis `reinkabaileys` |
+| [yuusuke1101/ryuuxalya](https://github.com/yuusuke1101/ryuuxalya) | store, event stream, antrean, dan helper JID |
+| [rexxzyid/elaina-baileys](https://github.com/rexxzyid/elaina-baileys) | MessageBuilder, native flow, A2UI, VoIP, auth state database, dan protobuf tambahan |
+| [reindiandikarc/reinkabaileys](https://github.com/reindiandikarc/reinkabaileys) | pengembangan, branding, dan rilis paket ini |
+| [Rifza111/baileys](https://github.com/Rifza111/baileys) | kontribusi Termai pada helper media dan fungsi pendukung |
+
+Basis implementasi protokol WhatsApp Web berasal dari [Whiskeysockets/Baileys](https://github.com/Whiskeysockets/Baileys).
 
 Proyek ini **tidak berafiliasi resmi** dengan WhatsApp atau Meta. Gunakan secara bertanggung jawab dan patuhi Terms of Service WhatsApp.

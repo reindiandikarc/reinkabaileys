@@ -1,6 +1,6 @@
 # MessageBuilder
 
-`MessageBuilder` (also exported as `MB`) comes from Elaina Baileys. It builds interactive messages that a plain `sendMessage` payload cannot express: native-flow buttons, lists, carousels and AI-rich responses.
+`MessageBuilder` (also exported as `MB`) builds interactive messages that a plain `sendMessage` payload cannot express: native-flow buttons, lists, carousels and AI-rich responses.
 
 ## Buttons
 

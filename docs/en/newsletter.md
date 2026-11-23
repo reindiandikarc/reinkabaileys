@@ -73,4 +73,4 @@ dispose()
 
 ## Status and scheduled posts
 
-The Elaina-derived helpers include `makeStatusMentionMessage`, `makeNewsletterFollowerInviteMessage`, `encodeScheduledMessage` and `decodeScheduledMessage`. They build payloads for `sendMessage`; see [MessageBuilder](./builder.html) for the related rich-message helpers.
+The package also exports `makeStatusMentionMessage`, `makeNewsletterFollowerInviteMessage`, `encodeScheduledMessage` and `decodeScheduledMessage`. They build payloads for `sendMessage`; see [MessageBuilder](./builder.html) for the related rich-message helpers.

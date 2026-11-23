@@ -73,4 +73,4 @@ dispose()
 
 ## Status dan postingan terjadwal
 
-Helper dari Elaina mencakup `makeStatusMentionMessage`, `makeNewsletterFollowerInviteMessage`, `encodeScheduledMessage`, dan `decodeScheduledMessage`. Semuanya membentuk payload untuk `sendMessage`; helper pesan kaya lainnya ada di [MessageBuilder](./builder.html).
+Paket ini juga menyediakan `makeStatusMentionMessage`, `makeNewsletterFollowerInviteMessage`, `encodeScheduledMessage`, dan `decodeScheduledMessage`. Semuanya membentuk payload untuk `sendMessage`; helper pesan kaya lainnya ada di [MessageBuilder](./builder.html).

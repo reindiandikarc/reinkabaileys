@@ -1,6 +1,6 @@
 # Pairing code
 
-A pairing code links a companion device with a phone number instead of a QR scan. The method is `sock.requestPairingCode()`, inherited from the rc13 socket.
+A pairing code links a companion device with a phone number instead of a QR scan. The method is `sock.requestPairingCode()`, provided by the socket.
 
 ## Request a code
 
@@ -18,7 +18,7 @@ if (!state.creds.registered) {
 }
 ```
 
-Use the international number without `+`, spaces or dashes. The returned value behaves exactly like rc13. In the WhatsApp app, open **Linked devices**, choose **Link with phone number**, then enter the code.
+Use the international number without `+`, spaces or dashes. The returned value follows the package protocol format. In the WhatsApp app, open **Linked devices**, choose **Link with phone number**, then enter the code.
 
 ## QR or pairing
 

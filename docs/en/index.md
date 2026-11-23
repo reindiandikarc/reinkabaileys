@@ -9,14 +9,14 @@ REIN BAILEYS is a pure-JavaScript WhatsApp Web Multi-Device API for Node.js. It 
 
 Importing the package prints the gradient REIN BAILEYS banner once per process. Set `REIN_NO_BANNER=1` to silence it, or `NO_COLOR=1` for plain text.
 
-## What is merged in
+## What is inside
 
-This is one package with the work of four forks already combined:
+Everything ships in one install:
 
-- **WhiskeySockets/Baileys rc13** — the protocol base: WebSocket transport, Noise, Signal, WAProto, app state and history sync.
-- **Ryuusuke/levvleys** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid` and `extractNewsletterMetadata`.
-- **Elaina Baileys** — `MessageBuilder` / `MB`, native flow and A2UI helpers, `makeVoipClient`, database auth states, and WAProto definitions with 25 extra message types.
-- **Bell/baileys-master** — the `src/` layout and the layered socket architecture.
+- **Transport and crypto** — WebSocket, Noise handshake, Signal protocol, WAProto, app state and history sync.
+- **Store and events** — `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid` and `extractNewsletterMetadata`.
+- **Rich messages** — `MessageBuilder` / `MB`, native flow, A2UI, AIRich, scheduled messages and status helpers.
+- **Voice and sessions** — `makeVoipClient`, database auth states, media loaders and link previews.
 
 Nothing needs a second install: the builder, VoIP client and store ship in the same package.
 
@@ -80,4 +80,4 @@ REIN BAILEYS is a transport and API layer, not a bot framework. It has no comman
 
 ## License and credit
 
-The package is MIT licensed and is not affiliated with WhatsApp or Meta. Credit to WhiskeySockets, Ryuusuke, Termai, Elaina Dev and reindiandikarc is recorded in the repository README.
+The package is MIT licensed and is not affiliated with WhatsApp or Meta. Attribution for adapted features is recorded in the repository README under Licence and contributors.

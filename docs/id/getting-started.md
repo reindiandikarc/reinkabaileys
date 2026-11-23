@@ -113,7 +113,7 @@ const sock = makeWASocket({
 })
 ```
 
-Versi protokol bawaan adalah `[2, 3000, 1035194821]` dan endpoint WebSocket-nya `wss://web.whatsapp.com/ws/chat`. Keduanya berasal dari default rc13 dan biasanya tidak perlu diubah.
+Versi protokol bawaan adalah `[2, 3000, 1035194821]` dan endpoint WebSocket-nya `wss://web.whatsapp.com/ws/chat`. Keduanya adalah nilai bawaan paket dan biasanya tidak perlu diubah.
 
 ## Event yang langsung dipakai
 
