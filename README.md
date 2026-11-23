@@ -81,7 +81,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 | Auto-follow + auto-reaksi channel (aktif default) | `AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter`, `attachAutoFollow`, `normalizeAutoFollow` |
 | Branding dan notifikasi | `BRAND`, `getBrandLines`, `gradientText`, `printBrand`, `printPairingNotice`, `attachPairingNoticeListener`, `wrapPairingCodeNotice` |
 
-Rincian file yang di-port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md). Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, `engine-requirements.js`, dan `readme.md` berada di root. File unik dari kedua fork disertakan pada path asalnya; kode inti tetap berbasis rc13 supaya protokol dan enkripsi tidak berubah.
+Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari kedua fork disertakan pada path asalnya; kode inti tetap berbasis rc13 supaya protokol dan enkripsi tidak berubah.
 
 ---
 
@@ -245,13 +245,10 @@ reindiandikarc-baileys/
 │   ├── Utils/                   helper rc13 + helper port
 │   └── Signal/Group/queue-job.js
 ├── WAProto/                     protobuf (termasuk index.d.ts dari Ryuu)
-├── docs/superpowers/            spec dan plan implementasi
 ├── engine-requirements.js       dari Ryuusuke
-├── readme.md                    dari baileys-master
-├── licenses/
 ├── scripts/                     build CJS
-├── PORT_MANIFEST.md
-└── THIRD_PARTY_NOTICES.md
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -267,6 +264,6 @@ npm run build:cjs
 
 ## Atribusi dan disclaimer
 
-Basis kode: WhiskeySockets/Baileys rc13 (MIT, 2025). File port: Ryuusuke/levvleys (MIT, 2026). Detail di [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) dan folder [`licenses/`](licenses/).
+Basis kode: WhiskeySockets/Baileys rc13 (MIT, 2025). File port: Ryuusuke/levvleys (MIT, 2026). Lisensi paket: [`LICENSE`](LICENSE).
 
 Proyek ini **tidak berafiliasi resmi** dengan WhatsApp atau Meta. Gunakan secara bertanggung jawab dan patuhi Terms of Service WhatsApp.
