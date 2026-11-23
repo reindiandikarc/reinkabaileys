@@ -353,8 +353,8 @@ File `.github/workflows/*.yml` adalah konfigurasi GitHub Actions. YAML adalah fo
 
 | Workflow | Pemicu | Fungsi |
 |---|---|---|
-| `test.yml` | push dan pull request ke `master` | Menjalankan test |
-| `docs.yml` | push ke `master` atau manual | Membangun docs dan mengunggah artifact |
+| `test.yml` | push dan pull request ke `main` | Menjalankan test |
+| `docs.yml` | push ke `main` atau manual | Membangun docs dan mengunggah artifact |
 | `auto-update.yml` | manual | Build CJS dan verifikasi ESM serta CJS |
 | `proto-watch.yml` | manual | Menghitung jumlah export |
 | `stale.yml` | harian dan manual | Menutup issue lama |
