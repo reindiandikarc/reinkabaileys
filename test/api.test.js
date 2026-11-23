@@ -23,10 +23,22 @@ test('CommonJS entry exposes core, brand and ported exports', () => {
   execFileSync(process.execPath, ['-e', script], { cwd: packageRoot, stdio: 'pipe' })
 })
 
+test('CommonJS entry prints the branded banner once on require', () => {
+  const env = { ...process.env }
+  delete env.NO_COLOR
+  delete env.FORCE_COLOR
+  delete env.REIN_NO_BANNER
+  delete env.REINDIANDIKARC_NO_BANNER
+  const out = execFileSync(process.execPath, ['-e', "require('./lib/index.cjs')"], { cwd: packageRoot, encoding: 'utf8', env })
+  assert.equal(out.includes('\x1b'), false)
+  assert.match(out, /R E I N/)
+  assert.equal(out.split('R E I N').length - 1, 1)
+})
+
 test('ESM and CJS export name sets agree on required keys', async () => {
   const esm = await import('../lib/index.js')
   const script = `process.stdout.write(JSON.stringify(Object.keys(require('./lib/index.cjs')).sort()))`
-  const out = execFileSync(process.execPath, ['-e', script], { cwd: packageRoot, encoding: 'utf8' })
+  const out = execFileSync(process.execPath, ['-e', script], { cwd: packageRoot, encoding: 'utf8', env: { ...process.env, REIN_NO_BANNER: '1' } })
   const keys = new Set(JSON.parse(out))
   for (const key of ['makeWASocket', 'useMultiFileAuthState', 'DisconnectReason', 'BRAND', 'printBrand', 'printPairingNotice', 'makeInMemoryStore', 'queueJob', 'getBotJid', 'AUTO_FOLLOW_NEWSLETTER_JID']) {
     assert.ok(key in esm, `ESM missing ${key}`)

@@ -42,6 +42,42 @@ test('wrapPairingCodeNotice preserves return value', async () => {
   assert.match(stripAnsi(output()), /A1B2-C3D4/)
 })
 
+test('real socket emits one branded QR notice and wraps pairing code', async () => {
+  const { WebSocketServer } = await import('ws')
+  const { mkdtemp, rm } = await import('node:fs/promises')
+  const { tmpdir } = await import('node:os')
+  const { join } = await import('node:path')
+  const { default: makeWASocket, useMultiFileAuthState } = await import('../lib/index.js')
+  const dir = await mkdtemp(join(tmpdir(), 'reindi-brand-'))
+  const wss = new WebSocketServer({ port: 0 })
+  await new Promise(resolve => wss.once('listening', resolve))
+  const port = wss.address().port
+  const writes = []
+  const originalWrite = process.stdout.write
+  process.stdout.write = (chunk, ...args) => {
+    writes.push(String(chunk))
+    return true
+  }
+  try {
+    const { state } = await useMultiFileAuthState(dir)
+    const sock = makeWASocket({
+      auth: state,
+      waWebSocketUrl: `ws://127.0.0.1:${port}`,
+      connectTimeoutMs: 1500
+    })
+    assert.equal(sock.requestPairingCode.name, 'brandedRequestPairingCode')
+    sock.ev.emit('connection.update', { qr: '2@LIVEQR' })
+    sock.ev.emit('connection.update', { qr: '2@LIVEQR' })
+    const output = writes.join('')
+    assert.equal(stripAnsi(output).split('QR READY').length - 1, 1)
+    sock.ws?.close?.()
+  } finally {
+    process.stdout.write = originalWrite
+    await new Promise(resolve => wss.close(resolve))
+    await rm(dir, { recursive: true, force: true })
+  }
+})
+
 test('makeWASocket constructs and emits connecting without exception', async () => {
   const { WebSocketServer } = await import('ws')
   const { mkdtemp, rm } = await import('node:fs/promises')

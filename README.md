@@ -99,15 +99,16 @@ const code = await sock.requestPairingCode('6281234567890')
 | Kontrol | Cara |
 |---|---|
 | Matikan banner | `REIN_NO_BANNER=1` (alias lama: `REINDIANDIKARC_NO_BANNER=1`) |
-| Teks polos tanpa ANSI | `NO_COLOR=1` atau `FORCE_COLOR=0` |
+| Teks polos tanpa ANSI | `NO_COLOR=1` atau `FORCE_COLOR=0`; juga otomatis saat stdout bukan TTY |
+| Paksa gradient di log non-TTY | `FORCE_COLOR=1` |
 | Matikan notifikasi QR/pairing | `makeWASocket({ auth, brand: { pairingNotice: false } })` |
 | Warna gradient | `#ff4d8d → #a855f7 → #22d3ee` |
 
-Banner dicetak sekali per proses. Notifikasi QR hanya dicetak sekali per nilai QR agar tidak membanjiri console.
+Banner dicetak sekali per proses, baik lewat `import` ESM maupun `require()` CJS. Notifikasi QR hanya dicetak sekali per nilai QR agar tidak membanjiri console.
 
 ### Catatan Pterodactyl
 
-Gunakan Node.js 20 (egg Node.js Generic / 20). Startup tetap `node index.js` milik aplikasi konsumen — banner REIN BAILEYS muncul otomatis di console panel. Tidak perlu egg khusus atau file tambahan.
+Gunakan Node.js 20 (egg Node.js Generic / 20). Startup tetap `node index.js` milik aplikasi konsumen — banner REIN BAILEYS muncul otomatis di console panel. Karena console panel bukan TTY, teks tampil polos secara default agar log tidak penuh escape code; tambahkan `FORCE_COLOR=1` pada environment variable egg bila ingin gradient berwarna. Tidak perlu egg khusus atau file tambahan.
 
 ---
 
