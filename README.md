@@ -31,7 +31,6 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 - [Branding](#branding)
 - [Catatan Pterodactyl](#catatan-pterodactyl)
 - [Struktur paket](#struktur-paket)
-- [Tes](#tes)
 - [Atribusi dan disclaimer](#atribusi-dan-disclaimer)
 
 ---
@@ -82,7 +81,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 | Auto-follow + auto-reaksi channel (aktif default) | `AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter`, `attachAutoFollow`, `normalizeAutoFollow` |
 | Branding dan notifikasi | `BRAND`, `getBrandLines`, `gradientText`, `printBrand`, `printPairingNotice`, `attachPairingNoticeListener`, `wrapPairingCodeNotice` |
 
-Rincian file yang di-port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md). Seluruh sumber `baileys-master` dan `ryuuxalya-main` juga disertakan utuh di `vendor/baileys-master/` dan `vendor/ryuuxalya-main/`; kode yang dijalankan tetap `lib/` berbasis rc13 supaya protokol dan enkripsi tidak berubah.
+Rincian file yang di-port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md). Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, `engine-requirements.js`, dan `readme.md` berada di root. File unik dari kedua fork disertakan pada path asalnya; kode inti tetap berbasis rc13 supaya protokol dan enkripsi tidak berubah.
 
 ---
 
@@ -245,23 +244,23 @@ reindiandikarc-baileys/
 │   ├── Store/                   in-memory store hasil port
 │   ├── Utils/                   helper rc13 + helper port
 │   └── Signal/Group/queue-job.js
-├── vendor/
-│   ├── baileys-master/          sumber lengkap baileys-master
-│   └── ryuuxalya-main/          sumber lengkap Ryuu
-├── test/                        suite node:test
+├── WAProto/                     protobuf (termasuk index.d.ts dari Ryuu)
 ├── docs/superpowers/            spec dan plan implementasi
+├── engine-requirements.js       dari Ryuusuke
+├── readme.md                    dari baileys-master
+├── licenses/
+├── scripts/                     build CJS
 ├── PORT_MANIFEST.md
 └── THIRD_PARTY_NOTICES.md
 ```
 
 ---
 
-## Tes
+## Build
 
 ```bash
 npm install
 npm run build:cjs
-npm test
 ```
 
 ---

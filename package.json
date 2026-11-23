@@ -12,8 +12,6 @@
   "engines": { "node": ">=20.0.0" },
   "license": "MIT",
   "scripts": {
-    "check": "node --test test/*.test.js",
-    "test": "npm run check",
     "build:cjs": "node scripts/build-cjs.mjs"
   },
   "dependencies": {

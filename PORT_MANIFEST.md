@@ -25,11 +25,19 @@ Perbandingan antara paket dasar `reindiandikarcbaileys-main` (rc13) dan fork `ry
 
 Ketidakhadiran file di tabel di atas berarti file tersebut identik atau sudah lebih baik di rc13.
 
-## Sumber lengkap
+## Susunan sumber
 
-Seluruh isi `baileys-master` dan `ryuuxalya-main` disertakan utuh (tanpa `node_modules` dan `.git`) di:
+Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, `engine-requirements.js`, dan `readme.md` di root.
 
-- `vendor/baileys-master/` — 110 file
-- `vendor/ryuuxalya-main/` — 99 file
+File unik dari kedua fork disertakan pada path asalnya:
 
-Keduanya adalah salinan referensi; kode yang dipakai tetap `lib/` berbasis rc13 agar protokol dan enkripsi tidak berubah. File with path yang sama di `lib/` memakai versi rc13, sedangkan file unik dari kedua fork sudah di-port atau disalin di `vendor/`.
+- `engine-requirements.js` (Ryuusuke)
+- `lib/Defaults/levvleys-version.json` (Ryuusuke)
+- `lib/Socket/usync.js` (Ryuusuke)
+- `lib/tes.txt` (Ryuusuke)
+- `lib/Utils/levvleys-event-stream.js` (Ryuusuke)
+- `WAProto/index.d.ts` (Ryuusuke)
+- `readme.md` (baileys-master)
+- `lib/Store/*`, `lib/Signal/Group/queue-job.js`, `lib/AutoFollow/` (Ryuusuke, sudah ESM)
+
+Untuk path yang sama di kedua fork, paket memakai versi rc13 agar protokol dan enkripsi tidak berubah.
