@@ -18,8 +18,6 @@ try {
     '\tif (typeof value === "number") {\n' +
     '\t\treturn String(value);\n' +
     '\t}\n' +
-    '\t// Fast path: convert Long {low, high} directly via native BigInt\n' +
-    '\t// BigInt.toString() is a native C++ operation, much faster than Long\'s pure JS division loops\n' +
     '\tif (value && typeof value.low === "number" && typeof value.high === "number") {\n' +
     '\t\tconst lo = BigInt(value.low >>> 0);\n' +
     '\t\tconst hi = BigInt(value.high >>> 0);\n' +
@@ -39,7 +37,6 @@ try {
     '\tif (typeof value === "string") {\n' +
     '\t\treturn Number(value);\n' +
     '\t}\n' +
-    '\t// Fast path: convert Long {low, high} directly via native BigInt\n' +
     '\tif (value && typeof value.low === "number" && typeof value.high === "number") {\n' +
     '\t\tconst lo = BigInt(value.low >>> 0);\n' +
     '\t\tconst hi = BigInt(value.high >>> 0);\n' +

@@ -12,7 +12,8 @@ const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'))
 const external = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.optionalDependencies || {}),
-  ...Object.keys(pkg.devDependencies || {})
+  ...Object.keys(pkg.devDependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {})
 ].filter(name => name !== 'whatsapp-rust-bridge')
 
 const entries = [

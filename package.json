@@ -29,6 +29,24 @@
     "whatsapp-rust-bridge": "0.5.4",
     "ws": "^8.13.0"
   },
+  "peerDependencies": {
+    "@roamhq/wrtc": "^0.2.0",
+    "better-sqlite3": ">=11",
+    "fluent-ffmpeg": "*",
+    "ioredis": "^5",
+    "mongodb": "^6",
+    "mysql2": "^3",
+    "pg": "^8"
+  },
+  "peerDependenciesMeta": {
+    "@roamhq/wrtc": { "optional": true },
+    "better-sqlite3": { "optional": true },
+    "fluent-ffmpeg": { "optional": true },
+    "ioredis": { "optional": true },
+    "mongodb": { "optional": true },
+    "mysql2": { "optional": true },
+    "pg": { "optional": true }
+  },
   "optionalDependencies": {
     "audio-decode": "^2.1.3",
     "fflate": "^0.8.3",

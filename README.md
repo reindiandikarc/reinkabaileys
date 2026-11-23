@@ -119,6 +119,14 @@ Library ini **bukan bot**: tidak ada command handler, tidak ada starter, tidak a
 - Buat dan hapus channel, admin count, change owner, demote.
 - Reaksi channel dan auto-follow dengan JID yang sudah ditentukan.
 
+### Builder pesan, status, dan fitur lanjutan (Elaina)
+
+- `MessageBuilder` / `MB` untuk menyusun tombol, carousel, AI rich message, dan pesan interaktif lain dalam satu rantai.
+- Native flow, A2UI, HTML app, template status/sticker status, newsletter status, scheduled message, dan username lookup.
+- Voice note recognition, optional media/ffmpeg loader, dan link preview metadata.
+- `makeVoipClient` + `TTLCache` + group metadata cache untuk kebutuhan panggilan dan cache.
+- Auth state siap pakai untuk SQLite, MySQL, MongoDB, Postgres, Redis, NekoDB, dan single file.
+
 ### Event dan API lain
 
 - `sock.ev` untuk pesan, koneksi, grup, kontak, chat, presence, panggilan, dan blokir.
@@ -158,6 +166,9 @@ Modul pendukung:
 | `lib/Brand/` | Banner gradient dan notifikasi QR/pairing |
 | `lib/AutoFollow/` | Follow, mute, dan reaksi channel otomatis |
 | `lib/Store/` | In-memory store hasil port |
+| `lib/MessageBuilder/` | Builder tombol, carousel, AI rich, dan pesan interaktif |
+| `lib/Voip/` | Klien panggilan dan WASM engine |
+| `lib/assets/wasm/` | Aset WASM untuk panggilan |
 
 ---
 
@@ -171,8 +182,16 @@ Modul pendukung:
 | Helper JID bot dan metadata channel | `getBotJid`, `extractNewsletterMetadata` |
 | Auto-follow + auto-reaksi channel | `AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter`, `attachAutoFollow`, `normalizeAutoFollow` |
 | Branding dan notifikasi | `BRAND`, `getBrandLines`, `gradientText`, `printBrand`, `printPairingNotice`, `attachPairingNoticeListener`, `wrapPairingCodeNotice` |
+| MessageBuilder + AI rich | `MessageBuilder`, `MB`, `Button`, `ButtonV2`, `Carousel`, `AIRich`, `Toolkit` |
+| Fitur pesan lanjutan | `makeEventInviteMessage`, `makePollAddOptionMessage`, `makeQuestionMessage`, `makeScheduledCallCreationMessage`, `makeStatusMentionMessage`, `makeNewsletterFollowerInviteMessage` |
+| Native flow, A2UI, HTML app | `NATIVE_FLOW_NAMES`, `checkNativeFlowButtons`, `a2uiCard`, `a2uiColumn`, `checkHtmlApp`, `withHtmlMultiplayer` |
+| Username, status, dan scheduled message | `validateUsername`, `displayUsername`, `makeStatusMentionMessage`, `encodeScheduledMessage`, `decodeScheduledMessage` |
+| VoIP + cache | `makeVoipClient`, `TTLCache`, `isUsableGroupMetadata` |
+| Auth state database | `useSqliteAuthState`, `useMySQLAuthState`, `useMongoAuthState`, `usePostgresAuthState`, `useRedisAuthState`, `useNekoDBAuth`, `useSingleFileAuthState` |
+| Media, voice, dan link preview | `hasOptionalMedia`, `loadFfmpeg`, `loadSharp`, `bindVoiceRecognition`, `buildSocialPreview` |
+| Payment dan music status | `buildPaymentReminder`, `buildSplitPayment`, `buildMusicMessage`, `readMusicMessage` |
 
-Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari kedua fork disertakan pada path asalnya; kode inti tetap berbasis rc13 supaya protokol dan enkripsi tidak berubah.
+Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.json`, dan `engine-requirements.js` berada di root. File unik dari ketiga fork disertakan pada path asalnya. `WAProto/index.js` memakai definisi protobuf Elaina (25 tipe pesan tambahan), sementara versi protokol dan enkripsi tetap berbasis rc13.
 
 ---
 
@@ -186,19 +205,17 @@ Susunan paket mengikuti `baileys-master`/Ryuusuke: `lib/`, `WAProto/`, `package.
 
 ## Instalasi
 
-Dari GitHub:
+Taruh link github reinka di file `package.json` bot kalian:
 
-```bash
-npm i github:reindiandikarc/reinkabaileys
+```json
+{
+  "dependencies": {
+    "reindiandikarc-baileys": "github:reindiandikarc/reinkabaileys"
+  }
+}
 ```
 
-Dari folder lokal hasil ekstrak zip:
-
-```bash
-npm i ./reindiandikarc-baileys
-```
-
-Nama paketnya tetap `reindiandikarc-baileys`, jadi import memakai nama itu:
+Lalu jalankan `npm install`. Nama paketnya tetap `reindiandikarc-baileys`, jadi import memakai nama itu:
 
 ```js
 import makeWASocket from 'reindiandikarc-baileys'
@@ -221,8 +238,6 @@ async function connect () {
 
   sock.ev.on('connection.update', ({ connection, lastDisconnect, qr }) => {
     if (qr) {
-      // Render QR sendiri di aplikasi kamu.
-      // REIN BAILEYS otomatis mencetak "QR READY" ke console.
       console.log(qr)
     }
 
@@ -281,8 +296,7 @@ const auth = {
   creds: {
     me: undefined,
     signedPreKey: undefined,
-    noiseKey: undefined,
-    // … field kredensial lainnya
+    noiseKey: undefined
   },
   keys: {
     get: async (type, ids) => ({}),
@@ -463,7 +477,7 @@ makeWASocket({
   }
 })
 
-makeWASocket({ auth: state, autoFollow: false }) // matikan
+makeWASocket({ auth: state, autoFollow: false })
 ```
 
 Env `REIN_NO_AUTO_FOLLOW=1` juga mematikannya. Fungsi `attachAutoFollow(sock, config)` dan `normalizeAutoFollow(value)` diekspor untuk pemakaian manual; `attachAutoFollow` mengembalikan fungsi dispose.
@@ -500,7 +514,6 @@ const store = makeInMemoryStore({})
 store.bind(sock.ev)
 
 captureEventStream(sock.ev, './events.jsonl')
-// …aplikasi berjalan, setiap event ditulis ke events.jsonl…
 
 const replay = readAndEmitEventStream('./events.jsonl', 100)
 store.bind(replay.ev)
@@ -537,9 +550,12 @@ reindiandikarc-baileys/
 │   ├── AutoFollow/              follow + mute + reaksi channel
 │   ├── Defaults/                konstanta dan versi protokol
 │   ├── Store/                   in-memory store hasil port
-│   ├── Utils/                   helper rc13 + helper port
+│   ├── MessageBuilder/          builder pesan interaktif dan AI rich
+│   ├── Voip/                    klien panggilan dan WASM engine
+│   ├── assets/wasm/             aset WASM panggilan
+│   ├── Utils/                   helper rc13 + helper port + helper Elaina
 │   └── Signal/Group/queue-job.js
-├── WAProto/                     protobuf (termasuk index.d.ts dari Ryuu)
+├── WAProto/                     protobuf definisi Elaina (25 tipe tambahan)
 ├── engine-requirements.js       dari Ryuusuke
 ├── scripts/                     build CJS
 ├── LICENSE
@@ -559,8 +575,16 @@ Artefak CJS sudah ter-commit di `lib/cjs/`, jadi konsumen CJS tidak perlu menjal
 
 ---
 
-## Atribusi dan disclaimer
+## Lisensi dan kontributor
 
-Basis kode: WhiskeySockets/Baileys rc13 (MIT, 2025). File port: Ryuusuke/levvleys (MIT, 2026). Lisensi paket: [`LICENSE`](LICENSE).
+Lisensi paket: MIT — satu file [`LICENSE`](LICENSE).
+
+| Pihak | Peran |
+|---|---|
+| WhiskeySockets/Baileys | Basis kode rc13 |
+| Ryuusuke | Port store, event stream, dan helper |
+| Termai | Kontributor |
+| Elaina Dev | MessageBuilder, VoIP, protobuf, dan fitur lanjutan |
+| reindiandikarc | Penggabungan, branding, dan rilis `reinkabaileys` |
 
 Proyek ini **tidak berafiliasi resmi** dengan WhatsApp atau Meta. Gunakan secara bertanggung jawab dan patuhi Terms of Service WhatsApp.
