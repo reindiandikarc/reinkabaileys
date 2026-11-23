@@ -1,0 +1,4 @@
+.superpowers/
+node_modules/
+auth_info*/
+*.log
