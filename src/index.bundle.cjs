@@ -116034,7 +116034,7 @@ async function derivePairingCodeKey(pairingCode, salt) {
 }
 
  
-var baileysVersion = [2, 3e3, 1035194821];
+var baileysVersion = [2, 3e3, 1043857760];
 var BufferJSON = {
    
   replacer: (k, value) => {
@@ -126749,7 +126749,7 @@ var import_pino = __toESM(require_pino(), 1);
 var logger_default = (0, import_pino.default)({ timestamp: () => `,"time":"${( new Date()).toJSON()}"` });
 
  
-var version = [2, 3e3, 1035194821];
+var version = [2, 3e3, 1043857760];
 var UNAUTHORIZED_CODES = [401, 403, 419];
 var DEFAULT_ORIGIN = "https://web.whatsapp.com";
 var CALL_VIDEO_PREFIX = "https://call.whatsapp.com/video/";

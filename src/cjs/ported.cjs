@@ -120251,7 +120251,7 @@ var init_generics = __esm({
     init_Types();
     init_WABinary();
     init_crypto();
-    baileysVersion = [2, 3e3, 1035194821];
+    baileysVersion = [2, 3e3, 1043857760];
     BufferJSON = {
       replacer: (k, value) => {
         if (Buffer.isBuffer(value) || value instanceof Uint8Array || value?.type === "Buffer") {
@@ -127534,7 +127534,7 @@ var init_Defaults = __esm({
     init_libsignal();
     init_browser_utils();
     init_logger();
-    version = [2, 3e3, 1035194821];
+    version = [2, 3e3, 1043857760];
     UNAUTHORIZED_CODES = [401, 403, 419];
     DEFAULT_ORIGIN = "https://web.whatsapp.com";
     CALL_VIDEO_PREFIX = "https://call.whatsapp.com/video/";
