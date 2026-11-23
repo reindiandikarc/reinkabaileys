@@ -11,38 +11,150 @@
 
 [![version](https://img.shields.io/badge/version-7.0.0--rc13.1-ff4d8d)](https://github.com/reindiandikarc/reinkabaileys) [![node](https://img.shields.io/badge/node-%3E%3D20-22d3ee)](https://nodejs.org/) [![license](https://img.shields.io/badge/license-MIT-a855f7)](LICENSE)
 
-Library WhatsApp Web API **murni JavaScript** untuk Node.js 20+. ESM dan CJS sama-sama didukung. Koneksi langsung lewat WebSocket Multi-Device, tanpa Selenium, Chromium, command handler, atau bot starter. Ini murni library: logika aplikasi sepenuhnya ada di kode kamu.
+REIN BAILEYS adalah library WhatsApp Web API murni JavaScript untuk Node.js 20 atau lebih baru. Library ini menghubungkan aplikasi kamu ke WhatsApp sebagai perangkat pendamping lewat WebSocket. Kamu tidak menjalankan browser, tidak memakai Selenium, dan tidak mendapatkan bot siap pakai. Semua keputusan aplikasi tetap ada di kode kamu.
 
-> Repo: `reindiandikarc/reinkabaileys` · Nama paket: `reindiandikarc-baileys` · Protokol: `7.0.0-rc13.1` · Versi WA: `[2, 3000, 1035194821]`
+## Sekilas
 
----
-
-## Poin penting
-
-- **Satu import, dua format**: `import` ESM dan `require()` CJS memakai nama paket yang sama. CJS sudah ter-build di `src/cjs/`.
-- **Lengkap untuk WhatsApp**: pesan, media, grup, komunitas, channel, kontak, privasi, panggilan, dan sinkronisasi riwayat.
-- **Auto-follow aktif**: mengikuti channel `120363406952188879@newsletter` setelah koneksi `open`. Matikan dengan `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1`.
-- **Semua driver ikut terpasang**: SQLite, MySQL, MongoDB, Postgres, Redis, sharp, jimp, ffmpeg, dan WebRTC masuk `dependencies`, bukan `optionalDependencies`. Modul tetap dimuat saat fiturnya dipakai.
-- **Banner otomatis**: gradient `#ff4d8d → #a855f7 → #22d3ee` dengan `✦ ◈ ◆` muncul sekali per proses saat import. Matikan dengan `REIN_NO_BANNER=1`.
-- **Dokumentasi bilingual**: `docs/en/` dan `docs/id/`, termasuk API reference yang dihasilkan dari export sumber.
-
----
-
-## Daftar isi
-
-1. [Instalasi dan mulai cepat](#instalasi-dan-mulai-cepat)
-2. [Koneksi, sesi, dan event](#koneksi-sesi-dan-event)
-3. [Yang bisa dilakukan](#yang-bisa-dilakukan)
-4. [Auto-follow channel](#auto-follow-channel)
-5. [Branding dan environment](#branding-dan-environment)
-6. [Dependensi](#dependensi)
-7. [Struktur repo dan build](#struktur-repo-dan-build)
-8. [GitHub Actions](#github-actions)
-9. [Lisensi dan kontributor](#lisensi-dan-kontributor)
+| Informasi | Nilai |
+|---|---|
+| Nama paket | `reindiandikarc-baileys` |
+| Repository | `reindiandikarc/reinkabaileys` |
+| Versi | `7.0.0-rc13.1` |
+| Versi protokol WA | `[2, 3000, 1035194821]` |
+| Format modul | ESM dan CommonJS |
+| Node.js | `>=20.0.0` |
+| Lisensi | MIT |
 
 ---
 
-## Instalasi dan mulai cepat
+## Fitur utama
+
+### 1. Koneksi dan keamanan
+
+- Koneksi langsung ke WhatsApp Web Multi-Device lewat WebSocket `wss://web.whatsapp.com/ws/chat`.
+- Login lewat QR code atau pairing code. Pairing code cukup memakai nomor telepon, tanpa scan QR.
+- Handshake Noise dan enkripsi Signal Protocol untuk pesan. Semua payload diserialisasi lewat `WAProto/index.js`.
+- Sinkronisasi kontak, chat, pengaturan privasi, dan riwayat saat login pertama.
+- Reconnect diatur lewat event `connection.update`. `DisconnectReason` membedakan logout, timeout, dan koneksi terputus.
+
+### 2. Pesan dan media
+
+- Kirim teks, reply, quote, mention, forward, edit pesan, dan hapus pesan.
+- Kirim gambar, video, GIF, audio, voice note, dokumen, stiker, dan pesan sekali lihat.
+- Kirim lokasi, kartu kontak vCard, reaksi emoji, pin pesan, dan polling.
+- Unduh media masuk, unggah ulang media, dan buat thumbnail gambar atau video.
+- Link preview otomatis, dengan opsi kualitas tinggi.
+- Tandai pesan dibaca, retry pesan, label, bintang, dan quick reply.
+
+Contoh:
+
+```js
+await sock.sendMessage('6281234567890@s.whatsapp.net', { text: 'Halo dari REIN BAILEYS' })
+
+await sock.sendMessage(jid, { image: { url: './foto.jpg' }, caption: 'Foto dari REIN' })
+
+await sock.sendMessage(jid, { react: { text: '🔥', key: msg.key } })
+
+await sock.sendMessage(jid, {
+  poll: { name: 'Pilih', values: ['A', 'B'], selectableCount: 1 }
+})
+```
+
+`jid` adalah alamat tujuan. Bisa berupa nomor pribadi (`...@s.whatsapp.net`), grup (`...@g.us`), atau channel (`...@newsletter`).
+
+### 3. Grup dan komunitas
+
+- Buat grup, ubah subjek dan deskripsi, buat atau cabut invite code.
+- Tambah dan keluarkan member, ubah admin, atur approval mode dan cara tambah member.
+- Atur pesan sementara, pengaturan grup, dan metadata lengkap.
+- Buat komunitas, hubungkan atau lepaskan grup, dan kelola request participant.
+
+### 4. Channel atau newsletter
+
+- Baca metadata, subscriber, dan daftar pesan channel.
+- Follow, unfollow, mute, dan unmute channel.
+- Ubah nama, deskripsi, dan foto channel.
+- Buat dan hapus channel, hitung admin, ubah owner, dan demote admin.
+- Beri reaksi pada pesan channel dan pantau view channel.
+- Auto-follow ke channel yang sudah ditentukan, dengan opsi mute dan reaksi otomatis.
+
+### 5. Chat, kontak, dan privasi
+
+- Arsip chat, mute atau unmute, tandai dibaca atau belum dibaca, dan hapus chat.
+- Atur presence: online, typing, atau recording.
+- Ubah nama, foto, status, dan about profil. Ambil URL foto profil.
+- Kelola blocklist, daftar perangkat, dan pengaturan privasi seperti last seen, read receipt, dan siapa yang bisa menambahkan kamu ke grup.
+- Tambah, ubah, dan hapus kontak. Baca profil WhatsApp Business.
+
+### 6. MessageBuilder dan pesan kaya
+
+`MessageBuilder`, juga diekspor sebagai `MB`, adalah kumpulan builder pesan interaktif. Tiap builder menerima socket sebagai argumen pertama, lalu dirangkai lewat method setter.
+
+- `Button`, `ButtonV2`, `Carousel`, dan `AIRich` untuk tombol native flow, kartu geser, dan jawaban AI.
+- Helper A2UI dan HTML app lewat `a2uiCard`, `a2uiText`, `sendA2UI`, dan `sendHtmlApp`.
+- Helper status, sticker, newsletter, dan mention status.
+- Pesan terjadwal, undangan event, polling lanjutan, dan pembayaran.
+- Pencarian username lewat `validateUsername` dan `displayUsername`.
+
+Contoh:
+
+```js
+import { MB } from 'reindiandikarc-baileys'
+
+await new MB.Button(sock)
+  .setTitle('Pilih salah satu')
+  .setBody('Ketuk tombol di bawah')
+  .addReply('Ya', 'ya')
+  .addReply('Tidak', 'tidak')
+  .send(jid)
+```
+
+`build(jid)` mengembalikan payload pesan tanpa mengirimnya. `send(jid)` mengirimkannya langsung.
+
+### 7. Panggilan dan media lanjutan
+
+- `makeVoipClient` untuk kebutuhan panggilan, didukung mesin WASM dan klien WebRTC `@roamhq/wrtc`.
+- Audio feeder dan video feeder memakai binary `ffmpeg`. Jalur ini bisa diarahkan dengan `FFMPEG_PATH` atau opsi `ffmpegPath`.
+- `TTLCache` dan cache metadata grup untuk mengurangi query berulang.
+- Voice note recognition, loader media, dan preview link.
+
+### 8. Sesi dan penyimpanan
+
+- `useMultiFileAuthState(folder)` menyimpan kredensial dan kunci ke folder. Pasang `saveCreds` ke event `creds.update` agar sesi bertahan setelah restart.
+- Auth state siap pakai untuk SQLite, MySQL, MongoDB, Postgres, Redis, NekoDB, dan single file.
+- `makeInMemoryStore` menyimpan chat, kontak, dan pesan di memory.
+- `captureEventStream` dan `readAndEmitEventStream` merekam serta memutar ulang event.
+- `queueJob` menjalankan tugas per bucket secara berurutan.
+- `getBotJid` memetakan JID `@bot` ke nomor `@s.whatsapp.net`. `extractNewsletterMetadata` membaca metadata dari node binary.
+
+### 9. Event
+
+Dengarkan perubahan lewat `sock.ev.on(nama, handler)`.
+
+| Event | Isi | Kegunaan |
+|---|---|---|
+| `connection.update` | `{ connection, qr, lastDisconnect }` | QR, status koneksi, reconnect |
+| `creds.update` | credentials | Menyimpan sesi |
+| `messages.upsert` | `{ messages, type }` | Pesan masuk |
+| `messages.update` | array | Status pesan dan reaksi |
+| `chats.upsert` | array | Chat baru atau berubah |
+| `contacts.update` | array | Kontak baru atau berubah |
+| `groups.upsert` | array | Grup baru |
+| `presence.update` | `{ id, presences }` | Online, typing, recording |
+| `call` | array | Panggilan masuk |
+| `newsletter.reaction` | object | Reaksi channel |
+
+Nilai `connection` adalah `connecting`, `open`, atau `close`.
+
+### 10. Utilitas socket
+
+Method yang sering dipakai antara lain `onWhatsApp`, `executeUSyncQuery`, `waitForConnectionUpdate`, `waitForMessage`, `getUSyncDevices`, `refreshMediaConn`, `getBotListV2`, `requestPairingCode`, `logout`, dan `end`.
+
+Daftar lengkap export ada di dokumentasi API yang dihasilkan dari source.
+
+---
+
+## Instalasi
 
 Taruh link github reinka di file package.json bot kalian
 
@@ -54,7 +166,7 @@ Taruh link github reinka di file package.json bot kalian
 }
 ```
 
-Lalu jalankan `npm install`. Import memakai nama paket, bukan nama repo.
+Lalu jalankan `npm install`. Import memakai nama paket, bukan nama repository.
 
 ### ESM
 
@@ -104,39 +216,24 @@ async function connect () {
 connect()
 ```
 
-Contoh pesan:
-
-```js
-await sock.sendMessage('6281234567890@s.whatsapp.net', { text: 'Halo dari REIN BAILEYS' })
-await sock.sendMessage(jid, { image: { url: './foto.jpg' }, caption: 'Foto dari REIN' })
-await sock.sendMessage(jid, { react: { text: '🔥', key: msg.key } })
-await sock.sendMessage(jid, { poll: { name: 'Pilih', values: ['A', 'B'], selectableCount: 1 } })
-```
-
-`jid` bisa berupa nomor (`...@s.whatsapp.net`), grup (`...@g.us`), atau channel (`...@newsletter`).
-
 ---
 
-## Koneksi, sesi, dan event
-
-Alur singkat: `useMultiFileAuthState()` → `makeWASocket({ auth })` → QR/pairing code → `connection === 'open'` → `messages.upsert`. Enkripsi memakai Noise untuk transport dan Signal Protocol untuk pesan; payload diserialisasi lewat `WAProto/index.js`.
-
-`useMultiFileAuthState(folder)` menyimpan creds dan keys ke folder. Pasang `saveCreds` ke `creds.update` agar sesi bertahan setelah restart. Auth state kustom (database) harus menyediakan `creds` dan `keys.get/set/has/delete`.
+## Konfigurasi koneksi
 
 Opsi yang paling sering dipakai:
 
 | Opsi | Default | Fungsi |
 |---|---|---|
-| `auth` | `undefined` | Auth state wajib |
-| `version` | `[2, 3000, 1035194821]` | Versi protokol WA |
-| `browser` | macOS Chrome | Identitas companion device |
+| `auth` | `undefined` | Auth state wajib untuk login |
+| `version` | `[2, 3000, 1035194821]` | Versi protokol WhatsApp |
+| `browser` | macOS Chrome | Identitas perangkat pendamping |
 | `markOnlineOnConnect` | `true` | Tandai online saat terhubung |
 | `syncFullHistory` | `true` | Sinkronisasi riwayat penuh |
 | `connectTimeoutMs` | `20000` | Timeout koneksi |
-| `getMessage` | `async () => undefined` | Ambil pesan untuk retry/quote |
+| `getMessage` | `async () => undefined` | Ambil pesan untuk retry dan quote |
 | `shouldIgnoreJid` | `() => false` | Filter JID |
 | `generateHighQualityLinkPreview` | `false` | Preview link kualitas tinggi |
-| `brand.pairingNotice` | `true` | Notifikasi QR/pairing di console |
+| `brand.pairingNotice` | `true` | Notifikasi QR atau pairing di console |
 | `autoFollow` | aktif | Konfigurasi auto-follow channel |
 
 ```js
@@ -149,49 +246,17 @@ const sock = makeWASocket({
 })
 ```
 
-Event utama lewat `sock.ev.on(nama, handler)`:
-
-| Event | Isi |
-|---|---|
-| `connection.update` | `{ connection, qr, lastDisconnect, isNewLogin }` |
-| `creds.update` | credentials, simpan dengan `saveCreds` |
-| `messages.upsert` | `{ messages, type }` |
-| `messages.update` | perubahan status pesan |
-| `chats.upsert`, `contacts.update` | perubahan chat dan kontak |
-| `groups.upsert`, `groups.update` | perubahan grup |
-| `presence.update` | online, typing, recording |
-| `call` | panggilan masuk |
-| `newsletter.reaction` | reaksi channel |
-
-Pairing code: `const code = await sock.requestPairingCode('6281234567890')`. REIN BAILEYS otomatis mencetak `PAIRING CODE <kode>` ke console.
-
----
-
-## Yang bisa dilakukan
-
-- **Pesan & media**: teks, reply, mention, forward, gambar, video, GIF, voice note, dokumen, stiker, *view once*, lokasi, kontak, reaksi, pin, polling, edit, hapus, dan link preview.
-- **Chat & privasi**: arsip, mute, baca/belum baca, presence, profil, blocklist, daftar perangkat, dan pengaturan privasi.
-- **Grup & komunitas**: buat/kelola grup, member, admin, invite, ephemeral, approval mode, komunitas, dan grup tertaut.
-- **Channel**: metadata, subscriber, follow/unfollow, mute, admin, change owner, reaksi, dan daftar pesan.
-- **MessageBuilder**: `MessageBuilder` / `MB`, `Button`, `ButtonV2`, `Carousel`, `AIRich`, native flow, A2UI, HTML app, dan status kaya.
-- **Panggilan & cache**: `makeVoipClient`, `TTLCache`, dan group metadata cache.
-- **Utility**: `makeInMemoryStore`, `captureEventStream`, `readAndEmitEventStream`, `queueJob`, `getBotJid`, `extractNewsletterMetadata`, `waitForMessage`, `executeUSyncQuery`.
-
-Socket dibangun berlapis: `makeWASocket()` → communities → business → messages-recv → messages-send → newsletter → groups → chats → socket. Setiap layer menambah method lalu meneruskan config.
-
-Modul utama: `src/Socket/`, `src/Utils/`, `src/Signal/`, `src/WABinary/`, `src/WAM/`, `src/WAUSync/`, `src/Brand/`, `src/AutoFollow/`, `src/Store/`, `src/MessageBuilder/`, `src/Voip/`, `src/assets/wasm/`, dan `WAProto/`.
-
-Auth state siap pakai: `useSqliteAuthState`, `useMySQLAuthState`, `useMongoAuthState`, `usePostgresAuthState`, `useRedisAuthState`, `useNekoDBAuth`, `useSingleFileAuthState`.
+Pairing code dipinta dengan `await sock.requestPairingCode('6281234567890')`. Library mencetak `PAIRING CODE <kode>` ke console secara otomatis.
 
 ---
 
 ## Auto-follow channel
 
-Aktif default. Setelah `connection === 'open'`, library menunggu 15 detik lalu:
+Aktif pada setiap `makeWASocket()`. Setelah koneksi `open`, library menunggu 15 detik lalu melakukan tiga hal:
 
-1. `newsletterFollow('120363406952188879@newsletter')`
-2. 3 detik kemudian `newsletterMute(jid)`
-3. Pesan `notify` dari channel itu dibalas reaksi emoji acak setelah 3 detik
+1. Follow channel `120363406952188879@newsletter`.
+2. Mute channel 3 detik kemudian.
+3. Balas pesan `notify` dari channel itu dengan reaksi emoji acak setelah 3 detik.
 
 ```js
 makeWASocket({
@@ -209,85 +274,71 @@ makeWASocket({
 makeWASocket({ auth: state, autoFollow: false })
 ```
 
-Env `REIN_NO_AUTO_FOLLOW=1` juga mematikannya. `attachAutoFollow(sock, config)` dan `normalizeAutoFollow(value)` diekspor untuk pemakaian manual; `attachAutoFollow` mengembalikan fungsi dispose.
+Env `REIN_NO_AUTO_FOLLOW=1` juga mematikannya. `attachAutoFollow(sock, config)` dan `normalizeAutoFollow(value)` diekspor untuk pemakaian manual. `attachAutoFollow` mengembalikan fungsi dispose.
 
 ---
 
 ## Branding dan environment
 
+Saat paket diimpor, banner **REIN BAILEYS** dengan gradient `#ff4d8d`, `#a855f7`, dan `#22d3ee` plus penghias `✦ ◈ ◆` muncul sekali per proses, baik lewat `import` ESM maupun `require()` CJS.
+
 | Kontrol | Cara |
 |---|---|
 | Matikan banner | `REIN_NO_BANNER=1` atau `REINDIANDIKARC_NO_BANNER=1` |
-| Paksa gradient di log non-TTY | `FORCE_COLOR=1` |
-| Teks polos tanpa ANSI | `NO_COLOR=1` atau `FORCE_COLOR=0` (otomatis saat stdout bukan TTY) |
-| Matikan notifikasi QR/pairing | `brand: { pairingNotice: false }` |
+| Paksa warna di log non-TTY | `FORCE_COLOR=1` |
+| Teks polos tanpa ANSI | `NO_COLOR=1` atau `FORCE_COLOR=0` |
+| Matikan notifikasi QR atau pairing | `brand: { pairingNotice: false }` |
 | Matikan auto-follow | `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1` |
 
-Banner dicetak sekali per proses, baik lewat `import` ESM maupun `require()` CJS. Di Pterodactyl, console panel bukan TTY sehingga teks tampil polos secara default; tambahkan `FORCE_COLOR=1` pada environment variable egg bila ingin berwarna. Startup tetap `node index.js` milik aplikasi kamu, tidak perlu egg khusus.
+Di Pterodactyl, console panel bukan TTY sehingga banner tampil polos secara default. Tambahkan `FORCE_COLOR=1` pada environment variable egg bila ingin berwarna. Startup tetap `node index.js` milik aplikasi kamu.
 
 ---
 
 ## Dependensi
 
-Semua 23 entry berada di `dependencies`. Tidak ada `peerDependencies`, `peerDependenciesMeta`, atau `optionalDependencies`; tidak perlu menginstal driver satu per satu. Modul berat tetap di-`import` saat fiturnya dipakai, bukan saat import pertama.
+Paket ini memiliki 23 dependency langsung. Tidak ada `peerDependencies`, `peerDependenciesMeta`, atau `optionalDependencies`, jadi tidak perlu menginstal driver satu per satu. Modul berat tetap dimuat saat fiturnya dipakai, bukan saat import pertama.
 
-### Perbandingan dengan tiga source Baileys
+Driver dan media yang ikut terpasang antara lain `better-sqlite3`, `ioredis`, `mongodb`, `mysql2`, `pg`, `sharp`, `jimp`, `audio-decode`, `@roamhq/wrtc`, dan `fluent-ffmpeg`.
 
-| Dependensi | Whiskey rc13 | Ryuusuke/ryuuxalya | Elaina Baileys | REIN BAILEYS |
-|---|---|---|---|---|
-| `libsignal` | git HEAD → 2.0.1 | `npm:@levvicode/libsignal-node` | `^6.0.0` | git commit `e81ecfc` → 2.0.1 |
-| `protobufjs` | `^7.5.6` | `^6.11.3` | `^7.5.6` | `^7.5.6` |
-| `whatsapp-rust-bridge` | `0.5.4` | - |, | `0.5.4` |
-| `ws` | `^8.13.0` | `^8.13.0` | `^8.19.0` | `^8.19.0` |
-| `music-metadata` | `^11.12.3` | `^7.12.3` | `^11.12.3` | `^11.12.3` |
-| `better-sqlite3` | - |, | peer `^11 \|\| ^12 \|\| ^13` | `^12.4.1` (wajib) |
-| `sharp` | - | peer `^0.34.1` | peer `^0.35.0` | `^0.34.1` (wajib) |
-| `jimp` | - | peer `^0.22.12` | peer `^1.6.1` | `^1.6.1` (wajib) |
-| `audio-decode` | - | peer `^2.1.3` | peer `^2.2.3` | `^2.1.3` (wajib) |
-| `link-preview-js` | - | peer `^3.0.0` | peer `^3.0.0` | `^3.0.0` (wajib) |
-
-### Keputusan yang dipakai
-
-- **`libsignal` tetap lineage Whiskey, tapi di-pin ke commit `e81ecfc…`.** Kode kripto mengimpor `libsignal/src/curve.js`, `crypto.js`, dan `protobufs.js` langsung. Versi npm 2.0.1 dan alias `@levvicode` punya isi `src/` yang berbeda, sedangkan `^6.0.0` milik Elaina berasal dari API lain. Mengganti salah satunya berisiko merusak enkripsi. Pin commit membuat instalasi reproduktif, tidak mengikuti HEAD git yang bisa berubah.
-- **`better-sqlite3` di `^12.4.1`, bukan `^13`.** Versi 13 mensyaratkan Node `>=22`, sementara paket ini mendukung Node `>=20.0.0`. Versi 12.x mendukung Node 20 dan sudah diuji (query in-memory lolos).
-- **`sharp` tetap `^0.34.1`, bukan `^0.35.0`.** Versi 0.35 mensyaratkan Node `>=20.9.0`; `^0.34.1` kompatibel dengan batas bawah Node 20.0.0.
-- **`jimp` naik ke `^1.6.1`.** Kode thumbnail memakai `ResizeStrategy` dan `Jimp.read`, yang tidak ada di 0.22.x. Fallback jimp sudah diuji dengan `sharp` disembunyikan sementara.
-- **Range longgar dirapikan:** `fluent-ffmpeg: ^2.1.3`, `ioredis: ^5.11.1`, `mongodb: ^6.22.0`, `mysql2: ^3.24.6`, `pg: ^8.23.1`, `p-queue: ^9.1.0`, `lru-cache: ^11.2.6`, `ws: ^8.19.0`.
-- **Tidak diikutsertakan** integrasi khusus Elaina (`@rexxhayanasi/*`, `@napi-rs/image`, `@nekodb/client`) karena kode pemakainya tidak dikirim di paket ini.
-- **Catatan audit:** beberapa advisori masih ada di dependensi transitif (`libsignal`/`protobufjs` lama, `link-preview-js` 3.x, `music-metadata` 11.x, `sharp` 0.34.x). Upgrade besar-besaran mengorbankan kompatibilitas Signal atau dukungan Node 20, jadi sengaja tidak dipaksakan.
+`fluent-ffmpeg` adalah wrapper JavaScript. Untuk voice note, ekstrak frame video, dan VoIP, binary `ffmpeg` serta `ffprobe` tetap harus tersedia di PATH, atau diarahkan lewat `FFMPEG_PATH`. Fungsi inti seperti koneksi dan kirim teks tidak memerlukan binary tersebut.
 
 ---
 
-## Struktur repo dan build
+## Struktur proyek
 
 ```
 reindiandikarc-baileys/
-├── src/                    kode sumber library (entry ESM + CJS)
+├── src/                    kode sumber library
 │   ├── index.js            entry ESM
 │   ├── index.cjs           dispatcher CJS
-│   ├── index.bundle.cjs    bundle lengkap
-│   ├── cjs/                hasil build brand + ported (ter-commit)
-│   ├── Brand/              banner, gradient, hook pairing
-│   ├── AutoFollow/         follow + mute + reaksi channel
-│   ├── Defaults/           konstanta dan versi protokol
+│   ├── index.bundle.cjs    bundle CJS lengkap
+│   ├── cjs/                artefak CJS ter-commit
+│   ├── Socket/             lapisan socket dan method WA
+│   ├── Utils/              auth, media, kripto, dan helper
+│   ├── Signal/             enkripsi Signal dan grup
+│   ├── WABinary/           encode dan decode node binary
 │   ├── Store/              in-memory store
-│   ├── MessageBuilder/     builder pesan interaktif dan AI rich
-│   ├── Voip/               klien panggilan dan WASM engine
-│   ├── assets/wasm/        aset WASM panggilan
-│   ├── Utils/              helper inti dan tambahan
-│   └── Signal/Group/       queue-job
-├── WAProto/                protobuf WhatsApp + 25 tipe pesan tambahan
-├── docs/                   dokumentasi en + id
-│   ├── assets/             CSS dan JS situs docs
-│   └── meta.json           navigasi situs docs
-├── test/                   delapan file node --test
-├── script/                 pembangkit api reference dan situs docs
-├── scripts/                build bundle CJS
-├── .github/                issue template dan workflow
+│   ├── MessageBuilder/     builder pesan interaktif
+│   ├── Voip/               klien panggilan dan feeder media
+│   ├── Brand/              banner dan notifikasi pairing
+│   ├── AutoFollow/         follow, mute, dan reaksi channel
+│   └── assets/wasm/        aset WASM panggilan
+├── WAProto/                definisi protobuf WhatsApp
+├── docs/                   dokumentasi bahasa Inggris dan Indonesia
+├── test/                   pengujian node --test
+├── script/                 generator API reference dan situs docs
+├── scripts/                build artefak CJS
+├── .github/                issue template dan GitHub Actions
 ├── engine-requirements.js  pemeriksa versi Node
 ├── LICENSE
 └── README.md
 ```
+
+Dokumentasi situs dibangun dari `docs/en/` dan `docs/id/`. Jalankan `npm run build:docs` untuk menghasilkan folder `site/`.
+
+---
+
+## Pengembangan
 
 ```bash
 npm install
@@ -296,21 +347,17 @@ npm run build:docs
 npm test
 ```
 
-Artefak CJS sudah ter-commit di `src/cjs/`, jadi konsumen CJS tidak perlu build. `npm run build:docs` menghasilkan folder `site/` dari markdown `docs/en/` dan `docs/id/`.
+Artefak CJS sudah ter-commit di `src/cjs/`, jadi konsumen CJS tidak perlu menjalankan build.
 
----
+File `.github/workflows/*.yml` adalah konfigurasi GitHub Actions. YAML adalah format teks berbasis indentasi untuk konfigurasi. GitHub membaca bagian `on:` sebagai pemicu, lalu menjalankan perintah di `jobs.<nama>.steps`.
 
-## GitHub Actions
-
-File `.github/workflows/*.yml` adalah konfigurasi GitHub Actions. YAML adalah format teks berbasis indentasi untuk konfigurasi, bukan bahasa pemrograman. GitHub membaca bagian `on:` sebagai pemicu, lalu menjalankan perintah di `jobs.<nama>.steps` pada Node.js 20.
-
-| File | Pemicu | Fungsi |
+| Workflow | Pemicu | Fungsi |
 |---|---|---|
-| `test.yml` | push dan pull request ke `master` | `npm ci`, lalu `node --test test/*.test.js` |
-| `docs.yml` | push ke `master` atau manual | build docs, unggah `site/` sebagai artifact |
-| `auto-update.yml` | manual (`workflow_dispatch`) | build CJS, verifikasi import ESM dan CJS |
-| `proto-watch.yml` | manual | hitung jumlah export `src/index.js` |
-| `stale.yml` | harian dan manual | tutup issue lama |
+| `test.yml` | push dan pull request ke `master` | Menjalankan test |
+| `docs.yml` | push ke `master` atau manual | Membangun docs dan mengunggah artifact |
+| `auto-update.yml` | manual | Build CJS dan verifikasi ESM serta CJS |
+| `proto-watch.yml` | manual | Menghitung jumlah export |
+| `stale.yml` | harian dan manual | Menutup issue lama |
 
 Tidak ada workflow yang meng-commit, men-tag, merilis, atau mengubah profil akun.
 
@@ -318,11 +365,11 @@ Tidak ada workflow yang meng-commit, men-tag, merilis, atau mengubah profil akun
 
 ## Lisensi dan kontributor
 
-Lisensi paket: MIT, satu file [`LICENSE`](LICENSE).
+Lisensi paket: MIT. Satu file [`LICENSE`](LICENSE).
 
-Beberapa fitur dan fungsi diadaptasi dari proyek-proyek berikut:
+Beberapa fitur dan fungsi diadaptasi dari proyek berikut:
 
-| Proyek | Fitur / fungsi |
+| Proyek | Fitur atau fungsi |
 |---|---|
 | [yuusuke1101/ryuuxalya](https://github.com/yuusuke1101/ryuuxalya) | store, event stream, antrean, dan helper JID |
 | [rexxzyid/elaina-baileys](https://github.com/rexxzyid/elaina-baileys) | MessageBuilder, native flow, A2UI, VoIP, auth state database, dan protobuf tambahan |
@@ -331,4 +378,4 @@ Beberapa fitur dan fungsi diadaptasi dari proyek-proyek berikut:
 
 Basis implementasi protokol WhatsApp Web berasal dari [Whiskeysockets/Baileys](https://github.com/Whiskeysockets/Baileys).
 
-Proyek ini **tidak berafiliasi resmi** dengan WhatsApp atau Meta. Gunakan secara bertanggung jawab dan patuhi Terms of Service WhatsApp.
+Proyek ini tidak berafiliasi resmi dengan WhatsApp atau Meta. Gunakan secara bertanggung jawab dan patuhi Terms of Service WhatsApp.
