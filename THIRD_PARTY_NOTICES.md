@@ -12,4 +12,4 @@ Salinan lisensi:
 - [`licenses/WhiskeySockets-LICENSE`](licenses/WhiskeySockets-LICENSE)
 - [`licenses/Ryuusuke-LICENSE`](licenses/Ryuusuke-LICENSE)
 
-Perubahan yang dilakukan: konversi file port dari CommonJS ke ESM, penyesuaian import ke `lib/Defaults/`, penghapusan dependensi lama yang berstatus *security holding*, dan penambahan lapisan branding REIN. Rincian keputusan port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md).
+Perubahan yang dilakukan: konversi file port dari CommonJS ke ESM, penyesuaian import ke `lib/Defaults/`, penghapusan dependensi lama yang berstatus *security holding*, penambahan lapisan branding REIN, dan port auto-follow/auto-reaksi ke `lib/AutoFollow/`. Salinan utuh kedua fork disertakan di `vendor/baileys-master/` dan `vendor/ryuuxalya-main/` bersama lisensi masing-masing di dalamnya. Rincian keputusan port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md).

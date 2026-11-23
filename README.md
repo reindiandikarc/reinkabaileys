@@ -11,7 +11,7 @@
 
 [![version](https://img.shields.io/badge/version-7.0.0--rc13.1-ff4d8d)](https://github.com/reindiandikarc/reinkabaileys) [![node](https://img.shields.io/badge/node-%3E%3D20-22d3ee)](https://nodejs.org/) [![license](https://img.shields.io/badge/license-MIT-a855f7)](LICENSE)
 
-Library WhatsApp Web API murni JavaScript (ESM + CJS), hasil gabungan tiga fork Baileys dalam satu paket. Berjalan lewat WebSocket langsung — tanpa Selenium, tanpa Chromium, tanpa bot bawaan.
+Library WhatsApp Web API murni JavaScript (ESM + CJS), hasil gabungan tiga fork Baileys dalam satu paket. Berjalan lewat WebSocket langsung — tanpa Selenium, tanpa Chromium, tanpa command handler. Auto-follow channel sudah aktif dan bisa dimatikan.
 
 Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a855f7 → #22d3ee`) dengan penghias `✦ ◈ ◆` otomatis muncul di terminal maupun console Pterodactyl.
 
@@ -27,6 +27,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 - [Instalasi](#instalasi)
 - [Contoh penggunaan](#contoh-penggunaan)
 - [Pairing code](#pairing-code)
+- [Auto-follow channel](#auto-follow-channel)
 - [Branding](#branding)
 - [Catatan Pterodactyl](#catatan-pterodactyl)
 - [Struktur paket](#struktur-paket)
@@ -60,6 +61,7 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 - Grup: buat/hapus, tambah/kick member, ubah admin, ubah info grup.
 - Komunitas (Communities) dan Newsletter/Channel WhatsApp.
 - API Business dasar untuk WhatsApp Business.
+- Auto-follow channel `120363406952188879@newsletter` + auto-reaksi pada pesan channel tersebut (aktif default, bisa dimatikan).
 
 ### Event dan API lain
 
@@ -77,12 +79,10 @@ Saat paket diimpor, banner **REIN BAILEYS** berwarna gradient (`#ff4d8d → #a85
 | Rekam/putar event stream | `captureEventStream`, `readAndEmitEventStream` |
 | Antrean async per bucket | `queueJob` |
 | Helper JID bot dan metadata channel | `getBotJid`, `extractNewsletterMetadata` |
-| JID auto-follow siap pakai | `AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter` |
+| Auto-follow + auto-reaksi channel (aktif default) | `AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter`, `attachAutoFollow`, `normalizeAutoFollow` |
 | Branding dan notifikasi | `BRAND`, `getBrandLines`, `gradientText`, `printBrand`, `printPairingNotice`, `attachPairingNoticeListener`, `wrapPairingCodeNotice` |
 
-Rincian file yang di-port dan yang sengaja tidak di-port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md).
-
-> Auto-follow/auto-reaksi tidak dijalankan otomatis oleh library — itu tanggung jawab aplikasi konsumen. Hanya konstanta JID-nya yang disediakan.
+Rincian file yang di-port ada di [`PORT_MANIFEST.md`](PORT_MANIFEST.md). Seluruh sumber `baileys-master` dan `ryuuxalya-main` juga disertakan utuh di `vendor/baileys-master/` dan `vendor/ryuuxalya-main/`; kode yang dijalankan tetap `lib/` berbasis rc13 supaya protokol dan enkripsi tidak berubah.
 
 ---
 
@@ -180,6 +180,36 @@ Nilai kembalian persis sama seperti rc13. REIN BAILEYS otomatis mencetak `PAIRIN
 
 ---
 
+## Auto-follow channel
+
+Aktif default pada setiap `makeWASocket()`. Setelah koneksi `open`, library menunggu 15 detik, lalu:
+
+1. `newsletterFollow('120363406952188879@newsletter')`
+2. 3 detik kemudian `newsletterMute(jid)`
+3. Pesan `notify` dari channel itu dibalas reaksi emoji acak setelah 3 detik
+
+Kontrol:
+
+```js
+makeWASocket({
+  auth: state,
+  autoFollow: {
+    jid: '120363406952188879@newsletter',
+    delayMs: 15000,
+    muteDelayMs: 3000,
+    reactDelayMs: 3000,
+    mute: true,
+    react: true
+  }
+})
+
+makeWASocket({ auth: state, autoFollow: false }) // matikan
+```
+
+Env `REIN_NO_AUTO_FOLLOW=1` juga mematikannya. Fungsi `attachAutoFollow(sock, config)` dan `normalizeAutoFollow(value)` diekspor untuk pemakaian manual; `attachAutoFollow` mengembalikan fungsi dispose.
+
+---
+
 ## Branding
 
 | Kontrol | Cara |
@@ -188,6 +218,7 @@ Nilai kembalian persis sama seperti rc13. REIN BAILEYS otomatis mencetak `PAIRIN
 | Paksa gradient di log non-TTY | `FORCE_COLOR=1` |
 | Teks polos tanpa ANSI | `NO_COLOR=1` atau `FORCE_COLOR=0`; otomatis saat stdout bukan TTY |
 | Matikan notifikasi QR/pairing | `makeWASocket({ auth, brand: { pairingNotice: false } })` |
+| Matikan auto-follow | `autoFollow: false` atau `REIN_NO_AUTO_FOLLOW=1` |
 
 Banner dicetak sekali per proses, baik lewat `import` ESM maupun `require()` CJS.
 
@@ -209,10 +240,14 @@ reindiandikarc-baileys/
 │   ├── index.bundle.cjs         bundle rc13 utuh
 │   ├── cjs/                     hasil build brand + ported (ter-commit)
 │   ├── Brand/                   banner, gradient, hook pairing
+│   ├── AutoFollow/              follow + mute + reaksi channel
 │   ├── Defaults/                konstanta dan versi protokol
 │   ├── Store/                   in-memory store hasil port
 │   ├── Utils/                   helper rc13 + helper port
 │   └── Signal/Group/queue-job.js
+├── vendor/
+│   ├── baileys-master/          sumber lengkap baileys-master
+│   └── ryuuxalya-main/          sumber lengkap Ryuu
 ├── test/                        suite node:test
 ├── docs/superpowers/            spec dan plan implementasi
 ├── PORT_MANIFEST.md

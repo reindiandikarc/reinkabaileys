@@ -9,7 +9,7 @@ Perbandingan antara paket dasar `reindiandikarcbaileys-main` (rc13) dan fork `ry
 | `lib/Signal/Group/queue-job.js` | di-port (ESM) | antrean async, unik di ryuuxalya | tidak ada |
 | `WABinary/jid-utils.js::getBotJid` | helper di-port ke `lib/Utils/rein-compat.js` | pemetaan bot JID, unik di ryuuxalya | `lib/WABinary/jid-utils.js` tanpa pemetaan bot |
 | `Socket/newsletter.js::extractNewsletterMetadata` | helper di-port ke `lib/Utils/rein-compat.js` | parser metadata newsletter, unik di ryuuxalya | `lib/Types/Mex.js`, `lib/Socket/newsletter.js` |
-| `Socket/newsletter.js::autoJoinChannels` + auto-reaksi | tidak di-port | perilaku bot otomatis, bukan tanggung jawab library | `Utils/rein-compat.js::AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter` (konstanta saja) |
+| `Socket/newsletter.js::autoJoinChannels` + auto-reaksi | di-port (ESM, aktif default) ke `lib/AutoFollow/index.js` | sesuai permintaan: ikut channel `120363406952188879@newsletter` dan bereaksi pada pesan channel itu; opt-out lewat `autoFollow:false` atau `REIN_NO_AUTO_FOLLOW=1` | `Utils/rein-compat.js::AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter` |
 | `lib/Utils/link-preview.js` | tidak di-port | rc13 sudah punya integrasi `link-preview-js` yang lebih baru | `lib/Utils/messages-media.js`, `lib/Utils/index.js` |
 | `lib/Utils/message-retry-manager.js` | tidak di-port | helper yang lebih rendah mutunya, rc13 punya retry internal | `lib/Socket/socket.js` |
 | `lib/Utils/validate-connection.js` | tidak di-port | logika validasi duplikat, rc13 punya implementasi sendiri | `lib/Utils/auth-utils.js` |
@@ -24,3 +24,12 @@ Perbandingan antara paket dasar `reindiandikarcbaileys-main` (rc13) dan fork `ry
 | `lib/tes.txt`, `Tes`, `tes` | tidak di-port | artefak kosong/debug | tidak ada |
 
 Ketidakhadiran file di tabel di atas berarti file tersebut identik atau sudah lebih baik di rc13.
+
+## Sumber lengkap
+
+Seluruh isi `baileys-master` dan `ryuuxalya-main` disertakan utuh (tanpa `node_modules` dan `.git`) di:
+
+- `vendor/baileys-master/` — 110 file
+- `vendor/ryuuxalya-main/` — 99 file
+
+Keduanya adalah salinan referensi; kode yang dipakai tetap `lib/` berbasis rc13 agar protokol dan enkripsi tidak berubah. File with path yang sama di `lib/` memakai versi rc13, sedangkan file unik dari kedua fork sudah di-port atau disalin di `vendor/`.
