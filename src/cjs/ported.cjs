@@ -20,16 +20,11 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-   
-   
-   
-   
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
- 
 function longToString(value, unsigned) {
   if (typeof value === "string") {
     return value;
@@ -116163,19 +116158,16 @@ var init_WAProto = __esm({
   }
 });
 
- 
 var init_Auth = __esm({
   "src/Types/Auth.js"() {
   }
 });
 
- 
 var init_GroupMetadata = __esm({
   "src/Types/GroupMetadata.js"() {
   }
 });
 
- 
 var ALL_WA_PATCH_NAMES;
 var init_Chat = __esm({
   "src/Types/Chat.js"() {
@@ -116189,13 +116181,11 @@ var init_Chat = __esm({
   }
 });
 
- 
 var init_Contact = __esm({
   "src/Types/Contact.js"() {
   }
 });
 
- 
 var import_boom, SyncState, ReachoutTimelockEnforcementType, NewChatMessageCappingStatusType, NewChatMessageCappingMVStatusType, NewChatMessageCappingOTEStatusType;
 var init_State = __esm({
   "src/Types/State.js"() {
@@ -116247,7 +116237,6 @@ var init_State = __esm({
   }
 });
 
- 
 var WAMessageStubType, WAMessageStatus, WAMessageAddressingMode;
 var init_Message = __esm({
   "src/Types/Message.js"() {
@@ -116261,7 +116250,6 @@ var init_Message = __esm({
   }
 });
 
- 
 var init_Socket = __esm({
   "src/Types/Socket.js"() {
     init_WAProto();
@@ -116269,33 +116257,28 @@ var init_Socket = __esm({
   }
 });
 
- 
 var init_Events = __esm({
   "src/Types/Events.js"() {
     init_WAProto();
   }
 });
 
- 
 var init_Product = __esm({
   "src/Types/Product.js"() {
   }
 });
 
- 
 var init_Call = __esm({
   "src/Types/Call.js"() {
   }
 });
 
- 
 var init_Signal = __esm({
   "src/Types/Signal.js"() {
     init_WAProto();
   }
 });
 
- 
 var XWAPaths, QueryIds;
 var init_Mex = __esm({
   "src/Types/Mex.js"() {
@@ -116336,7 +116319,6 @@ var init_Mex = __esm({
   }
 });
 
- 
 var DisconnectReason;
 var init_Types = __esm({
   "src/Types/index.js"() {
@@ -116367,7 +116349,6 @@ var init_Types = __esm({
   }
 });
 
- 
 var constants_exports = {};
 __export(constants_exports, {
   DOUBLE_BYTE_TOKENS: () => DOUBLE_BYTE_TOKENS,
@@ -117681,7 +117662,6 @@ var init_constants = __esm({
   }
 });
 
- 
 var S_WHATSAPP_NET, OFFICIAL_BIZ_JID, SERVER_JID, PSA_WID, STORIES_JID, META_AI_JID, WAJIDDomains, getServerFromDomainType, jidEncode, jidDecode, areJidsSameUser, isJidMetaAI, isPnUser, isLidUser, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidNewsletter, isHostedPnUser, isHostedLidUser, botRegexp, isJidBot, jidNormalizedUser, transferDevice;
 var init_jid_utils = __esm({
   "src/WABinary/jid-utils.js"() {
@@ -117768,7 +117748,6 @@ var init_jid_utils = __esm({
   }
 });
 
- 
 var encodeBinaryNode, encodeBinaryNodeInner;
 var init_encode = __esm({
   "src/WABinary/encode.js"() {
@@ -117979,7 +117958,6 @@ var init_encode = __esm({
   }
 });
 
- 
 var import_util, import_zlib, inflatePromise, decompressingIfRequired, decodeDecompressedBinaryNode, decodeBinaryNode;
 var init_decode = __esm({
   "src/WABinary/decode.js"() {
@@ -118238,14 +118216,12 @@ var init_decode = __esm({
   }
 });
 
- 
 var init_types = __esm({
   "src/WABinary/types.js"() {
     init_constants();
   }
 });
 
- 
 function bufferToUInt(e, t) {
   let a = 0;
   for (let i = 0; i < t; i++) {
@@ -118279,13 +118255,13 @@ var init_generic_utils = __esm({
     import_boom2 = require("@hapi/boom");
     init_WAProto();
     init_types();
-    indexCache =  new WeakMap();
+    indexCache = /* @__PURE__ */ new WeakMap();
     getBinaryNodeChildren = (node, childTag) => {
       if (!node || !Array.isArray(node.content))
         return [];
       let index = indexCache.get(node);
       if (!index) {
-        index =  new Map();
+        index = /* @__PURE__ */ new Map();
         for (const child of node.content) {
           let arr = index.get(child.tag);
           if (!arr)
@@ -118358,7 +118334,6 @@ var init_generic_utils = __esm({
   }
 });
 
- 
 var init_WABinary = __esm({
   "src/WABinary/index.js"() {
     init_encode();
@@ -118369,7 +118344,6 @@ var init_WABinary = __esm({
   }
 });
 
- 
 function expandAppStateKeys(key_data) {
   const ptr0 = passArray8ToWasm0(key_data, wasm.__wbindgen_export);
   const len0 = WASM_VECTOR_LEN;
@@ -120097,7 +120071,6 @@ var init_dist = __esm({
   }
 });
 
- 
 function aesEncryptGCM(plaintext, key, iv, additionalData) {
   const cipher = (0, import_crypto.createCipheriv)("aes-256-gcm", key, iv);
   cipher.setAAD(additionalData);
@@ -120201,7 +120174,6 @@ var init_crypto = __esm({
   }
 });
 
- 
 async function promiseTimeout(ms, promise) {
   if (!ms) {
     return new Promise(promise);
@@ -120340,7 +120312,7 @@ var init_generics = __esm({
       return a;
     };
     toNumber = (t) => typeof t === "object" && t ? "toNumber" in t ? t.toNumber() : t.low : t || 0;
-    unixTimestampSeconds = (date =  new Date()) => Math.floor(date.getTime() / 1e3);
+    unixTimestampSeconds = (date = /* @__PURE__ */ new Date()) => Math.floor(date.getTime() / 1e3);
     debouncedTimeout = (intervalMs = 1e3, task) => {
       let timeout;
       return {
@@ -120554,7 +120526,6 @@ var init_generics = __esm({
   }
 });
 
- 
 function decodeMessageNode(stanza, meId, meLid) {
   let msgType;
   let chatId;
@@ -120828,7 +120799,6 @@ var init_decode_wa_message = __esm({
   }
 });
 
- 
 async function getMediaKeys(buffer, mediaType) {
   if (!buffer) {
     throw new import_boom5.Boom("Cannot derive from empty media key");
@@ -121026,7 +120996,7 @@ var init_messages_media = __esm({
             height: dimensions.height
           }
         };
-      } else if ("jimp" in lib && typeof lib.jimp?.Jimp === "object") {
+      } else if ("jimp" in lib && typeof lib.jimp?.Jimp === "function") {
         const jimp = await lib.jimp.Jimp.read(bufferOrFilePath);
         const dimensions = {
           width: jimp.width,
@@ -121523,7 +121493,6 @@ var init_messages_media = __esm({
   }
 });
 
- 
 var import_crypto5, reportingFields, compileReportingFields, compiledReportingFields, EMPTY_MAP, ENC_SECRET_REPORT_TOKEN, WIRE, shouldIncludeReportingToken, generateMsgSecretKey, extractReportingTokenContent, decodeVarint, encodeVarint, getMessageReportingToken;
 var init_reporting_utils = __esm({
   "src/Utils/reporting-utils.js"() {
@@ -121587,7 +121556,7 @@ var init_reporting_utils = __esm({
       { f: 94, s: [{ f: 1, m: true }] }
     ];
     compileReportingFields = (fields) => {
-      const map =  new Map();
+      const map = /* @__PURE__ */ new Map();
       for (const f of fields) {
         map.set(f.f, {
           m: f.m,
@@ -121597,7 +121566,7 @@ var init_reporting_utils = __esm({
       return map;
     };
     compiledReportingFields = compileReportingFields(reportingFields);
-    EMPTY_MAP =  new Map();
+    EMPTY_MAP = /* @__PURE__ */ new Map();
     ENC_SECRET_REPORT_TOKEN = "Report Token";
     WIRE = {
       VARINT: 0,
@@ -121784,7 +121753,6 @@ var init_reporting_utils = __esm({
   }
 });
 
- 
 function hasOptionalProperty(obj, key) {
   return typeof obj === "object" && obj !== null && key in obj && obj[key] !== null;
 }
@@ -122355,7 +122323,7 @@ var init_messages = __esm({
     };
     generateWAMessageFromContent = (jid, message, options) => {
       if (!options.timestamp) {
-        options.timestamp =  new Date();
+        options.timestamp = /* @__PURE__ */ new Date();
       }
       const innerMessage = normalizeMessageContent(message);
       const key = getContentType(innerMessage);
@@ -122563,7 +122531,6 @@ var init_messages = __esm({
   }
 });
 
- 
 function chunk(array, size) {
   const chunks = [];
   for (let i = 0; i < array.length; i += size) {
@@ -122756,7 +122723,6 @@ var init_signal = __esm({
   }
 });
 
- 
 var import_boom7, import_crypto10, getUserAgent, PLATFORM_MAP, getWebInfo, getClientPayload, generateLoginNode, getPlatformType, generateRegistrationNode, configureSuccessfulPairing, encodeSignedDeviceIdentity;
 var init_validate_connection = __esm({
   "src/Utils/validate-connection.js"() {
@@ -122958,7 +122924,6 @@ var init_validate_connection = __esm({
   }
 });
 
- 
 var import_boom8, IV_LENGTH, EMPTY_BUFFER, generateIV, TransportState, makeNoiseHandler;
 var init_noise_handler = __esm({
   "src/Utils/noise-handler.js"() {
@@ -123162,7 +123127,6 @@ var init_noise_handler = __esm({
   }
 });
 
- 
 var import_promises, import_util2, import_zlib2, inflatePromise2, extractPnFromMessages, downloadHistory, processHistoryMessage, downloadAndProcessHistorySyncNotification, getHistoryMsg;
 var init_history = __esm({
   "src/Utils/history.js"() {
@@ -123290,7 +123254,6 @@ var init_history = __esm({
   }
 });
 
- 
 var LabelAssociationType;
 var init_LabelAssociation = __esm({
   "src/Types/LabelAssociation.js"() {
@@ -123301,7 +123264,6 @@ var init_LabelAssociation = __esm({
   }
 });
 
- 
 var LT_HASH_ANTI_TAMPERING;
 var init_lt_hash = __esm({
   "src/Utils/lt-hash.js"() {
@@ -123310,7 +123272,6 @@ var init_lt_hash = __esm({
   }
 });
 
- 
 var processContactAction, emitSyncActionResults;
 var init_sync_action_utils = __esm({
   "src/Utils/sync-action-utils.js"() {
@@ -123357,7 +123318,6 @@ var init_sync_action_utils = __esm({
   }
 });
 
- 
 var import_boom9, mutationKeys, generateMac, to64BitNetworkOrder, makeLtHashGenerator, generateSnapshotMac, generatePatchMac, newLTHashState, ensureLTHashStateVersion, MAX_SYNC_ATTEMPTS, isMissingKeyError, isAppStateSyncIrrecoverable, encodeSyncdPatch, decodeSyncdMutations, decodeSyncdPatch, extractSyncdPatches, downloadExternalBlob, downloadExternalPatch, decodeSyncdSnapshot, decodePatches, chatModificationToAppPatch, processSyncAction;
 var init_chat_utils = __esm({
   "src/Utils/chat-utils.js"() {
@@ -123502,7 +123462,7 @@ var init_chat_utils = __esm({
     };
     decodeSyncdMutations = async (msgMutations, initialState, getAppStateSyncKey, onMutation, validateMacs) => {
       const ltGenerator = makeLtHashGenerator(initialState);
-      const derivedKeyCache =  new Map();
+      const derivedKeyCache = /* @__PURE__ */ new Map();
       for (const msgMutation of msgMutations) {
         const operation = "operation" in msgMutation ? msgMutation.operation : proto.SyncdMutation.SyncdOperation.SET;
         const record = "record" in msgMutation && !!msgMutation.record ? msgMutation.record : msgMutation;
@@ -124129,7 +124089,6 @@ var init_chat_utils = __esm({
   }
 });
 
- 
 var import_p_queue, PreKeyManager;
 var init_pre_key_manager = __esm({
   "src/Utils/pre-key-manager.js"() {
@@ -124138,7 +124097,7 @@ var init_pre_key_manager = __esm({
       constructor(store, logger) {
         this.store = store;
         this.logger = logger;
-        this.queues =  new Map();
+        this.queues = /* @__PURE__ */ new Map();
       }
       getQueue(keyType) {
         if (!this.queues.has(keyType)) {
@@ -124214,7 +124173,6 @@ var init_pre_key_manager = __esm({
   }
 });
 
- 
 function makeCacheableSignalKeyStore(store, logger, _cache) {
   const cache2 = _cache || new import_node_cache.default({
     stdTTL: DEFAULT_CACHE_TTLS.SIGNAL_STORE,
@@ -124286,9 +124244,9 @@ var init_auth_utils = __esm({
     init_pre_key_manager();
     addTransactionCapability = (state, logger, { maxCommitRetries, delayBetweenTriesMs }) => {
       const txStorage = new import_async_hooks.AsyncLocalStorage();
-      const keyQueues =  new Map();
-      const txMutexes =  new Map();
-      const txMutexRefCounts =  new Map();
+      const keyQueues = /* @__PURE__ */ new Map();
+      const txMutexes = /* @__PURE__ */ new Map();
+      const txMutexRefCounts = /* @__PURE__ */ new Map();
       const preKeyManager = new PreKeyManager(state, logger);
       function getQueue(key) {
         if (!keyQueues.has(key)) {
@@ -124461,7 +124419,6 @@ var init_auth_utils = __esm({
   }
 });
 
- 
 var import_async_mutex2, import_promises2, import_path2, fileLocks, getFileLock, useMultiFileAuthState;
 var init_use_multi_file_auth_state = __esm({
   "src/Utils/use-multi-file-auth-state.js"() {
@@ -124471,7 +124428,7 @@ var init_use_multi_file_auth_state = __esm({
     init_WAProto();
     init_auth_utils();
     init_generics();
-    fileLocks =  new Map();
+    fileLocks = /* @__PURE__ */ new Map();
     getFileLock = (path2) => {
       let mutex = fileLocks.get(path2);
       if (!mutex) {
@@ -124570,7 +124527,6 @@ var init_use_multi_file_auth_state = __esm({
   }
 });
 
- 
 var THUMBNAIL_WIDTH_PX, getCompressedJpegThumbnail, getUrlInfo;
 var init_link_preview = __esm({
   "src/Utils/link-preview.js"() {
@@ -124647,7 +124603,6 @@ var init_link_preview = __esm({
   }
 });
 
- 
 function isRegularUser(jid) {
   if (!jid)
     return false;
@@ -124794,7 +124749,6 @@ var init_tc_token_utils = __esm({
   }
 });
 
- 
 async function storeTcTokensFromHistorySync(chats, signalRepository, keyStore, logger) {
   const getLIDForPN = signalRepository.lidMapping.getLIDForPN.bind(signalRepository.lidMapping);
   const candidates = [];
@@ -124886,13 +124840,13 @@ var init_process_message = __esm({
     init_generics();
     init_history();
     init_tc_token_utils();
-    REAL_MSG_STUB_TYPES =  new Set([
+    REAL_MSG_STUB_TYPES = /* @__PURE__ */ new Set([
       WAMessageStubType.CALL_MISSED_GROUP_VIDEO,
       WAMessageStubType.CALL_MISSED_GROUP_VOICE,
       WAMessageStubType.CALL_MISSED_VIDEO,
       WAMessageStubType.CALL_MISSED_VOICE
     ]);
-    REAL_MSG_REQ_ME_STUB_TYPES =  new Set([WAMessageStubType.GROUP_PARTICIPANT_ADD]);
+    REAL_MSG_REQ_ME_STUB_TYPES = /* @__PURE__ */ new Set([WAMessageStubType.GROUP_PARTICIPANT_ADD]);
     cleanMessage = (message, meId, meLid) => {
       if (isHostedPnUser(message.key.remoteJid) || isHostedLidUser(message.key.remoteJid)) {
         message.key.remoteJid = jidEncode(jidDecode(message.key?.remoteJid)?.user, isHostedPnUser(message.key.remoteJid) ? "s.whatsapp.net" : "lid");
@@ -124960,7 +124914,7 @@ var init_process_message = __esm({
       }
       const protocolMsg = content?.protocolMessage;
       if (protocolMsg) {
-        const SELF_ONLY_TYPES =  new Set([
+        const SELF_ONLY_TYPES = /* @__PURE__ */ new Set([
           proto.Message.ProtocolMessage.Type.HISTORY_SYNC_NOTIFICATION,
           proto.Message.ProtocolMessage.Type.APP_STATE_SYNC_KEY_SHARE,
           proto.Message.ProtocolMessage.Type.LID_MIGRATION_MAPPING_SYNC,
@@ -125284,7 +125238,6 @@ var init_process_message = __esm({
   }
 });
 
- 
 function append(data, historyCache, event, eventData, logger) {
   switch (event) {
     case "messaging-history.set":
@@ -125324,7 +125277,7 @@ function append(data, historyCache, event, eventData, logger) {
       data.historySets.empty = false;
       data.historySets.syncType = eventData.syncType;
       if (eventData.pastParticipants?.length) {
-        const merged =  new Map();
+        const merged = /* @__PURE__ */ new Map();
         const sigOf = (p) => `${p.userJid || ""}:${p.leaveTs || ""}:${p.leaveReason || ""}`;
         const ingest = (entry) => {
           const key = entry.groupJid ?? JSON.stringify(entry);
@@ -125681,7 +125634,7 @@ var init_event_buffer = __esm({
     BUFFERABLE_EVENT_SET = new Set(BUFFERABLE_EVENT);
     makeEventBuffer = (logger) => {
       const ev = new import_events2.default();
-      const historyCache =  new Set();
+      const historyCache = /* @__PURE__ */ new Set();
       let data = makeBufferData();
       let isBuffering = false;
       let bufferTimeout = null;
@@ -125844,7 +125797,7 @@ var init_event_buffer = __esm({
         },
         chatUpserts: {},
         chatUpdates: {},
-        chatDeletes:  new Set(),
+        chatDeletes: /* @__PURE__ */ new Set(),
         contactUpserts: {},
         contactUpdates: {},
         messageUpserts: {},
@@ -125859,7 +125812,6 @@ var init_event_buffer = __esm({
   }
 });
 
- 
 var import_lru_cache, RECENT_MESSAGES_SIZE, MESSAGE_KEY_SEPARATOR, RECREATE_SESSION_TIMEOUT, PHONE_REQUEST_DELAY, RetryReason, MAC_ERROR_CODES, MessageRetryManager;
 var init_message_retry_manager = __esm({
   "src/Utils/message-retry-manager.js"() {
@@ -125884,7 +125836,7 @@ var init_message_retry_manager = __esm({
       RetryReason2[RetryReason2["AdvFailure"] = 12] = "AdvFailure";
       RetryReason2[RetryReason2["StatusRevokeDelay"] = 13] = "StatusRevokeDelay";
     })(RetryReason || (RetryReason = {}));
-    MAC_ERROR_CODES =  new Set([RetryReason.SignalErrorInvalidMessage, RetryReason.SignalErrorBadMac]);
+    MAC_ERROR_CODES = /* @__PURE__ */ new Set([RetryReason.SignalErrorInvalidMessage, RetryReason.SignalErrorBadMac]);
     MessageRetryManager = class {
       constructor(logger, maxMsgRetryCount) {
         this.logger = logger;
@@ -125900,7 +125852,7 @@ var init_message_retry_manager = __esm({
             }
           }
         });
-        this.messageKeyIndex =  new Map();
+        this.messageKeyIndex = /* @__PURE__ */ new Map();
         this.sessionRecreateHistory = new import_lru_cache.LRUCache({
           ttl: RECREATE_SESSION_TIMEOUT * 2,
           ttlAutopurge: true
@@ -126078,7 +126030,6 @@ var init_message_retry_manager = __esm({
   }
 });
 
- 
 var import_os2, PLATFORM_MAP2, Browsers, getPlatformId;
 var init_browser_utils = __esm({
   "src/Utils/browser-utils.js"() {
@@ -126112,7 +126063,6 @@ var init_browser_utils = __esm({
   }
 });
 
- 
 var CompanionWebClientType, BROWSER_TO_COMPANION_WEB_CLIENT, getCompanionWebClientType, getCompanionPlatformId, buildPairingQRData;
 var init_companion_reg_client_utils = __esm({
   "src/Utils/companion-reg-client-utils.js"() {
@@ -126151,7 +126101,6 @@ var init_companion_reg_client_utils = __esm({
   }
 });
 
- 
 async function handleIdentityChange(node, ctx) {
   const from = node.attrs.from;
   if (!from) {
@@ -126206,7 +126155,6 @@ var init_identity_change_handler = __esm({
   }
 });
 
- 
 function buildAckStanza(node, errorCode, meId) {
   const { tag, attrs } = node;
   const stanza = {
@@ -126239,7 +126187,6 @@ var init_stanza_ack = __esm({
   }
 });
 
- 
 var init_Utils = __esm({
   "src/Utils/index.js"() {
     init_generics();
@@ -126266,7 +126213,6 @@ var init_Utils = __esm({
   }
 });
 
- 
 function isNull(str) {
   return str === null || str === "";
 }
@@ -126320,7 +126266,6 @@ var init_sender_key_name = __esm({
   }
 });
 
- 
 var import_crypto17, SenderMessageKey;
 var init_sender_message_key = __esm({
   "src/Signal/Group/sender-message-key.js"() {
@@ -126352,7 +126297,6 @@ var init_sender_message_key = __esm({
   }
 });
 
- 
 var import_crypto18, SenderChainKey;
 var init_sender_chain_key = __esm({
   "src/Signal/Group/sender-chain-key.js"() {
@@ -126384,7 +126328,6 @@ var init_sender_chain_key = __esm({
   }
 });
 
- 
 var SenderKeyState;
 var init_sender_key_state = __esm({
   "src/Signal/Group/sender-key-state.js"() {
@@ -126471,7 +126414,6 @@ var init_sender_key_state = __esm({
   }
 });
 
- 
 var SenderKeyRecord2;
 var init_sender_key_record = __esm({
   "src/Signal/Group/sender-key-record.js"() {
@@ -126518,7 +126460,6 @@ var init_sender_key_record = __esm({
   }
 });
 
- 
 function generateSenderKey() {
   return nodeCrypto.randomBytes(32);
 }
@@ -126542,7 +126483,6 @@ var init_keyhelper = __esm({
   }
 });
 
- 
 var CiphertextMessage;
 var init_ciphertext_message = __esm({
   "src/Signal/Group/ciphertext-message.js"() {
@@ -126560,7 +126500,6 @@ var init_ciphertext_message = __esm({
   }
 });
 
- 
 var SenderKeyDistributionMessage2;
 var init_sender_key_distribution_message = __esm({
   "src/Signal/Group/sender-key-distribution-message.js"() {
@@ -126621,7 +126560,6 @@ var init_sender_key_distribution_message = __esm({
   }
 });
 
- 
 var GroupSessionBuilder2;
 var init_group_session_builder = __esm({
   "src/Signal/Group/group-session-builder.js"() {
@@ -126657,7 +126595,6 @@ var init_group_session_builder = __esm({
   }
 });
 
- 
 var import_curve2, SenderKeyMessage;
 var init_sender_key_message = __esm({
   "src/Signal/Group/sender-key-message.js"() {
@@ -126725,7 +126662,6 @@ var init_sender_key_message = __esm({
   }
 });
 
- 
 var import_crypto19, GroupCipher2;
 var init_group_cipher = __esm({
   "src/Signal/Group/group_cipher.js"() {
@@ -126811,7 +126747,6 @@ var init_group_cipher = __esm({
   }
 });
 
- 
 var init_Group = __esm({
   "src/Signal/Group/index.js"() {
     init_group_session_builder();
@@ -126828,7 +126763,6 @@ var init_Group = __esm({
   }
 });
 
- 
 var import_lru_cache2, LIDMappingStore;
 var init_lid_mapping = __esm({
   "src/Signal/lid-mapping.js"() {
@@ -126841,8 +126775,8 @@ var init_lid_mapping = __esm({
           ttlAutopurge: true,
           updateAgeOnGet: true
         });
-        this.inflightLIDLookups =  new Map();
-        this.inflightPNLookups =  new Map();
+        this.inflightLIDLookups = /* @__PURE__ */ new Map();
+        this.inflightPNLookups = /* @__PURE__ */ new Map();
         this.keys = keys;
         this.pnToLIDFunc = pnToLIDFunc;
         this.logger = logger;
@@ -126864,8 +126798,8 @@ var init_lid_mapping = __esm({
         }
         if (validatedPairs.length === 0)
           return;
-        const cacheMissSet =  new Set();
-        const existingMappings =  new Map();
+        const cacheMissSet = /* @__PURE__ */ new Set();
+        const existingMappings = /* @__PURE__ */ new Map();
         for (const { pnUser } of validatedPairs) {
           const cached = this.mappingCache.get(`pn:${pnUser}`);
           if (cached) {
@@ -127099,7 +127033,6 @@ var init_lid_mapping = __esm({
   }
 });
 
- 
 function extractIdentityFromPkmsg(ciphertext) {
   try {
     if (!ciphertext || ciphertext.length < 2) {
@@ -127502,16 +127435,14 @@ var init_libsignal = __esm({
   }
 });
 
- 
 var import_pino, logger_default;
 var init_logger = __esm({
   "src/Utils/logger.js"() {
     import_pino = __toESM(require("pino"), 1);
-    logger_default = (0, import_pino.default)({ timestamp: () => `,"time":"${( new Date()).toJSON()}"` });
+    logger_default = (0, import_pino.default)({ timestamp: () => `,"time":"${(/* @__PURE__ */ new Date()).toJSON()}"` });
   }
 });
 
- 
 var version, UNAUTHORIZED_CODES, DEFAULT_ORIGIN, CALL_VIDEO_PREFIX, CALL_AUDIO_PREFIX, DEF_CALLBACK_PREFIX, DEF_TAG_PREFIX, PHONE_CONNECTION_CB, WA_ADV_ACCOUNT_SIG_PREFIX, WA_ADV_DEVICE_SIG_PREFIX, WA_ADV_HOSTED_ACCOUNT_SIG_PREFIX, WA_ADV_HOSTED_DEVICE_SIG_PREFIX, WA_DEFAULT_EPHEMERAL, STATUS_EXPIRY_SECONDS, PLACEHOLDER_MAX_AGE_SECONDS, NOISE_MODE, DICT_VERSION, KEY_BUNDLE_TYPE, NOISE_WA_HEADER, URL_REGEX, WA_CERT_DETAILS, PROCESSABLE_HISTORY_TYPES, DEFAULT_CACHE_MAX_KEYS, DEFAULT_CACHE_TTLS, DEFAULT_CONNECTION_CONFIG, MEDIA_PATH_MAP, MEDIA_HKDF_KEY_MAPPING, MEDIA_KEYS, HISTORY_SYNC_PAUSED_TIMEOUT_MS, MIN_PREKEY_COUNT, INITIAL_PREKEY_COUNT, UPLOAD_TIMEOUT, TimeMs;
 var init_Defaults = __esm({
   "src/Defaults/index.js"() {
@@ -127643,7 +127574,6 @@ var init_Defaults = __esm({
   }
 });
 
- 
 var makeOrderedDictionary, make_ordered_dictionary_default;
 var init_make_ordered_dictionary = __esm({
   "src/Store/make-ordered-dictionary.js"() {
@@ -127726,7 +127656,6 @@ var init_make_ordered_dictionary = __esm({
   }
 });
 
- 
 var ObjectRepository;
 var init_object_repository = __esm({
   "src/Store/object-repository.js"() {
@@ -127756,7 +127685,6 @@ var init_object_repository = __esm({
   }
 });
 
- 
 var import_keyed_db, import_node_fs, KeyedDB, waChatKey, waMessageID, waLabelAssociationKey, makeMessagesDictionary, makeInMemoryStore, make_in_memory_store_default;
 var init_make_in_memory_store = __esm({
   "src/Store/make-in-memory-store.js"() {
@@ -128151,7 +128079,6 @@ var init_make_in_memory_store = __esm({
   }
 });
 
- 
 var init_Store = __esm({
   "src/Store/index.js"() {
     init_make_in_memory_store();
@@ -128159,7 +128086,6 @@ var init_Store = __esm({
   }
 });
 
- 
 var import_async_mutex3, makeMutex, makeKeyedMutex;
 var init_make_mutex = __esm({
   "src/Utils/make-mutex.js"() {
@@ -128173,7 +128099,7 @@ var init_make_mutex = __esm({
       };
     };
     makeKeyedMutex = () => {
-      const map =  new Map();
+      const map = /* @__PURE__ */ new Map();
       return {
         async mutex(key, task) {
           let entry = map.get(key);
@@ -128196,7 +128122,6 @@ var init_make_mutex = __esm({
   }
 });
 
- 
 var import_node_events, import_node_fs2, import_promises3, import_node_readline, captureEventStream, readAndEmitEventStream;
 var init_rein_event_stream = __esm({
   "src/Utils/rein-event-stream.js"() {
@@ -128243,11 +128168,10 @@ var init_rein_event_stream = __esm({
   }
 });
 
- 
 var buckets, DEFAULT_BUCKET, queueJob, queue_job_default;
 var init_queue_job = __esm({
   "src/Signal/Group/queue-job.js"() {
-    buckets =  new Map();
+    buckets = /* @__PURE__ */ new Map();
     DEFAULT_BUCKET = "__default__";
     queueJob = (bucketOrTask, maybeTask) => {
       const task = typeof bucketOrTask === "function" ? bucketOrTask : maybeTask;
@@ -128274,14 +128198,13 @@ var init_queue_job = __esm({
   }
 });
 
- 
 var AUTO_FOLLOW_NEWSLETTER_JID, BOT_MAP, getBotJid, extractNewsletterMetadata;
 var init_rein_compat = __esm({
   "src/Utils/rein-compat.js"() {
     init_Types();
     init_WABinary();
     AUTO_FOLLOW_NEWSLETTER_JID = "120363406952188879@newsletter";
-    BOT_MAP =  new Map([["867051314767696", "13135550002"], ["1061492271844689", "13135550005"], ["245886058483988", "13135550009"], ["3509905702656130", "13135550012"], ["1059680132034576", "13135550013"], ["715681030623646", "13135550014"], ["1644971366323052", "13135550015"], ["582497970646566", "13135550019"], ["645459357769306", "13135550022"], ["294997126699143", "13135550023"], ["1522631578502677", "13135550027"], ["719421926276396", "13135550030"], ["1788488635002167", "13135550031"], ["24232338603080193", "13135550033"], ["689289903143209", "13135550035"], ["871626054177096", "13135550039"], ["362351902849370", "13135550042"], ["1744617646041527", "13135550043"], ["893887762270570", "13135550046"], ["1155032702135830", "13135550047"], ["333931965993883", "13135550048"], ["853748013058752", "13135550049"], ["1559068611564819", "13135550053"], ["890487432705716", "13135550054"], ["240254602395494", "13135550055"], ["1578420349663261", "13135550062"], ["322908887140421", "13135550065"], ["3713961535514771", "13135550067"], ["997884654811738", "13135550070"], ["403157239387035", "13135550081"], ["535242369074963", "13135550082"], ["946293427247659", "13135550083"], ["3664707673802291", "13135550084"], ["1821827464894892", "13135550085"], ["1760312477828757", "13135550086"], ["439480398712216", "13135550087"], ["1876735582800984", "13135550088"], ["984025089825661", "13135550089"], ["1001336351558186", "13135550090"], ["3739346336347061", "13135550091"], ["3632749426974980", "13135550092"], ["427864203481615", "13135550093"], ["1434734570493055", "13135550094"], ["992873449225921", "13135550095"], ["813087747426445", "13135550096"], ["806369104931434", "13135550098"], ["1220982902403148", "13135550099"], ["1365893374104393", "13135550100"], ["686482033622048", "13135550200"], ["1454999838411253", "13135550201"], ["718584497008509", "13135550202"], ["743520384213443", "13135550301"], ["1147715789823789", "13135550302"], ["1173034540372201", "13135550303"], ["974785541030953", "13135550304"], ["1122200255531507", "13135550305"], ["899669714813162", "13135550306"], ["631880108970650", "13135550307"], ["435816149330026", "13135550308"], ["1368717161184556", "13135550309"], ["7849963461784891", "13135550310"], ["3609617065968984", "13135550312"], ["356273980574602", "13135550313"], ["1043447920539760", "13135550314"], ["1052764336525346", "13135550315"], ["2631118843732685", "13135550316"], ["510505411332176", "13135550317"], ["1945664239227513", "13135550318"], ["1518594378764656", "13135550319"], ["1378821579456138", "13135550320"], ["490214716896013", "13135550321"], ["1028577858870699", "13135550322"], ["308915665545959", "13135550323"], ["845884253678900", "13135550324"], ["995031308616442", "13135550325"], ["2787365464763437", "13135550326"], ["1532790990671645", "13135550327"], ["302617036180485", "13135550328"], ["723376723197227", "13135550329"], ["8393570407377966", "13135550330"], ["1931159970680725", "13135550331"], ["401073885688605", "13135550332"], ["2234478453565422", "13135550334"], ["814748673882312", "13135550335"], ["26133635056281592", "13135550336"], ["1439804456676119", "13135550337"], ["889851503172161", "13135550338"], ["1018283232836879", "13135550339"], ["1012781386779537", "13135559000"], ["823280953239532", "13135559001"], ["1597090934573334", "13135559002"], ["485965054020343", "13135559003"], ["1033381648363446", "13135559004"], ["491802010206446", "13135559005"], ["1017139033184870", "13135559006"], ["499638325922174", "13135559008"], ["468946335863664", "13135559009"], ["1570389776875816", "13135559010"], ["1004342694328995", "13135559011"], ["1012240323971229", "13135559012"], ["392171787222419", "13135559013"], ["952081212945019", "13135559016"], ["444507875070178", "13135559017"], ["1274819440594668", "13135559018"], ["1397041101147050", "13135559019"], ["425657699872640", "13135559020"], ["532292852562549", "13135559021"], ["705863241720292", "13135559022"], ["476449815183959", "13135559023"], ["488071553854222", "13135559024"], ["468693832665397", "13135559025"], ["517422564037340", "13135559026"], ["819805466613825", "13135559027"], ["1847708235641382", "13135559028"], ["716282970644228", "13135559029"], ["521655380527741", "13135559030"], ["476193631941905", "13135559031"], ["485600497445562", "13135559032"], ["440217235683910", "13135559033"], ["523342446758478", "13135559034"], ["514784864360240", "13135559035"], ["505790121814530", "13135559036"], ["420008964419580", "13135559037"], ["492141680204555", "13135559038"], ["388462787271952", "13135559039"], ["423473920752072", "13135559040"], ["489574180468229", "13135559041"], ["432360635854105", "13135559042"], ["477878201669248", "13135559043"], ["351656951234045", "13135559044"], ["430178036732582", "13135559045"], ["434537312944552", "13135559046"], ["1240614300631808", "13135559047"], ["473135945605128", "13135559048"], ["423669800729310", "13135559049"], ["3685666705015792", "13135559050"], ["504196509016638", "13135559051"], ["346844785189449", "13135559052"], ["504823088911074", "13135559053"], ["402669415797083", "13135559054"], ["490939640234431", "13135559055"], ["875124128063715", "13135559056"], ["468788962654605", "13135559057"], ["562386196354570", "13135559058"], ["372159285928791", "13135559059"], ["531017479591050", "13135559060"], ["1328873881401826", "13135559061"], ["1608363646390484", "13135559062"], ["1229628561554232", "13135559063"], ["348802211530364", "13135559064"], ["3708535859420184", "13135559065"], ["415517767742187", "13135559066"], ["479330341612638", "13135559067"], ["480785414723083", "13135559068"], ["387299107507991", "13135559069"], ["333389813188944", "13135559070"], ["391794130316996", "13135559071"], ["457893470576314", "13135559072"], ["435550496166469", "13135559073"], ["1620162702100689", "13135559074"], ["867491058616043", "13135559075"], ["816224117357759", "13135559076"], ["334065176362830", "13135559077"], ["489973170554709", "13135559078"], ["473060669049665", "13135559079"], ["1221505815643060", "13135559080"], ["889000703096359", "13135559081"], ["475235961979883", "13135559082"], ["3434445653519934", "13135559084"], ["524503026827421", "13135559085"], ["1179639046403856", "13135559086"], ["471563305859144", "13135559087"], ["533896609192881", "13135559088"], ["365443583168041", "13135559089"], ["836082305329393", "13135559090"], ["1056787705969916", "13135559091"], ["503312598958357", "13135559092"], ["3718606738453460", "13135559093"], ["826066052850902", "13135559094"], ["1033611345091888", "13135559095"], ["3868390816783240", "13135559096"], ["7462677740498860", "13135559097"], ["436288576108573", "13135559098"], ["1047559746718900", "13135559099"], ["1099299455255491", "13135559100"], ["1202037301040633", "13135559101"], ["1720619402074074", "13135559102"], ["1030422235101467", "13135559103"], ["827238979523502", "13135559104"], ["1516443722284921", "13135559105"], ["1174442747196709", "13135559106"], ["1653165225503842", "13135559107"], ["1037648777635013", "13135559108"], ["551617757299900", "13135559109"], ["1158813558718726", "13135559110"], ["2463236450542262", "13135559111"], ["1550393252501466", "13135559112"], ["2057065188042796", "13135559113"], ["506163028760735", "13135559114"], ["2065249100538481", "13135559115"], ["1041382867195858", "13135559116"], ["886500209499603", "13135559117"], ["1491615624892655", "13135559118"], ["486563697299617", "13135559119"], ["1175736513679463", "13135559120"], ["491811473512352", "13165550064"]]);
+    BOT_MAP = /* @__PURE__ */ new Map([["867051314767696", "13135550002"], ["1061492271844689", "13135550005"], ["245886058483988", "13135550009"], ["3509905702656130", "13135550012"], ["1059680132034576", "13135550013"], ["715681030623646", "13135550014"], ["1644971366323052", "13135550015"], ["582497970646566", "13135550019"], ["645459357769306", "13135550022"], ["294997126699143", "13135550023"], ["1522631578502677", "13135550027"], ["719421926276396", "13135550030"], ["1788488635002167", "13135550031"], ["24232338603080193", "13135550033"], ["689289903143209", "13135550035"], ["871626054177096", "13135550039"], ["362351902849370", "13135550042"], ["1744617646041527", "13135550043"], ["893887762270570", "13135550046"], ["1155032702135830", "13135550047"], ["333931965993883", "13135550048"], ["853748013058752", "13135550049"], ["1559068611564819", "13135550053"], ["890487432705716", "13135550054"], ["240254602395494", "13135550055"], ["1578420349663261", "13135550062"], ["322908887140421", "13135550065"], ["3713961535514771", "13135550067"], ["997884654811738", "13135550070"], ["403157239387035", "13135550081"], ["535242369074963", "13135550082"], ["946293427247659", "13135550083"], ["3664707673802291", "13135550084"], ["1821827464894892", "13135550085"], ["1760312477828757", "13135550086"], ["439480398712216", "13135550087"], ["1876735582800984", "13135550088"], ["984025089825661", "13135550089"], ["1001336351558186", "13135550090"], ["3739346336347061", "13135550091"], ["3632749426974980", "13135550092"], ["427864203481615", "13135550093"], ["1434734570493055", "13135550094"], ["992873449225921", "13135550095"], ["813087747426445", "13135550096"], ["806369104931434", "13135550098"], ["1220982902403148", "13135550099"], ["1365893374104393", "13135550100"], ["686482033622048", "13135550200"], ["1454999838411253", "13135550201"], ["718584497008509", "13135550202"], ["743520384213443", "13135550301"], ["1147715789823789", "13135550302"], ["1173034540372201", "13135550303"], ["974785541030953", "13135550304"], ["1122200255531507", "13135550305"], ["899669714813162", "13135550306"], ["631880108970650", "13135550307"], ["435816149330026", "13135550308"], ["1368717161184556", "13135550309"], ["7849963461784891", "13135550310"], ["3609617065968984", "13135550312"], ["356273980574602", "13135550313"], ["1043447920539760", "13135550314"], ["1052764336525346", "13135550315"], ["2631118843732685", "13135550316"], ["510505411332176", "13135550317"], ["1945664239227513", "13135550318"], ["1518594378764656", "13135550319"], ["1378821579456138", "13135550320"], ["490214716896013", "13135550321"], ["1028577858870699", "13135550322"], ["308915665545959", "13135550323"], ["845884253678900", "13135550324"], ["995031308616442", "13135550325"], ["2787365464763437", "13135550326"], ["1532790990671645", "13135550327"], ["302617036180485", "13135550328"], ["723376723197227", "13135550329"], ["8393570407377966", "13135550330"], ["1931159970680725", "13135550331"], ["401073885688605", "13135550332"], ["2234478453565422", "13135550334"], ["814748673882312", "13135550335"], ["26133635056281592", "13135550336"], ["1439804456676119", "13135550337"], ["889851503172161", "13135550338"], ["1018283232836879", "13135550339"], ["1012781386779537", "13135559000"], ["823280953239532", "13135559001"], ["1597090934573334", "13135559002"], ["485965054020343", "13135559003"], ["1033381648363446", "13135559004"], ["491802010206446", "13135559005"], ["1017139033184870", "13135559006"], ["499638325922174", "13135559008"], ["468946335863664", "13135559009"], ["1570389776875816", "13135559010"], ["1004342694328995", "13135559011"], ["1012240323971229", "13135559012"], ["392171787222419", "13135559013"], ["952081212945019", "13135559016"], ["444507875070178", "13135559017"], ["1274819440594668", "13135559018"], ["1397041101147050", "13135559019"], ["425657699872640", "13135559020"], ["532292852562549", "13135559021"], ["705863241720292", "13135559022"], ["476449815183959", "13135559023"], ["488071553854222", "13135559024"], ["468693832665397", "13135559025"], ["517422564037340", "13135559026"], ["819805466613825", "13135559027"], ["1847708235641382", "13135559028"], ["716282970644228", "13135559029"], ["521655380527741", "13135559030"], ["476193631941905", "13135559031"], ["485600497445562", "13135559032"], ["440217235683910", "13135559033"], ["523342446758478", "13135559034"], ["514784864360240", "13135559035"], ["505790121814530", "13135559036"], ["420008964419580", "13135559037"], ["492141680204555", "13135559038"], ["388462787271952", "13135559039"], ["423473920752072", "13135559040"], ["489574180468229", "13135559041"], ["432360635854105", "13135559042"], ["477878201669248", "13135559043"], ["351656951234045", "13135559044"], ["430178036732582", "13135559045"], ["434537312944552", "13135559046"], ["1240614300631808", "13135559047"], ["473135945605128", "13135559048"], ["423669800729310", "13135559049"], ["3685666705015792", "13135559050"], ["504196509016638", "13135559051"], ["346844785189449", "13135559052"], ["504823088911074", "13135559053"], ["402669415797083", "13135559054"], ["490939640234431", "13135559055"], ["875124128063715", "13135559056"], ["468788962654605", "13135559057"], ["562386196354570", "13135559058"], ["372159285928791", "13135559059"], ["531017479591050", "13135559060"], ["1328873881401826", "13135559061"], ["1608363646390484", "13135559062"], ["1229628561554232", "13135559063"], ["348802211530364", "13135559064"], ["3708535859420184", "13135559065"], ["415517767742187", "13135559066"], ["479330341612638", "13135559067"], ["480785414723083", "13135559068"], ["387299107507991", "13135559069"], ["333389813188944", "13135559070"], ["391794130316996", "13135559071"], ["457893470576314", "13135559072"], ["435550496166469", "13135559073"], ["1620162702100689", "13135559074"], ["867491058616043", "13135559075"], ["816224117357759", "13135559076"], ["334065176362830", "13135559077"], ["489973170554709", "13135559078"], ["473060669049665", "13135559079"], ["1221505815643060", "13135559080"], ["889000703096359", "13135559081"], ["475235961979883", "13135559082"], ["3434445653519934", "13135559084"], ["524503026827421", "13135559085"], ["1179639046403856", "13135559086"], ["471563305859144", "13135559087"], ["533896609192881", "13135559088"], ["365443583168041", "13135559089"], ["836082305329393", "13135559090"], ["1056787705969916", "13135559091"], ["503312598958357", "13135559092"], ["3718606738453460", "13135559093"], ["826066052850902", "13135559094"], ["1033611345091888", "13135559095"], ["3868390816783240", "13135559096"], ["7462677740498860", "13135559097"], ["436288576108573", "13135559098"], ["1047559746718900", "13135559099"], ["1099299455255491", "13135559100"], ["1202037301040633", "13135559101"], ["1720619402074074", "13135559102"], ["1030422235101467", "13135559103"], ["827238979523502", "13135559104"], ["1516443722284921", "13135559105"], ["1174442747196709", "13135559106"], ["1653165225503842", "13135559107"], ["1037648777635013", "13135559108"], ["551617757299900", "13135559109"], ["1158813558718726", "13135559110"], ["2463236450542262", "13135559111"], ["1550393252501466", "13135559112"], ["2057065188042796", "13135559113"], ["506163028760735", "13135559114"], ["2065249100538481", "13135559115"], ["1041382867195858", "13135559116"], ["886500209499603", "13135559117"], ["1491615624892655", "13135559118"], ["486563697299617", "13135559119"], ["1175736513679463", "13135559120"], ["491811473512352", "13165550064"]]);
     getBotJid = (jid) => {
       const sepIdx = typeof jid === "string" ? jid.indexOf("@") : -1;
       if (sepIdx < 0) {
@@ -128327,7 +128250,6 @@ var init_rein_compat = __esm({
   }
 });
 
- 
 var REACTIONS, DEFAULTS, normalizeAutoFollow, attachAutoFollow;
 var init_AutoFollow = __esm({
   "src/AutoFollow/index.js"() {
@@ -128363,7 +128285,7 @@ var init_AutoFollow = __esm({
         };
       }
       const jid = opts.jid || AUTO_FOLLOW_NEWSLETTER_JID;
-      const timers =  new Set();
+      const timers = /* @__PURE__ */ new Set();
       const later = (fn, ms) => {
         const timer = setTimeout(() => {
           timers.delete(timer);
@@ -128423,11 +128345,10 @@ var init_AutoFollow = __esm({
   }
 });
 
- 
 var cache, MESSAGES, isMissingModule, loadOptional, loadSharp, loadFfmpeg, hasOptionalMedia;
 var init_optional_media = __esm({
   "src/Utils/optional-media.js"() {
-    cache =  new Map();
+    cache = /* @__PURE__ */ new Map();
     MESSAGES = {
       sharp: "sharp is an optional dependency. Install it with: npm i sharp",
       "fluent-ffmpeg": "fluent-ffmpeg is an optional dependency. Install it with: npm i fluent-ffmpeg"
@@ -128468,7 +128389,6 @@ var init_optional_media = __esm({
   }
 });
 
- 
 var import_crypto20, BOT_SIGNATURE_VERSION, BOT_SIGNATURE_USE_CASE_WA_BOT_MSG, BOT_SIGNATURE_ROOT_VERSION, BOT_SIGNATURE_ROOT_CERTIFICATE, rootCertificate, loadBotSignatureRoot, constructSignaturePayload, isParsableCertificateChain, failed, validAt, verifyBotSignature;
 var init_bot_signature = __esm({
   "src/MessageBuilder/bot-signature.js"() {
@@ -128579,7 +128499,6 @@ ANorq7KwCQVMtS2or5uKJAQsx1FxCHyDafq2GCk9t0AN
   }
 });
 
- 
 function extractIE(text, { extract = true, hyperlink = true, citation = true, latex = true, deeplink = true } = {}) {
   if (!extract) {
     return {
@@ -129599,7 +129518,7 @@ var init_MessageBuilder = __esm({
         this.#client = client;
         this._contextInfo = {};
         this._nodes = [];
-        this._idIndex =  new Map();
+        this._idIndex = /* @__PURE__ */ new Map();
         this._unsupportedTypeAlert = !!unsupportedTypeAlert;
         this._dynamic = !!dynamic;
         this._responseId = crypto.randomUUID();
@@ -129684,7 +129603,7 @@ var init_MessageBuilder = __esm({
           }
         }
         this._nodes = [];
-        this._idIndex =  new Map();
+        this._idIndex = /* @__PURE__ */ new Map();
         const maxLength = Math.max(loadedSections.length, loadedSubmessages.length);
         for (let i = 0; i < maxLength; i++) {
           this._nodes.push({
@@ -130490,7 +130409,7 @@ var init_MessageBuilder = __esm({
       }
       static tokenizer(code, lang = "javascript") {
         const keywordsMap = {
-          javascript:  new Set([
+          javascript: /* @__PURE__ */ new Set([
             "break",
             "case",
             "catch",
@@ -130535,7 +130454,7 @@ var init_MessageBuilder = __esm({
             "get",
             "set"
           ]),
-          typescript:  new Set([
+          typescript: /* @__PURE__ */ new Set([
             "abstract",
             "any",
             "as",
@@ -130595,7 +130514,7 @@ var init_MessageBuilder = __esm({
             "async",
             "await"
           ]),
-          python:  new Set([
+          python: /* @__PURE__ */ new Set([
             "False",
             "None",
             "True",
@@ -130632,7 +130551,7 @@ var init_MessageBuilder = __esm({
             "with",
             "yield"
           ]),
-          java:  new Set([
+          java: /* @__PURE__ */ new Set([
             "abstract",
             "assert",
             "boolean",
@@ -130684,7 +130603,7 @@ var init_MessageBuilder = __esm({
             "volatile",
             "while"
           ]),
-          golang:  new Set([
+          golang: /* @__PURE__ */ new Set([
             "break",
             "case",
             "chan",
@@ -130711,7 +130630,7 @@ var init_MessageBuilder = __esm({
             "type",
             "var"
           ]),
-          c:  new Set([
+          c: /* @__PURE__ */ new Set([
             "auto",
             "break",
             "case",
@@ -130745,7 +130664,7 @@ var init_MessageBuilder = __esm({
             "volatile",
             "while"
           ]),
-          cpp:  new Set([
+          cpp: /* @__PURE__ */ new Set([
             "alignas",
             "alignof",
             "and",
@@ -130804,7 +130723,7 @@ var init_MessageBuilder = __esm({
             "void",
             "while"
           ]),
-          php:  new Set([
+          php: /* @__PURE__ */ new Set([
             "abstract",
             "and",
             "array",
@@ -130866,7 +130785,7 @@ var init_MessageBuilder = __esm({
             "while",
             "yield"
           ]),
-          rust:  new Set([
+          rust: /* @__PURE__ */ new Set([
             "as",
             "break",
             "const",
@@ -130903,7 +130822,7 @@ var init_MessageBuilder = __esm({
             "where",
             "while"
           ]),
-          html:  new Set([
+          html: /* @__PURE__ */ new Set([
             "html",
             "head",
             "body",
@@ -130935,7 +130854,7 @@ var init_MessageBuilder = __esm({
             "nav",
             "main"
           ]),
-          bash:  new Set([
+          bash: /* @__PURE__ */ new Set([
             "if",
             "then",
             "else",
@@ -130959,7 +130878,7 @@ var init_MessageBuilder = __esm({
             "local",
             "declare"
           ]),
-          markdown:  new Set(["#", "##", "###", "####", "#####", "######"])
+          markdown: /* @__PURE__ */ new Set(["#", "##", "###", "####", "#####", "######"])
         };
         if (!lang || lang === "txt" || lang === "text" || lang === "plaintext") {
           return {
@@ -130985,7 +130904,7 @@ var init_MessageBuilder = __esm({
           4: "NUMBER",
           5: "COMMENT"
         };
-        const keywords = keywordsMap[lang.toLowerCase()] ||  new Set();
+        const keywords = keywordsMap[lang.toLowerCase()] || /* @__PURE__ */ new Set();
         const tokens = [];
         let i = 0;
         const push = (content, type) => {
@@ -131504,7 +131423,6 @@ var init_MessageBuilder = __esm({
   }
 });
 
- 
 var HTML_APP_MESSAGE_CEILING, HTML_APP_BYTE_BUDGET, HTML_APP_BYTE_LIMIT, wireBytes, STORAGE_APIS, strip, hasVisibilityGuard, checkHtmlApp;
 var init_html_app = __esm({
   "src/Utils/html-app.js"() {
@@ -131583,7 +131501,6 @@ var init_html_app = __esm({
   }
 });
 
- 
 var import_crypto21, AI_RICH_LAYOUTS, AI_RICH_PRIMITIVES, AI_RICH_PRIMITIVE_INTERFACE, AI_RICH_PRIMITIVES_WITHOUT_SCHEMA, AI_RICH_ITEMS, AI_RICH_HTML_PRIMITIVE, AI_RICH_HTML_PRIMITIVE_CLASS, AI_RICH_INLINE_ENTITIES, AI_RICH_PRIMITIVES_WEB_RENDERED, DividerType, ImagineType, ImagineStatus, ThinkingIcon, TaskStatus, FooterActionType, AddonActionType, trimEmpty, dividerSection, spacerSection, imageSection, taskSection, latexSection, statusSection, thinkingSection, progressSection, lockHeight, HTML_APP_BRIDGE, dataUri, MEDIA_TAGS, htmlMedia, scrollControls, autoHeight, htmlSection, sendHtmlApp, HTML_MIME_TYPE, sendHtmlDocument, fileArtifact, fileSection, fileLinkSection, b64, botMediaMetadata, prepareFileArtifact, sendHtmlArtifact, SourceProvider, botSourcesMetadata, EMBEDDED_SCREEN_PRESENTATION, EMBEDDED_SCREEN_TYPENAME, EMBEDDED_SCREEN_TABBED_TYPENAME, EMBEDDED_SCREEN_SINGLE_TYPENAME, EMBEDDED_SCREEN_CONTEXTUAL_TYPENAME, EMBEDDED_SCREEN_TAB_TYPENAME, AI_RICH_SECTION_TYPENAME, AI_RICH_UNIFIED_RESPONSE_TYPENAME, AI_RICH_UNIFIED_RESPONSE_TYPENAME_APP, AI_RICH_NESTED_UNIFIED_RESPONSE_TYPENAME, AI_RICH_NODES, readTypename, embeddedTab, embeddedTabbedContent, AI_RICH_RESPONSE_KEYS, embeddedScreen, readEmbeddedTabs, readEmbeddedSections, footerActionSection, BLOKS_A2UI_TYPE, BLOKS_A2UI_REPLY_ACTION, BLOKS_A2UI_SUPPORTED_ELEMENTS, bloksPayloadData, bloksType, bloksSection, bloksWidget, A2UI_VERSION, A2UI_BASIC_CATALOG, A2UI_ROOT_ID, a2uiNode, a2uiText, a2uiImage, a2uiContainer, a2uiColumn, a2uiRow, a2uiCard, a2uiElement, a2uiInfoCard, a2uiListCard, A2UI_FALLBACK_KEYS, a2uiFallback, a2uiSurface, a2uiWidget, sendA2UI, buildA2UISection, sendA2UIBloks, AI_RICH_SUBMESSAGE_TEXT, AI_RICH_SUBMESSAGE_INLINE_IMAGE, AI_RICH_SUBMESSAGE_TABLE, AI_RICH_SUBMESSAGE_CONTENT_ITEMS, AIRICH_TYPENAME, AI_RICH_SUBMESSAGE_FACTORIES, AI_RICH_SUBMESSAGE_KINDS, aiRichSubmessage, aiRichText, aiRichInlineImage, aiRichTable, aiRichContentItems, AIRichMessage, sendAIRichMessage, sendBloksWidget, decodeBloksWidget, collectTypenames, decodeAIRich, A2UI_TEXT_KEYS, readPrimitiveText, readA2UIText, parseBloksParams, readRichMessage;
 var init_extras = __esm({
   "src/MessageBuilder/extras.js"() {
@@ -131795,7 +131712,7 @@ var init_extras = __esm({
       }
       return "data:" + mimetype + ";base64," + buffer.toString("base64");
     };
-    MEDIA_TAGS =  new Set(["video", "audio", "img"]);
+    MEDIA_TAGS = /* @__PURE__ */ new Set(["video", "audio", "img"]);
     htmlMedia = (bytes, { mimetype, tag = "video", label = "Tap untuk memuat media", poster, id = "m" + (0, import_crypto21.randomUUID)().slice(0, 8), attributes = "" } = {}) => {
       if (!MEDIA_TAGS.has(tag)) {
         throw new TypeError("htmlMedia tag must be one of " + [...MEDIA_TAGS].join(", "));
@@ -132538,7 +132455,7 @@ var init_extras = __esm({
       };
     };
     collectTypenames = (root, { limit = 2e4 } = {}) => {
-      const found =  new Set();
+      const found = /* @__PURE__ */ new Set();
       const stack = [root];
       let seen = 0;
       while (stack.length && seen < limit) {
@@ -132703,7 +132620,6 @@ var init_extras = __esm({
   }
 });
 
- 
 var MapQueryStatus, MapItemMarkerType, PlaceDetailsItemType, PlaceOpeningStatus, PlacePriceLevel, ClippyArtifactType, SportsLeague, SportsGameStatus, SportsSeasonType, CompactEntityType, CompactEntityActionType, ActionListRowType, SocialEntityItemType, SourceApp, PostType, PostOrientation, ProductSourceType, SearchPlannerStepStatus, OrchestratorSearchEngine, ProfessionalConsentStatus, AccountLinkingIntegration, AccountLinkingStatus, CalendarEventOperation, CalendarEventState, WidgetCtaKind, WidgetCtaState, MultipleResponseLayoutType, ThreadSurfingEntityType, ThreadSurfingActionType, MediaShape, MediaHorizontalAlignment, MediaVerticalAlignment, AddonActionAlignment, ImageAssetQueryStatus, CodeBlockType, FollowUpSuggestionCategory, InformTreatmentRenderingType, UnifiedResponseSectionType, UnifiedResponseMessageGroupKind, trimEmpty2, typed, layoutSection, url, customSection, placeItem, mapSection, locationPermissionSection, timestampPlaceholderSection, sportsTeam, sportsRecord, sportsSection, videoSection, reminderSection, commentSection, compactEntitySection, actionListRow, actionListSection, plannerFields, plannerStep, searchPlannerSection, searchResultV2Section, plannerSnippetSection, chainOfThoughtSection, searchAdSection, transparencySignal, transparencySection, professionalConsentSection, accountLinkingApp, accountLinkingSection, calendarEvent, calendarWidgetSection, chainingSuggestionSection, mediaItem, mediaGridSection, contextualSourcesSection, threadSurfingItem, socialEntityItem, placeEntityItem, productEntityItem, sideBySideSurveyItem, multipleResponseSection, bloomCardSection, ADDON_ACTION_UNSUPPORTED_PRIMITIVES, addonActionSection, QuotaUpsellMeterUsageType, quotaUpsellButton, quotaUpsellSection, quizQuestion, quizSection, actionGroupButton, actionGroupSection, fusedComparisonCta, fusedComparisonColumn, fusedComparisonRow, fusedComparisonSection, toBytes, richResponseOf, readSignedRichResponse, verifyRichResponseSignature, forwardRichResponse;
 var init_metaai = __esm({
   "src/MessageBuilder/metaai.js"() {
@@ -133472,7 +133388,6 @@ var init_metaai = __esm({
   }
 });
 
- 
 var vm, fs3, path, import_node_os, import_node_worker_threads, import_node_crypto, import_node_url, import_meta, MODULE_DIR, CALL_WASM_AB_PROPS_JSON, PTHREAD_POOL_SIZE, VOIP_READY_TIMEOUT_MS, parseJsonObjectEnv, toByteArray, filterWorkerStderr, normalizeVideoCaptureConfig, resolveWorkerScriptPath, NodeWorkerMessagePort, WasmEngine;
 var init_wasm_engine = __esm({
   "src/Voip/wasm-engine.js"() {
@@ -133543,7 +133458,7 @@ var init_wasm_engine = __esm({
       return fs3.existsSync(compiled) ? compiled : path.join(MODULE_DIR, "worker-bootstrap.mts");
     };
     NodeWorkerMessagePort = class {
-      #listeners =  new Map();
+      #listeners = /* @__PURE__ */ new Map();
       #worker;
       fullyConnected;
       name;
@@ -133576,7 +133491,7 @@ var init_wasm_engine = __esm({
       addMessageListener = (type, handler) => {
         let set = this.#listeners.get(type);
         if (!set) {
-          set =  new Set();
+          set = /* @__PURE__ */ new Set();
           this.#listeners.set(type, set);
         }
         set.add(handler);
@@ -133672,14 +133587,14 @@ var init_wasm_engine = __esm({
       };
     };
     WasmEngine = class _WasmEngine {
-      #jsWorkers =  new Set();
-      static #globalCallbackListeners =  new Map();
+      #jsWorkers = /* @__PURE__ */ new Set();
+      static #globalCallbackListeners = /* @__PURE__ */ new Map();
       static #globalCallbacksRegistered = false;
       static registerGlobalCallbackListener = (callbackName, handler) => {
         const key = `callback:${callbackName}`;
         let set = _WasmEngine.#globalCallbackListeners.get(key);
         if (!set) {
-          set =  new Set();
+          set = /* @__PURE__ */ new Set();
           _WasmEngine.#globalCallbackListeners.set(key, set);
         }
         set.add(handler);
@@ -133698,7 +133613,7 @@ var init_wasm_engine = __esm({
       #config;
       #instance = null;
       #initialized = false;
-      #moduleRegistry =  new Map();
+      #moduleRegistry = /* @__PURE__ */ new Map();
       #vmContext = null;
       #unusedWorkers = [];
       #runningWorkers = [];
@@ -134842,7 +134757,6 @@ var init_wasm_engine = __esm({
   }
 });
 
- 
 var import_node_fs3, RELAY_PROTO_UDP, FAUX_WEB_CLIENT_RELAY_PORT, TRUE_WEB_CLIENT_RELAY_PORT, CONNECTION_TIMEOUT_MS, ICE_RESTART_IDLE_THRESHOLD_MS, ICE_RTT_POLL_MS, MAX_BUFFER_SIZE, RELAY_PACKET_LOG_PATH, DISABLE_IPV6, RELAY_PORT_MODE, USE_ORIGINAL_RELAY_PORTS, RELAY_DTLS_FINGERPRINT, getConnectionIdentifier, createEmptyStats, getRelayLookupId, getRtcConnectPort, getVoipStackPort, bufferPacket, shiftPacket, replaceIceCredentials, replaceDtlsFingerprint, removeIceCandidates, appendRelayCandidate, buildRemoteRelayAnswer, toArrayBuffer, toUint8Array, classifyRelayPacket, appendRelayPacketLog, RelayRtcTransport;
 var init_relay_transport = __esm({
   "src/Voip/relay-transport.js"() {
@@ -134969,7 +134883,7 @@ a=end-of-candidates\r
       (0, import_node_fs3.appendFileSync)(
         RELAY_PACKET_LOG_PATH,
         JSON.stringify({
-          ts: ( new Date()).toISOString(),
+          ts: (/* @__PURE__ */ new Date()).toISOString(),
           direction,
           id: connection.info.id,
           relayId: connection.info.relayId,
@@ -134985,12 +134899,12 @@ a=end-of-candidates\r
     RelayRtcTransport = class {
       constructor(config) {
         this.config = config;
-        this._relayInfoById =  new Map();
-        this._connections =  new Map();
+        this._relayInfoById = /* @__PURE__ */ new Map();
+        this._connections = /* @__PURE__ */ new Map();
         this._totals = createEmptyStats();
         this._wrtcPromise = null;
         this.updateRelayList = (update) => {
-          const nextInfoById =  new Map();
+          const nextInfoById = /* @__PURE__ */ new Map();
           for (const relay of update.relays ?? []) {
             if (relay.token_id == null || relay.token_id < 0 || relay.token_id >= (update.relay_tokens ?? []).length) {
               continue;
@@ -135459,7 +135373,6 @@ a=end-of-candidates\r
   }
 });
 
- 
 async function uploadingNecessaryImagesOfProduct(product, waUploadToServer, timeoutMs = 3e4) {
   product = {
     ...product,
@@ -135687,7 +135600,6 @@ var init_business = __esm({
   }
 });
 
- 
 function Long(low, high, unsigned) {
   this.low = low | 0;
   this.high = high | 0;
@@ -135790,26 +135702,21 @@ var init_long = __esm({
       wasm2 = new WebAssembly.Instance(
         new WebAssembly.Module(
           new Uint8Array([
-             
             0,
             97,
             115,
             109,
-             
             1,
             0,
             0,
             0,
-             
             1,
             13,
             2,
-             
             96,
             0,
             1,
             127,
-             
             96,
             4,
             127,
@@ -135818,44 +135725,32 @@ var init_long = __esm({
             127,
             1,
             127,
-             
             3,
             7,
             6,
-             
             0,
-             
             1,
-             
             1,
-             
             1,
-             
             1,
-             
             1,
-             
             6,
             6,
             1,
-             
             127,
             1,
             65,
             0,
             11,
-             
             7,
             50,
             6,
-             
             3,
             109,
             117,
             108,
             0,
             1,
-             
             5,
             100,
             105,
@@ -135864,7 +135759,6 @@ var init_long = __esm({
             115,
             0,
             2,
-             
             5,
             100,
             105,
@@ -135873,7 +135767,6 @@ var init_long = __esm({
             117,
             0,
             3,
-             
             5,
             114,
             101,
@@ -135882,7 +135775,6 @@ var init_long = __esm({
             115,
             0,
             4,
-             
             5,
             114,
             101,
@@ -135891,7 +135783,6 @@ var init_long = __esm({
             117,
             0,
             5,
-             
             8,
             103,
             101,
@@ -135903,18 +135794,15 @@ var init_long = __esm({
             104,
             0,
             0,
-             
             10,
             191,
             1,
             6,
-             
             4,
             0,
             35,
             0,
             11,
-             
             36,
             1,
             1,
@@ -135952,7 +135840,6 @@ var init_long = __esm({
             4,
             167,
             11,
-             
             36,
             1,
             1,
@@ -135990,7 +135877,6 @@ var init_long = __esm({
             4,
             167,
             11,
-             
             36,
             1,
             1,
@@ -136028,7 +135914,6 @@ var init_long = __esm({
             4,
             167,
             11,
-             
             36,
             1,
             1,
@@ -136066,7 +135951,6 @@ var init_long = __esm({
             4,
             167,
             11,
-             
             36,
             1,
             1,
@@ -136224,7 +136108,6 @@ var init_long = __esm({
     LongPrototype.eq = LongPrototype.equals;
     LongPrototype.notEquals = function notEquals(other) {
       return !this.eq(
-        
         other
       );
     };
@@ -136232,14 +136115,12 @@ var init_long = __esm({
     LongPrototype.ne = LongPrototype.notEquals;
     LongPrototype.lessThan = function lessThan(other) {
       return this.comp(
-        
         other
       ) < 0;
     };
     LongPrototype.lt = LongPrototype.lessThan;
     LongPrototype.lessThanOrEqual = function lessThanOrEqual(other) {
       return this.comp(
-        
         other
       ) <= 0;
     };
@@ -136247,14 +136128,12 @@ var init_long = __esm({
     LongPrototype.le = LongPrototype.lessThanOrEqual;
     LongPrototype.greaterThan = function greaterThan(other) {
       return this.comp(
-        
         other
       ) > 0;
     };
     LongPrototype.gt = LongPrototype.greaterThan;
     LongPrototype.greaterThanOrEqual = function greaterThanOrEqual(other) {
       return this.comp(
-        
         other
       ) >= 0;
     };
@@ -136612,7 +136491,6 @@ var init_long = __esm({
   }
 });
 
- 
 function makeOfflineNodeProcessor(nodeProcessorMap, deps, batchSize = 10) {
   const nodes = [];
   let isProcessing = false;
@@ -136649,7 +136527,6 @@ var init_offline_node_processor = __esm({
   }
 });
 
- 
 var USyncDeviceProtocol;
 var init_USyncDeviceProtocol = __esm({
   "src/WAUSync/Protocols/USyncDeviceProtocol.js"() {
@@ -136706,7 +136583,6 @@ var init_USyncDeviceProtocol = __esm({
   }
 });
 
- 
 var USyncUser;
 var init_USyncUser = __esm({
   "src/WAUSync/USyncUser.js"() {
@@ -136743,7 +136619,6 @@ var init_USyncUser = __esm({
   }
 });
 
- 
 var USyncContactProtocol;
 var init_USyncContactProtocol = __esm({
   "src/WAUSync/Protocols/USyncContactProtocol.js"() {
@@ -136801,7 +136676,6 @@ var init_USyncContactProtocol = __esm({
   }
 });
 
- 
 var USyncStatusProtocol;
 var init_USyncStatusProtocol = __esm({
   "src/WAUSync/Protocols/USyncStatusProtocol.js"() {
@@ -136843,7 +136717,6 @@ var init_USyncStatusProtocol = __esm({
   }
 });
 
- 
 var USyncDisappearingModeProtocol;
 var init_USyncDisappearingModeProtocol = __esm({
   "src/WAUSync/Protocols/USyncDisappearingModeProtocol.js"() {
@@ -136876,7 +136749,6 @@ var init_USyncDisappearingModeProtocol = __esm({
   }
 });
 
- 
 var USyncUsernameProtocol;
 var init_USyncUsernameProtocol = __esm({
   "src/WAUSync/Protocols/USyncUsernameProtocol.js"() {
@@ -136907,7 +136779,6 @@ var init_USyncUsernameProtocol = __esm({
   }
 });
 
- 
 var init_Protocols = __esm({
   "src/WAUSync/Protocols/index.js"() {
     init_USyncDeviceProtocol();
@@ -136918,7 +136789,6 @@ var init_Protocols = __esm({
   }
 });
 
- 
 var USyncBotProfileProtocol;
 var init_UsyncBotProfileProtocol = __esm({
   "src/WAUSync/Protocols/UsyncBotProfileProtocol.js"() {
@@ -136975,7 +136845,6 @@ var init_UsyncBotProfileProtocol = __esm({
   }
 });
 
- 
 var USyncLIDProtocol;
 var init_UsyncLIDProtocol = __esm({
   "src/WAUSync/Protocols/UsyncLIDProtocol.js"() {
@@ -137009,7 +136878,6 @@ var init_UsyncLIDProtocol = __esm({
   }
 });
 
- 
 var USyncQuery;
 var init_USyncQuery = __esm({
   "src/WAUSync/USyncQuery.js"() {
@@ -137102,7 +136970,6 @@ var init_USyncQuery = __esm({
   }
 });
 
- 
 var init_WAUSync = __esm({
   "src/WAUSync/index.js"() {
     init_Protocols();
@@ -137111,7 +136978,6 @@ var init_WAUSync = __esm({
   }
 });
 
- 
 var BinaryInfo;
 var init_BinaryInfo = __esm({
   "src/WAM/BinaryInfo.js"() {
@@ -137127,7 +136993,6 @@ var init_BinaryInfo = __esm({
   }
 });
 
- 
 var import_events3, AbstractSocketClient;
 var init_types2 = __esm({
   "src/Socket/Client/types.js"() {
@@ -137143,7 +137008,6 @@ var init_types2 = __esm({
   }
 });
 
- 
 var import_ws, WebSocketClient;
 var init_websocket = __esm({
   "src/Socket/Client/websocket.js"() {
@@ -137203,7 +137067,6 @@ var init_websocket = __esm({
   }
 });
 
- 
 var init_Client = __esm({
   "src/Socket/Client/index.js"() {
     init_types2();
@@ -137211,7 +137074,6 @@ var init_Client = __esm({
   }
 });
 
- 
 function gradientText(text, palette = PALETTE_HEX) {
   if (noColor()) return text;
   const stops = palette.map(hexToRgb);
@@ -137298,7 +137160,6 @@ var init_Brand = __esm({
   }
 });
 
- 
 var isEnabled, attachPairingNoticeListener, wrapPairingCodeNotice;
 var init_hooks = __esm({
   "src/Brand/hooks.js"() {
@@ -137331,7 +137192,6 @@ var init_hooks = __esm({
   }
 });
 
- 
 var import_boom13, wMexQuery, executeWMexQuery;
 var init_mex = __esm({
   "src/Socket/mex.js"() {
@@ -137377,7 +137237,6 @@ var init_mex = __esm({
   }
 });
 
- 
 function mapWebSocketError(handler) {
   return (error) => {
     handler(new import_boom14.Boom(`WebSocket Error (${error?.message})`, { statusCode: getCodeFromWSError(error), data: error }));
@@ -137782,7 +137641,7 @@ var init_socket = __esm({
       };
       const onMessageReceived = async (data) => {
         await noise.decodeFrame(data, (frame) => {
-          lastDateRecv =  new Date();
+          lastDateRecv = /* @__PURE__ */ new Date();
           let anyTriggered = false;
           anyTriggered = ws.emit("frame", frame);
           if (!(frame instanceof Uint8Array)) {
@@ -137838,7 +137697,7 @@ var init_socket = __esm({
           connection: "close",
           lastDisconnect: {
             error,
-            date:  new Date()
+            date: /* @__PURE__ */ new Date()
           }
         });
         ev.removeAllListeners("connection.update");
@@ -137867,7 +137726,7 @@ var init_socket = __esm({
       };
       const startKeepAliveRequest = () => keepAliveReq = setInterval(() => {
         if (!lastDateRecv) {
-          lastDateRecv =  new Date();
+          lastDateRecv = /* @__PURE__ */ new Date();
         }
         const diff = Date.now() - lastDateRecv.getTime();
         if (diff > keepAliveIntervalMs + 5e3) {
@@ -138259,7 +138118,6 @@ var init_socket = __esm({
   }
 });
 
- 
 var import_node_cache3, import_boom15, buildProfilePictureQueryContent, makeChatsSocket;
 var init_chats = __esm({
   "src/Socket/chats.js"() {
@@ -138305,7 +138163,7 @@ var init_chats = __esm({
         recentSyncComplete: false
       };
       let historySyncPausedTimeout;
-      const blockedCollections =  new Set();
+      const blockedCollections = /* @__PURE__ */ new Set();
       const placeholderResendCache = config.placeholderResendCache || new import_node_cache3.default({
         stdTTL: DEFAULT_CACHE_TTLS.MSG_RETRY,
         useClones: false
@@ -138649,7 +138507,7 @@ var init_chats = __esm({
         };
       };
       const resyncAppState = ev.createBufferedFunction(async (collections, isInitialSync) => {
-        const appStateSyncKeyCache =  new Map();
+        const appStateSyncKeyCache = /* @__PURE__ */ new Map();
         const getCachedAppStateSyncKey = async (keyId) => {
           if (appStateSyncKeyCache.has(keyId)) {
             return appStateSyncKeyCache.get(keyId) ?? void 0;
@@ -138663,7 +138521,7 @@ var init_chats = __esm({
         await authState.keys.transaction(async () => {
           const collectionsToHandle = new Set(collections);
           const attemptsMap = {};
-          const forceSnapshotCollections =  new Set();
+          const forceSnapshotCollections = /* @__PURE__ */ new Set();
           while (collectionsToHandle.size) {
             const states = {};
             const nodes = [];
@@ -139325,7 +139183,6 @@ var init_chats = __esm({
   }
 });
 
- 
 var import_boom16, makeGroupsSocket, extractGroupMetadata;
 var init_groups = __esm({
   "src/Socket/groups.js"() {
@@ -139658,7 +139515,6 @@ var init_groups = __esm({
   }
 });
 
- 
 var parseNewsletterCreateResponse, parseNewsletterMetadata, makeNewsletterSocket;
 var init_newsletter = __esm({
   "src/Socket/newsletter.js"() {
@@ -139845,7 +139701,6 @@ var init_newsletter = __esm({
   }
 });
 
- 
 var import_node_cache4, import_boom17, makeMessagesSocket;
 var init_messages_send = __esm({
   "src/Socket/messages-send.js"() {
@@ -139866,7 +139721,7 @@ var init_messages_send = __esm({
       const sock = makeNewsletterSocket(config);
       const { ev, authState, messageMutex, signalRepository, upsertMessage, query, fetchPrivacySettings, sendNode, groupMetadata, groupToggleEphemeral, registerSocketEndHandler } = sock;
       const getLIDForPN = signalRepository.lidMapping.getLIDForPN.bind(signalRepository.lidMapping);
-      const inFlightTcTokenIssuance =  new Set();
+      const inFlightTcTokenIssuance = /* @__PURE__ */ new Set();
       const userDevicesCache = config.userDevicesCache || new import_node_cache4.default({
         stdTTL: DEFAULT_CACHE_TTLS.USER_DEVICES,
         useClones: false
@@ -139878,7 +139733,7 @@ var init_messages_send = __esm({
       let mediaHost = DEF_MEDIA_HOST;
       const refreshMediaConn = async (forceGet = false) => {
         const media = await mediaConn;
-        if (!media || forceGet || ( new Date()).getTime() - media.fetchDate.getTime() > media.ttl * 1e3) {
+        if (!media || forceGet || (/* @__PURE__ */ new Date()).getTime() - media.fetchDate.getTime() > media.ttl * 1e3) {
           mediaConn = (async () => {
             const result = await query({
               tag: "iq",
@@ -139897,7 +139752,7 @@ var init_messages_send = __esm({
               })),
               auth: mediaConnNode.attrs.auth,
               ttl: +mediaConnNode.attrs.ttl,
-              fetchDate:  new Date()
+              fetchDate: /* @__PURE__ */ new Date()
             };
             logger.debug("fetched media conn");
             if (node.hosts[0]) {
@@ -140008,7 +139863,7 @@ var init_messages_send = __esm({
         if (!toFetch.length) {
           return deviceResults;
         }
-        const requestedLidUsers =  new Set();
+        const requestedLidUsers = /* @__PURE__ */ new Set();
         for (const jid of toFetch) {
           if (isLidUser(jid) || isHostedLidUser(jid)) {
             const user = jidDecode(jid)?.user;
@@ -140884,7 +140739,6 @@ var init_messages_send = __esm({
   }
 });
 
- 
 function isValidEnforcementType(value) {
   return typeof value === "string" && ENFORCEMENT_TYPE_VALUES.has(value);
 }
@@ -141371,7 +141225,7 @@ var init_messages_recv = __esm({
           logger.info({ msgAttrs: node.attrs, retryCount }, "sent retry receipt");
         }, authState?.creds?.me?.id || "sendRetryRequest");
       };
-      const inFlightPreKeyLow =  new Set();
+      const inFlightPreKeyLow = /* @__PURE__ */ new Set();
       const reissueTcTokenAfterIdentityChange = (from) => {
         void (async () => {
           const normalizedJid = jidNormalizedUser(from);
@@ -141583,7 +141437,7 @@ var init_messages_recv = __esm({
         if (!decoded.length)
           return;
         await devicesMutex.mutex(async () => {
-          const byUser =  new Map();
+          const byUser = /* @__PURE__ */ new Map();
           for (const d of decoded) {
             const list = byUser.get(d.user) || [];
             list.push(d);
@@ -141780,7 +141634,7 @@ var init_messages_recv = __esm({
           return result;
         }
       };
-      const tcTokenKnownJids =  new Set();
+      const tcTokenKnownJids = /* @__PURE__ */ new Set();
       const tcTokenIndexLoaded = (async () => {
         try {
           const jids = await readTcTokenIndex(authState.keys);
@@ -142316,7 +142170,7 @@ var init_messages_recv = __esm({
           return exec2(node, false).catch((err) => onUnexpectedError(err, identifier));
         }
       };
-      const offlineNodeProcessor = makeOfflineNodeProcessor( new Map([
+      const offlineNodeProcessor = makeOfflineNodeProcessor(/* @__PURE__ */ new Map([
         ["message", handleMessage],
         ["call", handleCall],
         ["receipt", handleReceipt],
@@ -142388,7 +142242,7 @@ var init_messages_recv = __esm({
         }
       });
       let lastTcTokenPruneTs = 0;
-      const inFlight463Recoveries =  new Set();
+      const inFlight463Recoveries = /* @__PURE__ */ new Set();
       ev.on("connection.update", ({ isOnline, connection }) => {
         if (typeof isOnline !== "undefined") {
           sendActiveReceipts = isOnline;
@@ -142434,7 +142288,7 @@ var init_messages_recv = __esm({
           const jids = [...allJids];
           const allTokens = await authState.keys.get("tctoken", jids);
           const writes = {};
-          const survivors =  new Set();
+          const survivors = /* @__PURE__ */ new Set();
           let mutated = 0;
           for (const jid of jids) {
             const entry = allTokens[jid];
@@ -142490,7 +142344,6 @@ var init_messages_recv = __esm({
   }
 });
 
- 
 var makeBusinessSocket;
 var init_business2 = __esm({
   "src/Socket/business.js"() {
@@ -142872,7 +142725,6 @@ var init_business2 = __esm({
   }
 });
 
- 
 var makeCommunitiesSocket, extractCommunityMetadata;
 var init_communities = __esm({
   "src/Socket/communities.js"() {
@@ -143283,7 +143135,6 @@ var init_communities = __esm({
   }
 });
 
- 
 var makeWASocket, Socket_default;
 var init_Socket2 = __esm({
   "src/Socket/index.js"() {
@@ -143303,7 +143154,6 @@ var init_Socket2 = __esm({
   }
 });
 
- 
 var WEB_EVENTS, WEB_GLOBALS, FLAG_BYTE, FLAG_GLOBAL, FLAG_EVENT, FLAG_FIELD, FLAG_EXTENDED;
 var init_constants2 = __esm({
   "src/WAM/constants.js"() {
@@ -166166,7 +166016,6 @@ var init_constants2 = __esm({
   }
 });
 
- 
 function encodeWAMHeader(binaryInfo) {
   const headerBuffer = Buffer.alloc(8);
   headerBuffer.write("WAM", 0, "utf8");
@@ -166309,7 +166158,6 @@ var init_encode2 = __esm({
   }
 });
 
- 
 var init_WAM = __esm({
   "src/WAM/index.js"() {
     init_constants2();
@@ -166318,7 +166166,6 @@ var init_WAM = __esm({
   }
 });
 
- 
 var index_exports = {};
 __export(index_exports, {
   A2UI_BASIC_CATALOG: () => A2UI_BASIC_CATALOG,
@@ -166978,7 +166825,6 @@ var init_index = __esm({
   }
 });
 
- 
 var S_WHATSAPP_NET2, TC_TOKEN_REQUEST_TIMEOUT_MS, SESSION_CACHE_TTL_MS, ACK_TIMEOUT_MS, _baileysModule, loadBaileys, getNodeChildren, setNodeChildren, replaceNodeChild, removeNodeChildrenByTag, parseCountAttr, SignalingBridge;
 var init_signaling = __esm({
   "src/Voip/signaling.js"() {
@@ -167024,13 +166870,13 @@ var init_signaling = __esm({
         };
         this._baileys = null;
         this._voip = null;
-        this._observedTcTokens =  new Map();
-        this._pendingTcTokenWaiters =  new Map();
-        this._ensuredSignalSessions =  new Map();
-        this._remoteDevicePeerByCallId =  new Map();
-        this._remoteObfuscatedPeerByCallId =  new Map();
-        this._remoteXmppRoutePeerByCallId =  new Map();
-        this._incomingCallPeerById =  new Map();
+        this._observedTcTokens = /* @__PURE__ */ new Map();
+        this._pendingTcTokenWaiters = /* @__PURE__ */ new Map();
+        this._ensuredSignalSessions = /* @__PURE__ */ new Map();
+        this._remoteDevicePeerByCallId = /* @__PURE__ */ new Map();
+        this._remoteObfuscatedPeerByCallId = /* @__PURE__ */ new Map();
+        this._remoteXmppRoutePeerByCallId = /* @__PURE__ */ new Map();
+        this._incomingCallPeerById = /* @__PURE__ */ new Map();
         this._outgoingSignalingQueue = Promise.resolve(void 0);
         this._incomingSignalingQueue = Promise.resolve(void 0);
         this.attachEngine = (voip) => {
@@ -167551,7 +167397,7 @@ var init_signaling = __esm({
           if (!enc || !(enc.content instanceof Uint8Array)) return voipNode;
           const type = enc.attrs.type;
           if (type !== "pkmsg" && type !== "msg") return voipNode;
-          const candidates = [... new Set([peerJid, this._toCallDeviceJid(peerJid)])].filter(Boolean);
+          const candidates = [.../* @__PURE__ */ new Set([peerJid, this._toCallDeviceJid(peerJid)])].filter(Boolean);
           let lastErr;
           for (const jid of candidates) {
             try {
@@ -167734,7 +167580,7 @@ var init_signaling = __esm({
         ];
         this._normalizeStartCallPeerList = (jids) => {
           const { jidDecode: jidDecode2 } = this._baileys;
-          const result =  new Set();
+          const result = /* @__PURE__ */ new Set();
           for (const jid of jids) {
             const value = String(jid || "").trim();
             if (!value) continue;
@@ -167786,7 +167632,7 @@ var init_signaling = __esm({
           }
         };
         this._getTcTokenCandidateJids = async (jid) => {
-          const result =  new Set();
+          const result = /* @__PURE__ */ new Set();
           const bare = this._toBareJid(jid);
           if (bare) result.add(bare);
           try {
@@ -167891,7 +167737,6 @@ var init_signaling = __esm({
   }
 });
 
- 
 var import_node_child_process, PREBUFFER_CHUNKS, REBUFFER_CHUNKS, MAX_QUEUED_CHUNKS, RESUME_QUEUE_CHUNKS, RESYNC_AFTER_MS, AudioFeeder;
 var init_audio_feeder = __esm({
   "src/Voip/audio-feeder.js"() {
@@ -168171,7 +168016,6 @@ var init_audio_feeder = __esm({
   }
 });
 
- 
 var import_node_child_process2, PREBUFFER_FRAMES, MAX_QUEUED_FRAMES, RESUME_QUEUE_FRAMES, RESYNC_AFTER_MS2, VIDEO_FORMAT_I420, VideoFeeder;
 var init_video_feeder = __esm({
   "src/Voip/video-feeder.js"() {
@@ -168451,7 +168295,6 @@ var init_video_feeder = __esm({
   }
 });
 
- 
 var CallState;
 var init_types3 = __esm({
   "src/Voip/types.js"() {
@@ -168469,7 +168312,6 @@ var init_types3 = __esm({
   }
 });
 
- 
 var import_node_events2, import_node_crypto2, SHA256_LEN, toBareJid, computeHkdf, computeHmacSha256, isCallReceiptNode, ActiveCall, VoipClient, makeVoipClient;
 var init_Voip = __esm({
   "src/Voip/index.js"() {
@@ -169345,7 +169187,6 @@ var init_Voip = __esm({
   }
 });
 
- 
 var NATIVE_FLOW_NAMES, BUTTON_NAME_TO_FLOW, WEB_SUPPORTED_INTERACTIVE_FLOWS, NATIVE_FLOW_BUTTON_LIMIT, getNativeFlowNameByButtonName, isWebSupportedButtonName, checkNativeFlowButtons;
 var init_native_flow = __esm({
   "src/Utils/native-flow.js"() {
@@ -169455,7 +169296,6 @@ var init_native_flow = __esm({
   }
 });
 
- 
 var USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH, USERNAME_PIN_LENGTH, LETTERS, DIGITS, LETTER_SET, ALLOWED_SET, RESERVED_SUFFIXES, RESERVED_WORDS, PIN_PATTERN, UsernameValidationError, stripUsernamePrefix, displayUsername, validateUsername, isUsernamePin;
 var init_username = __esm({
   "src/Utils/username.js"() {
@@ -169465,7 +169305,7 @@ var init_username = __esm({
     LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     DIGITS = "0123456789";
     LETTER_SET = new Set(LETTERS.split(""));
-    ALLOWED_SET =  new Set([...LETTERS.split(""), ...DIGITS.split(""), "_", "."]);
+    ALLOWED_SET = /* @__PURE__ */ new Set([...LETTERS.split(""), ...DIGITS.split(""), "_", "."]);
     RESERVED_SUFFIXES = [".com", ".org", ".net", ".int", ".edu", ".gov", ".mil", ".arpa", ".html", ".htm", ".txt", ".xml"];
     RESERVED_WORDS = ["whatsapp", "instagram", "facebook", "oculus"];
     PIN_PATTERN = /^[0-9]{4}$/;
@@ -169520,7 +169360,6 @@ var init_username = __esm({
   }
 });
 
- 
 var import_crypto25, SCHEDULED_MSG_META_TYPE, SCHEDULED_MSG_MAX_PER_CHAT, SCHEDULED_MSG_MAX_MEDIA, SCHEDULED_MSG_RESOURCE_LIMIT_NACK_CODE, SCHEDULED_MSG_REVEAL_KEY_BYTES, SCHEDULED_MSG_REVEAL_KEY_IV_BYTES, SCHEDULED_MSG_REVEAL_KEY_RETENTION_DAYS, SCHEDULED_MSG_TAG_BYTES, SCHEDULED_MSG_WINDOW, generateRevealKey, generateRevealKeyId, encryptWithRevealKey, decryptWithRevealKey, buildConditionalRevealMessage, encodeScheduledMessage, decodeScheduledMessage, buildScheduledMsgMetaNode, buildUnscheduleProtocolMessage, isScheduledTimeValid;
 var init_scheduled_message = __esm({
   "src/Utils/scheduled-message.js"() {
@@ -169627,7 +169466,6 @@ var init_scheduled_message = __esm({
   }
 });
 
- 
 var requireObject, requireKey, enumValue, STATUS_NOTIFICATION_TYPES, toSeconds, toMilliseconds, makeInnerCommentMessage, makeQuestionMessage, makeQuestionResponseMessage, makeQuestionReplyMessage, makeStatusQuestionAnswerMessage, makeStatusQuotedMessage, makeStatusStickerInteractionMessage, makeStatusNotificationMessage, makeNewsletterAdminInviteMessage, makeNewsletterFollowerInviteMessage, makePollAddOptionMessage, makeCommentMessage, makeEventInviteMessage, makeScheduledCallCreationMessage, makeScheduledCallEditMessage, makeGroupStatusReactionMessage, makeNewsletterStatusAttribution, makeGroupStatusAttribution, STATUS_AUDIENCE_DEFAULT_LIST_NAME, STATUS_AUDIENCE_DEFAULT_EMOJI, makeStatusAudienceMetadata, makeMessageAssociation, makeStatusAddYoursAssociation, makeStatusMentionMessage, modernBuilders, prepareModernMessageContent;
 var init_modern_messages = __esm({
   "src/Utils/modern-messages.js"() {
@@ -170092,7 +169930,6 @@ var init_modern_messages = __esm({
   }
 });
 
- 
 var NEWSLETTER_STATUS_MEDIA_TYPES, NEWSLETTER_STATUS_WEB_MEDIA_TYPES, NEWSLETTER_STATUS_INTERACTIONS, NEWSLETTER_STATUS_CONTENT_TYPES, NEWSLETTER_STATUS_CALLBACK_EVENTS, NEWSLETTER_STATUS_EDIT_REACTION_REVOKE, NEWSLETTER_STATUS_EDIT_ADMIN_REVOKE, NEWSLETTER_STATUS_ACK_CLASS, NEWSLETTER_STATUS_ACK_TIMEOUT_MS, NEWSLETTER_STATUS_SERVER_ID_TIMEOUT_MS, getNewsletterStatusMediaType, assertNewsletterJid, assertInteraction, assertMediaType, isPresent, NEWSLETTER_SERVER_ID_MIN, NEWSLETTER_SERVER_ID_MAX, toNewsletterServerId, toServerId, buildMetaNode, withNewsletterStatusAttribution, snapshotCallbackNode, collectStatusCallbacks, readIntAttr, parseNewsletterStatusAck, waitForNewsletterStatusServerId, assertStatusServerResponse, buildNewsletterAdminProfileStatusMessage, resolveStatusPayload, buildNewsletterStatusNode, buildNewsletterStatusReactionNode, buildNewsletterStatusRevokeNode, sendStatusNode, makeNewsletterStatusSender, makeNewsletterStatusReactionSender, makeNewsletterStatusRevokeSender, decodeStatusPayload, parseStatusAdminProfile, parseStatusNode, parseNewsletterStatusUpdatesResponse, makeNewsletterStatusUpdatesFetcher, parseNewsletterStatusesResponse, makeNewsletterStatusFetcher;
 var init_newsletter_status = __esm({
   "src/Utils/newsletter-status.js"() {
@@ -170103,10 +169940,10 @@ var init_newsletter_status = __esm({
     init_Message();
     init_WABinary();
     init_jid_utils();
-    NEWSLETTER_STATUS_MEDIA_TYPES =  new Set(["audio", "gif", "image", "video"]);
-    NEWSLETTER_STATUS_WEB_MEDIA_TYPES =  new Set(["image", "video"]);
-    NEWSLETTER_STATUS_INTERACTIONS =  new Set(["question", "question_response", "question_reshare"]);
-    NEWSLETTER_STATUS_CONTENT_TYPES =  new Set(["text", "media", "reaction"]);
+    NEWSLETTER_STATUS_MEDIA_TYPES = /* @__PURE__ */ new Set(["audio", "gif", "image", "video"]);
+    NEWSLETTER_STATUS_WEB_MEDIA_TYPES = /* @__PURE__ */ new Set(["image", "video"]);
+    NEWSLETTER_STATUS_INTERACTIONS = /* @__PURE__ */ new Set(["question", "question_response", "question_reshare"]);
+    NEWSLETTER_STATUS_CONTENT_TYPES = /* @__PURE__ */ new Set(["text", "media", "reaction"]);
     NEWSLETTER_STATUS_CALLBACK_EVENTS = ["CB:ack", "CB:status", "CB:iq", "CB:notification", "CB:message"];
     NEWSLETTER_STATUS_EDIT_REACTION_REVOKE = "7";
     NEWSLETTER_STATUS_EDIT_ADMIN_REVOKE = "8";
@@ -170648,7 +170485,6 @@ var init_newsletter_status = __esm({
   }
 });
 
- 
 var StatusLinkType, STICKER_DEFAULT_AREA, trimUndefined2, fraction, stickerArea, annotation, locationSticker, channelSticker, linkSticker, musicSticker, messageSticker, ACTIONS, normalizeStickers, readStickers, MusicMessageStyle, MUSIC_ALLOWED_HOSTS, isMusicHostAllowed, assertMusicHost, embeddedMusicOf, buildMusicMessage, readMusicMessage;
 var init_status_stickers = __esm({
   "src/Utils/status-stickers.js"() {
@@ -170878,7 +170714,6 @@ var init_status_stickers = __esm({
   }
 });
 
- 
 var SplitPaymentStatus, ReminderFrequency, ReminderStatus, MONEY_OFFSET, drop, money, readMoney, buildSplitPayment, buildSplitPaymentUpdate, buildPaymentReminder, readSplitPayment, readPaymentReminder;
 var init_payment_messages = __esm({
   "src/Utils/payment-messages.js"() {
@@ -171027,7 +170862,6 @@ var init_payment_messages = __esm({
   }
 });
 
- 
 var SocialMediaPostType, drop2, videoEndCard, buildSocialPreview, readSocialPreview;
 var init_link_preview_metadata = __esm({
   "src/Utils/link-preview-metadata.js"() {
@@ -171109,7 +170943,6 @@ var init_link_preview_metadata = __esm({
   }
 });
 
- 
 var DEFAULT_MAX_DURATION, DEFAULT_MAX_BYTES, streamToBuffer, normalizeVoiceText, matchVoiceWakePhrase, removeVoiceWakePhrase, getVoiceSenderJid, isQuotedToSelf, normalizeTranscriptionResult, getWakePhrases, bindVoiceRecognition;
 var init_voice_recognition = __esm({
   "src/Utils/voice-recognition.js"() {
@@ -171294,7 +171127,6 @@ var init_voice_recognition = __esm({
   }
 });
 
- 
 var CREDS_KEY, encodeAuthValue, decodeAuthValue, loadOptionalModule, makeAuthStateFromStore;
 var init_auth_store = __esm({
   "src/Utils/auth-store.js"() {
@@ -171375,7 +171207,6 @@ var init_auth_store = __esm({
   }
 });
 
- 
 var import_lru_cache4, asKey, toMilliseconds2, TTLCache;
 var init_ttl_cache = __esm({
   "src/Utils/ttl-cache.js"() {
@@ -171477,7 +171308,6 @@ var init_ttl_cache = __esm({
   }
 });
 
- 
 var GROUP_ADDRESSING_MODES, isUsableGroupMetadata, describeUnusableGroupMetadata;
 var init_group_metadata_cache = __esm({
   "src/Utils/group-metadata-cache.js"() {
@@ -171506,7 +171336,6 @@ var init_group_metadata_cache = __esm({
   }
 });
 
- 
 var import_promises5, import_lru_cache5, import_async_mutex4, FLUSH_TIMEOUT_MS, useSingleFileAuthState;
 var init_use_single_file_auth_state = __esm({
   "src/Utils/use-single-file-auth-state.js"() {
@@ -171616,7 +171445,6 @@ var init_use_single_file_auth_state = __esm({
   }
 });
 
- 
 async function useMongoAuthState(opts = {}) {
   const session = opts.session ?? "default";
   let collection = opts.collection;
@@ -171689,7 +171517,6 @@ var init_use_mongo_auth_state = __esm({
   }
 });
 
- 
 async function useMySQLAuthState(opts = {}) {
   const table = quoteIdentifier(opts.table ?? "baileys_auth");
   const session = opts.session ?? "default";
@@ -171773,7 +171600,6 @@ var init_use_mysql_auth_state = __esm({
   }
 });
 
- 
 async function usePostgresAuthState(opts = {}) {
   const table = quoteIdentifier2(opts.table ?? "baileys_auth");
   const session = opts.session ?? "default";
@@ -171857,7 +171683,6 @@ var init_use_postgres_auth_state = __esm({
   }
 });
 
- 
 async function useRedisAuthState(opts = {}) {
   const session = opts.session ?? "default";
   const prefix = opts.prefix ?? "baileys_auth";
@@ -171953,7 +171778,6 @@ var init_use_redis_auth_state = __esm({
   }
 });
 
- 
 async function loadBetterSqlite3() {
   try {
     const mod = await import("better-sqlite3");
@@ -172074,7 +171898,6 @@ CREATE INDEX IF NOT EXISTS signal_keys_type_idx ON signal_keys(type);
   }
 });
 
- 
 async function useNekoDBAuth(db, collectionName = "baileys_elaina_auth") {
   if (!db || typeof db.collection !== "function") {
     throw new Error(
@@ -172164,7 +171987,6 @@ var init_useNekoDBAuth = __esm({
   }
 });
 
- 
 var init_elaina_exports = __esm({
   "src/elaina-exports.js"() {
     init_MessageBuilder();
@@ -172196,7 +172018,6 @@ var init_elaina_exports = __esm({
   }
 });
 
- 
 var ported_exports_exports = {};
 __export(ported_exports_exports, {
   A2UI_BASIC_CATALOG: () => A2UI_BASIC_CATALOG,
@@ -172581,7 +172402,6 @@ var init_ported_exports = __esm({
   }
 });
 init_ported_exports();
- 
 0 && (module.exports = {
   A2UI_BASIC_CATALOG,
   A2UI_ROOT_ID,
@@ -172950,26 +172770,3 @@ init_ported_exports();
   wireBytes,
   withNewsletterStatusAttribution
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

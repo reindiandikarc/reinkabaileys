@@ -16,7 +16,6 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
- 
 var index_exports = {};
 __export(index_exports, {
   BRAND: () => BRAND,
@@ -29,7 +28,6 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
- 
 var isEnabled = (config) => config?.brand?.pairingNotice !== false;
 var attachPairingNoticeListener = (ev, config = {}, stream) => {
   if (!isEnabled(config)) {
@@ -56,7 +54,6 @@ var wrapPairingCodeNotice = (fn, config = {}, stream) => {
   };
 };
 
- 
 var PALETTE_HEX = ["#ff4d8d", "#a855f7", "#22d3ee"];
 var BRAND = Object.freeze({
   name: "REIN BAILEYS",
@@ -136,7 +133,6 @@ function printPairingNotice(input = {}) {
   }
   write(stream, gradientText(text));
 }
- 
 0 && (module.exports = {
   BRAND,
   attachPairingNoticeListener,

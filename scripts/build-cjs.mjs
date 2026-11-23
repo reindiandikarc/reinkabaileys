@@ -1,5 +1,5 @@
 import { build } from 'esbuild'
-import { mkdir, readFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -31,5 +31,21 @@ for (const [entry, outfile] of entries) {
     external,
     target: 'node20'
   })
+  const code = await readFile(join(root, outfile), 'utf8')
+  const lines = []
+  let inBlock = false
+  for (const line of code.split('\n')) {
+    if (inBlock) {
+      if (line.includes('*/')) inBlock = false
+      continue
+    }
+    if (/^\s*\/\//.test(line)) continue
+    if (/^\s*\/\*/.test(line)) {
+      if (!line.includes('*/')) inBlock = true
+      continue
+    }
+    lines.push(line)
+  }
+  await writeFile(join(root, outfile), lines.join('\n'))
   console.log(`built ${outfile}`)
 }
