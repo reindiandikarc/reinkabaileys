@@ -122319,6 +122319,90 @@ var init_messages = __esm({
           m.messageContextInfo.messageSecret = (0, import_crypto7.randomBytes)(32);
         }
       }
+      // ==== REINDA COMPAT: legacy shorthand button/list messages (ported from ryuuxalya) ====
+      if ('buttons' in message && !!message.buttons) {
+          const _btnHeader = proto.Message.ButtonsMessage.HeaderType;
+          const _buttonsMessage = {
+              buttons: message.buttons.map(b => ({ ...b, type: proto.Message.ButtonsMessage.Button.Type.RESPONSE }))
+          };
+          if ('text' in message) {
+              _buttonsMessage.contentText = message.text;
+              _buttonsMessage.headerType = _btnHeader.EMPTY;
+          } else {
+              if ('caption' in message) _buttonsMessage.contentText = message.caption;
+              const _mt = Object.keys(m)[0].replace('Message', '').toUpperCase();
+              _buttonsMessage.headerType = _btnHeader[_mt] ?? _btnHeader.EMPTY;
+              Object.assign(_buttonsMessage, m);
+          }
+          if ('title' in message && !!message.title) {
+              _buttonsMessage.text = message.title;
+              _buttonsMessage.headerType = _btnHeader.TEXT;
+          }
+          if ('footer' in message && !!message.footer) _buttonsMessage.footerText = message.footer;
+          if ('contextInfo' in message && !!message.contextInfo) _buttonsMessage.contextInfo = message.contextInfo;
+          if ('mentions' in message && !!message.mentions) _buttonsMessage.contextInfo = { mentionedJid: message.mentions };
+          m = { buttonsMessage: _buttonsMessage };
+      } else if ('templateButtons' in message && !!message.templateButtons) {
+          const _tpl = { hydratedButtons: message.templateButtons };
+          if ('text' in message) _tpl.hydratedContentText = message.text;
+          else {
+              if ('caption' in message) _tpl.hydratedContentText = message.caption;
+              Object.assign(_tpl, m);
+          }
+          if ('footer' in message && !!message.footer) _tpl.hydratedFooterText = message.footer;
+          m = { templateMessage: { fourRowTemplate: _tpl, hydratedTemplate: _tpl } };
+      }
+      if ('sections' in message && !!message.sections) {
+          m = {
+              listMessage: {
+                  sections: message.sections,
+                  buttonText: message.buttonText,
+                  title: message.title,
+                  footerText: message.footer,
+                  description: message.text,
+                  listType: proto.Message.ListMessage.ListType.SINGLE_SELECT
+              }
+          };
+      }
+      if ('interactiveButtons' in message && !!message.interactiveButtons) {
+          const _interactive = {
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({ buttons: message.interactiveButtons })
+          };
+          if ('text' in message) _interactive.body = { text: message.text };
+          else if ('caption' in message) {
+              _interactive.body = { text: message.caption };
+              _interactive.header = { title: message.title, subtitle: message.subtitle, hasMediaAttachment: !!message.media };
+              Object.assign(_interactive.header, m);
+          }
+          if ('footer' in message && !!message.footer) _interactive.footer = { text: message.footer };
+          if ('title' in message && !!message.title) {
+              _interactive.header = { title: message.title, subtitle: message.subtitle, hasMediaAttachment: !!message.media };
+              Object.assign(_interactive.header, m);
+          }
+          if ('contextInfo' in message && !!message.contextInfo) _interactive.contextInfo = message.contextInfo;
+          if ('mentions' in message && !!message.mentions) _interactive.contextInfo = { mentionedJid: message.mentions };
+          m = { interactiveMessage: _interactive };
+      }
+      if ('shop' in message && !!message.shop) {
+          const _shopInteractive = {
+              shopStorefrontMessage: proto.Message.InteractiveMessage.ShopMessage.fromObject({ surface: message.shop, id: message.id })
+          };
+          if ('text' in message) _shopInteractive.body = { text: message.text };
+          else if ('caption' in message) {
+              _shopInteractive.body = { text: message.caption };
+              _shopInteractive.header = { title: message.title, subtitle: message.subtitle, hasMediaAttachment: !!message.media };
+              Object.assign(_shopInteractive.header, m);
+          }
+          if ('footer' in message && !!message.footer) _shopInteractive.footer = { text: message.footer };
+          if ('title' in message && !!message.title) {
+              _shopInteractive.header = { title: message.title, subtitle: message.subtitle, hasMediaAttachment: !!message.media };
+              Object.assign(_shopInteractive.header, m);
+          }
+          if ('contextInfo' in message && !!message.contextInfo) _shopInteractive.contextInfo = message.contextInfo;
+          if ('mentions' in message && !!message.mentions) _shopInteractive.contextInfo = { mentionedJid: message.mentions };
+          m = { interactiveMessage: _shopInteractive };
+      }
+      // ==== END REINDA COMPAT ====
       return proto.Message.create(m);
     };
     generateWAMessageFromContent = (jid, message, options) => {
