@@ -6,7 +6,8 @@ import { BRAND, gradientText, getBrandLines, printBrand, printPairingNotice } fr
 const stripAnsi = (text) => text.replace(/\x1b\[[0-9;]*m/g, '')
 
 test('brand constants match spec', () => {
-  assert.equal(BRAND.name, 'REINDIANDIKARC BAILEYS')
+  assert.equal(BRAND.name, 'REIN BAILEYS')
+  assert.equal(BRAND.shortName, 'REIN')
   assert.equal(BRAND.version, '7.0.0-rc13.1')
   assert.equal(BRAND.boxWidth, 60)
 })
@@ -17,11 +18,13 @@ test('gradientText emits truecolor ANSI per character', () => {
   assert.match(out, /\x1b\[0m$/)
 })
 
-test('getBrandLines has fixed width and brand text', () => {
+test('getBrandLines has fixed width and decorative brand text', () => {
   const lines = getBrandLines()
   assert.equal(lines.length, 6)
-  assert.ok(lines[1].includes('R E I N D I A N D I K A R C'))
-  assert.ok(lines.every(line => line.length >= 50))
+  assert.ok(lines[1].includes('R E I N'))
+  assert.ok(lines[1].includes('✦'))
+  assert.ok(lines[3].includes('◈'))
+  assert.ok(lines.every(line => Array.from(line).length === BRAND.boxWidth))
 })
 
 test('NO_COLOR disables ANSI', () => {
@@ -41,7 +44,7 @@ test('printBrand writes once per process', () => {
   stream.on('data', chunk => { output += chunk })
   assert.equal(printBrand({ stream }), true)
   assert.equal(printBrand({ stream }), false)
-  assert.match(stripAnsi(output), /R E I N D I A N D I K A R C/)
+  assert.match(stripAnsi(output), /R E I N/)
 })
 
 test('printPairingNotice shows pairing code', () => {
@@ -49,6 +52,7 @@ test('printPairingNotice shows pairing code', () => {
   let output = ''
   stream.on('data', chunk => { output += chunk })
   printPairingNotice({ pairingCode: 'A1B2-C3D4', stream })
+  assert.match(stripAnsi(output), /REIN/)
   assert.match(stripAnsi(output), /PAIRING CODE/)
   assert.match(stripAnsi(output), /A1B2-C3D4/)
 })

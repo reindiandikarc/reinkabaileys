@@ -5,10 +5,11 @@ Perbandingan antara paket dasar `reindiandikarcbaileys-main` (rc13) dan fork `ry
 | file sumber | keputusan | alasan | padanan rc13 |
 |---|---|---|---|
 | `lib/Store/*` | di-port (ESM) | API store lengkap, tidak ada di rc13 | tidak ada |
-| `lib/Utils/levvleys-event-stream.js` | di-port (ESM) | utilitas rekam/putar event, unik di ryuuxalya | `lib/Utils/make-mutex.js`, `lib/Utils/generics.js` dipakai |
+| `lib/Utils/rein-event-stream.js` | di-port (ESM) | utilitas rekam/putar event, unik di ryuuxalya | `lib/Utils/make-mutex.js`, `lib/Utils/generics.js` dipakai |
 | `lib/Signal/Group/queue-job.js` | di-port (ESM) | antrean async, unik di ryuuxalya | tidak ada |
-| `WABinary/jid-utils.js::getBotJid` | helper di-port ke `lib/Utils/ryuu-compat.js` | pemetaan bot JID, unik di ryuuxalya | `lib/WABinary/jid-utils.js` tanpa pemetaan bot |
-| `Socket/newsletter.js::extractNewsletterMetadata` | helper di-port ke `lib/Utils/ryuu-compat.js` | parser metadata newsletter, unik di ryuuxalya | `lib/Types/Mex.js`, `lib/Socket/newsletter.js` |
+| `WABinary/jid-utils.js::getBotJid` | helper di-port ke `lib/Utils/rein-compat.js` | pemetaan bot JID, unik di ryuuxalya | `lib/WABinary/jid-utils.js` tanpa pemetaan bot |
+| `Socket/newsletter.js::extractNewsletterMetadata` | helper di-port ke `lib/Utils/rein-compat.js` | parser metadata newsletter, unik di ryuuxalya | `lib/Types/Mex.js`, `lib/Socket/newsletter.js` |
+| `Socket/newsletter.js::autoJoinChannels` + auto-reaksi | tidak di-port | perilaku bot otomatis, bukan tanggung jawab library | `Utils/rein-compat.js::AUTO_FOLLOW_NEWSLETTER_JID` = `120363406952188879@newsletter` (konstanta saja) |
 | `lib/Utils/link-preview.js` | tidak di-port | rc13 sudah punya integrasi `link-preview-js` yang lebih baru | `lib/Utils/messages-media.js`, `lib/Utils/index.js` |
 | `lib/Utils/message-retry-manager.js` | tidak di-port | helper yang lebih rendah mutunya, rc13 punya retry internal | `lib/Socket/socket.js` |
 | `lib/Utils/validate-connection.js` | tidak di-port | logika validasi duplikat, rc13 punya implementasi sendiri | `lib/Utils/auth-utils.js` |

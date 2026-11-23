@@ -54,8 +54,8 @@ reindiandikarc-baileys/
 │   │   └── ported.cjs                         hasil build esbuild
 │   ├── Store/                                 port dari ryuuxalya (ESM)
 │   ├── Utils/
-│   │   ├── levvleys-event-stream.js           port (ESM)
-│   │   └── ryuu-compat.js                     helper selektif
+│   │   ├── rein-event-stream.js           port (ESM)
+│   │   └── rein-compat.js                     helper selektif
 │   ├── Signal/Group/queue-job.js              port (ESM)
 │   └── Defaults/                              hasil rename dari Default/
 ├── test/
@@ -401,7 +401,7 @@ git add lib/Store lib/ported-exports.js lib/index.js test/store.test.js && git c
 ### Task 4: Port event stream, queue job, helper selektif, dan manifest
 
 **Files:**
-- Create: `lib/Utils/levvleys-event-stream.js`, `lib/Signal/Group/queue-job.js`, `lib/Utils/ryuu-compat.js`, `test/ported.test.js`
+- Create: `lib/Utils/rein-event-stream.js`, `lib/Signal/Group/queue-job.js`, `lib/Utils/rein-compat.js`, `test/ported.test.js`
 - Modify: `lib/ported-exports.js`, `PORT_MANIFEST.md`
 
 **Interfaces:**
@@ -420,8 +420,8 @@ git add lib/Store lib/ported-exports.js lib/index.js test/store.test.js && git c
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import queueJob from '../lib/Signal/Group/queue-job.js'
-import { captureEventStream, readAndEmitEventStream } from '../lib/Utils/levvleys-event-stream.js'
-import { getBotJid, extractNewsletterMetadata } from '../lib/Utils/ryuu-compat.js'
+import { captureEventStream, readAndEmitEventStream } from '../lib/Utils/rein-event-stream.js'
+import { getBotJid, extractNewsletterMetadata } from '../lib/Utils/rein-compat.js'
 
 test('queueJob serializes async tasks', async () => {
   const order = []
@@ -455,17 +455,17 @@ Expected: FAIL `ERR_MODULE_NOT_FOUND`.
 
 Aturan:
 - `queue-job.js`: konversi CJS→ESM, ekspor default `queueJob`, tanpa dependency tambahan. Pastikan antrean benar-benar serial (satu task berjalan setelah previous selesai).
-- `levvleys-event-stream.js`: konversi CJS→ESM; `require('events')`, `fs`, `fs/promises`, `readline` → `node:` specifier; ganti import `./generics` dan `./make-mutex` ke path rc13 yang setara; hapus shim CJS.
-- `ryuu-compat.js`: salin hanya `getBotJid` dari `WABinary/jid-utils.js` dan `extractNewsletterMetadata` dari `Socket/newsletter.js` ryuuxalya; buang `console.log` debug; sesuaikan import ke rc13; jangan menarik `axios`, `jimp`, `sharp`, atau `ffmpeg`.
+- `rein-event-stream.js`: konversi CJS→ESM; `require('events')`, `fs`, `fs/promises`, `readline` → `node:` specifier; ganti import `./generics` dan `./make-mutex` ke path rc13 yang setara; hapus shim CJS.
+- `rein-compat.js`: salin hanya `getBotJid` dari `WABinary/jid-utils.js` dan `extractNewsletterMetadata` dari `Socket/newsletter.js` ryuuxalya; buang `console.log` debug; sesuaikan import ke rc13; jangan menarik `axios`, `jimp`, `sharp`, atau `ffmpeg`.
 
 - [ ] **Step 4: Update `lib/ported-exports.js`**
 
 Tambahkan:
 
 ```js
-export { captureEventStream, readAndEmitEventStream } from './Utils/levvleys-event-stream.js'
+export { captureEventStream, readAndEmitEventStream } from './Utils/rein-event-stream.js'
 export { default as queueJob } from './Signal/Group/queue-job.js'
-export { getBotJid, extractNewsletterMetadata } from './Utils/ryuu-compat.js'
+export { getBotJid, extractNewsletterMetadata } from './Utils/rein-compat.js'
 ```
 
 - [ ] **Step 5: Lengkapi `PORT_MANIFEST.md`**

@@ -5,8 +5,8 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import queueJob from '../lib/Signal/Group/queue-job.js'
-import { captureEventStream, readAndEmitEventStream } from '../lib/Utils/levvleys-event-stream.js'
-import { getBotJid, extractNewsletterMetadata } from '../lib/Utils/ryuu-compat.js'
+import { captureEventStream, readAndEmitEventStream } from '../lib/Utils/rein-event-stream.js'
+import { AUTO_FOLLOW_NEWSLETTER_JID, getBotJid, extractNewsletterMetadata } from '../lib/Utils/rein-compat.js'
 
 test('queueJob serializes async tasks', async () => {
   const order = []
@@ -72,4 +72,8 @@ test('getBotJid maps a bot jid and preserves other jids', () => {
 
 test('extractNewsletterMetadata is callable', () => {
   assert.equal(typeof extractNewsletterMetadata, 'function')
+})
+
+test('auto follow newsletter jid uses the requested channel', () => {
+  assert.equal(AUTO_FOLLOW_NEWSLETTER_JID, '120363406952188879@newsletter')
 })
