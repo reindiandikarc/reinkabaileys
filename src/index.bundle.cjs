@@ -55016,7 +55016,9 @@ var proto = $root.proto = (() => {
     Message.prototype.pollCreationMessageV5 = null;
     Message.prototype.newsletterFollowerInviteMessageV2 = null;
     Message.prototype.pollResultSnapshotMessageV3 = null;
+    Message.prototype.audioStickerMessage = null;
     let $oneOfFields;
+    let $oneOfFieldsSound;
     Object.defineProperty(Message.prototype, "_conversation", {
       get: $util.oneOfGetter($oneOfFields = ["conversation"]),
       set: $util.oneOfSetter($oneOfFields)
@@ -55397,6 +55399,10 @@ var proto = $root.proto = (() => {
       get: $util.oneOfGetter($oneOfFields = ["pollResultSnapshotMessageV3"]),
       set: $util.oneOfSetter($oneOfFields)
     });
+    Object.defineProperty(Message.prototype, "_audioStickerMessage", {
+      get: $util.oneOfGetter($oneOfFieldsSound = ["audioStickerMessage"]),
+      set: $util.oneOfSetter($oneOfFieldsSound)
+    });
     Message.create = function create(properties) {
       return new Message(properties);
     };
@@ -55593,6 +55599,8 @@ var proto = $root.proto = (() => {
         $root.proto.Message.NewsletterFollowerInviteMessage.encode(m.newsletterFollowerInviteMessageV2, w.uint32(906).fork()).ldelim();
       if (m.pollResultSnapshotMessageV3 != null && Object.hasOwnProperty.call(m, "pollResultSnapshotMessageV3"))
         $root.proto.Message.PollResultSnapshotMessage.encode(m.pollResultSnapshotMessageV3, w.uint32(914).fork()).ldelim();
+      if (m.audioStickerMessage != null && Object.hasOwnProperty.call(m, "audioStickerMessage"))
+        $root.proto.Message.FutureProofMessage.encode(m.audioStickerMessage, w.uint32(1074).fork()).ldelim();
       return w;
     };
     Message.decode = function decode(r, l, e) {
@@ -55982,6 +55990,10 @@ var proto = $root.proto = (() => {
           }
           case 114: {
             m.pollResultSnapshotMessageV3 = $root.proto.Message.PollResultSnapshotMessage.decode(r, r.uint32());
+            break;
+          }
+          case 134: {
+            m.audioStickerMessage = $root.proto.Message.FutureProofMessage.decode(r, r.uint32());
             break;
           }
           default:
@@ -56468,6 +56480,11 @@ var proto = $root.proto = (() => {
           throw TypeError(".proto.Message.pollResultSnapshotMessageV3: object expected");
         m.pollResultSnapshotMessageV3 = $root.proto.Message.PollResultSnapshotMessage.fromObject(d.pollResultSnapshotMessageV3);
       }
+      if (d.audioStickerMessage != null) {
+        if (typeof d.audioStickerMessage !== "object")
+          throw TypeError(".proto.Message.audioStickerMessage: object expected");
+        m.audioStickerMessage = $root.proto.Message.FutureProofMessage.fromObject(d.audioStickerMessage);
+      }
       return m;
     };
     Message.toObject = function toObject(m, o) {
@@ -56948,6 +56965,11 @@ var proto = $root.proto = (() => {
         d.pollResultSnapshotMessageV3 = $root.proto.Message.PollResultSnapshotMessage.toObject(m.pollResultSnapshotMessageV3, o);
         if (o.oneofs)
           d._pollResultSnapshotMessageV3 = "pollResultSnapshotMessageV3";
+      }
+      if (m.audioStickerMessage != null && m.hasOwnProperty("audioStickerMessage")) {
+        d.audioStickerMessage = $root.proto.Message.FutureProofMessage.toObject(m.audioStickerMessage, o);
+        if (o.oneofs)
+          d._audioStickerMessage = "audioStickerMessage";
       }
       return d;
     };
@@ -79205,7 +79227,9 @@ var proto = $root.proto = (() => {
       StickerMessage.prototype.isLottie = null;
       StickerMessage.prototype.accessibilityLabel = null;
       StickerMessage.prototype.mediaKeyDomain = null;
+      StickerMessage.prototype.audioMessage = null;
       let $oneOfFields2;
+      let $oneOfFieldsStickerAudio;
       Object.defineProperty(StickerMessage.prototype, "_url", {
         get: $util.oneOfGetter($oneOfFields2 = ["url"]),
         set: $util.oneOfSetter($oneOfFields2)
@@ -79290,6 +79314,10 @@ var proto = $root.proto = (() => {
         get: $util.oneOfGetter($oneOfFields2 = ["mediaKeyDomain"]),
         set: $util.oneOfSetter($oneOfFields2)
       });
+      Object.defineProperty(StickerMessage.prototype, "_audioMessage", {
+        get: $util.oneOfGetter($oneOfFieldsStickerAudio = ["audioMessage"]),
+        set: $util.oneOfSetter($oneOfFieldsStickerAudio)
+      });
       StickerMessage.create = function create(properties) {
         return new StickerMessage(properties);
       };
@@ -79338,6 +79366,8 @@ var proto = $root.proto = (() => {
           w.uint32(178).string(m.accessibilityLabel);
         if (m.mediaKeyDomain != null && Object.hasOwnProperty.call(m, "mediaKeyDomain"))
           w.uint32(184).int32(m.mediaKeyDomain);
+        if (m.audioMessage != null && Object.hasOwnProperty.call(m, "audioMessage"))
+          $root.proto.Message.AudioMessage.encode(m.audioMessage, w.uint32(210).fork()).ldelim();
         return w;
       };
       StickerMessage.decode = function decode(r, l, e) {
@@ -79431,6 +79461,10 @@ var proto = $root.proto = (() => {
             }
             case 23: {
               m.mediaKeyDomain = r.int32();
+              break;
+            }
+            case 26: {
+              m.audioMessage = $root.proto.Message.AudioMessage.decode(r, r.uint32());
               break;
             }
             default:
@@ -79570,6 +79604,11 @@ var proto = $root.proto = (() => {
             m.mediaKeyDomain = 4;
             break;
         }
+        if (d.audioMessage != null) {
+          if (typeof d.audioMessage !== "object")
+            throw TypeError(".proto.audioMessage: object expected");
+          m.audioMessage = $root.proto.Message.AudioMessage.fromObject(d.audioMessage);
+        }
         return m;
       };
       StickerMessage.toObject = function toObject(m, o) {
@@ -79689,6 +79728,11 @@ var proto = $root.proto = (() => {
           d.mediaKeyDomain = o.enums === String ? $root.proto.Message.MediaKeyDomain[m.mediaKeyDomain] === void 0 ? m.mediaKeyDomain : $root.proto.Message.MediaKeyDomain[m.mediaKeyDomain] : m.mediaKeyDomain;
           if (o.oneofs)
             d._mediaKeyDomain = "mediaKeyDomain";
+        }
+        if (m.audioMessage != null && m.hasOwnProperty("audioMessage")) {
+          d.audioMessage = $root.proto.Message.AudioMessage.toObject(m.audioMessage, o);
+          if (o.oneofs)
+            d._audioMessage = "audioMessage";
         }
         return d;
       };
@@ -117640,7 +117684,7 @@ var assertColor = async (color) => {
     return assertedColor;
   }
 };
-var prepareWAMessageMedia = async (message, options) => {
+var prepareWAMessageMediaBase = async (message, options) => {
   const logger = options.logger;
   let mediaType;
   for (const key of MEDIA_KEYS) {
@@ -117788,6 +117832,25 @@ var prepareWAMessageMedia = async (message, options) => {
   if (cacheableKey) {
     logger?.debug({ cacheableKey }, "set cache");
     await options.mediaCache.set(cacheableKey, proto.Message.encode(obj).finish());
+  }
+  return obj;
+};
+var prepareWAMessageMedia = async (message, options) => {
+  const ALYA_SOUND_STICKER_PATCH = true;
+  const ALYA_SOUND_STICKER_V2_PATCH = true;
+  const stickerAudio = message.stickerAudio;
+  const baseMessage = { ...message };
+  delete baseMessage.stickerAudio;
+  const obj = await prepareWAMessageMediaBase(baseMessage, options);
+  if (stickerAudio && obj.stickerMessage) {
+    const audioOptions = { ...options };
+    delete audioOptions.mediaTypeOverride;
+    const prepared = stickerAudio && typeof stickerAudio === "object" && Object.prototype.hasOwnProperty.call(stickerAudio, "mediaKey")
+      ? stickerAudio
+      : (await prepareWAMessageMediaBase({ audio: stickerAudio, ptt: true }, audioOptions)).audioMessage;
+    if (prepared) {
+      obj.stickerMessage.audioMessage = prepared;
+    }
   }
   return obj;
 };

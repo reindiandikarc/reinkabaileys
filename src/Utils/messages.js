@@ -58,7 +58,7 @@ const assertColor = async (color) => {
         return assertedColor;
     }
 };
-export const prepareWAMessageMedia = async (message, options) => {
+const prepareWAMessageMediaBase = async (message, options) => {
     const logger = options.logger;
     let mediaType;
     for (const key of MEDIA_KEYS) {
@@ -245,6 +245,24 @@ export const prepareWAMessageMedia = async (message, options) => {
     if (cacheableKey) {
         logger?.debug({ cacheableKey }, 'set cache');
         await options.mediaCache.set(cacheableKey, WAProto.Message.encode(obj).finish());
+    }
+    return obj;
+};
+export const prepareWAMessageMedia = async (message, options) => {
+    const ALYA_SOUND_STICKER_PATCH = true;
+    const stickerAudio = message.stickerAudio;
+    const baseMessage = { ...message };
+    delete baseMessage.stickerAudio;
+    const obj = await prepareWAMessageMediaBase(baseMessage, options);
+    if (stickerAudio && obj.stickerMessage) {
+        const audioOptions = { ...options };
+        delete audioOptions.mediaTypeOverride;
+        const prepared = stickerAudio && typeof stickerAudio === "object" && Object.prototype.hasOwnProperty.call(stickerAudio, "mediaKey")
+            ? stickerAudio
+            : (await prepareWAMessageMediaBase({ audio: stickerAudio, ptt: true }, audioOptions)).audioMessage;
+        if (prepared) {
+            obj.stickerMessage.audioMessage = prepared;
+        }
     }
     return obj;
 };
